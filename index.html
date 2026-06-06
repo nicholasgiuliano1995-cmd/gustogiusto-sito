@@ -1,0 +1,3113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gusto Giusto — Премиальный итальянский DMC для туроператоров</title>
+<meta name="description" content="Принимающая компания по Италии для русскоговорящих туроператоров. Групповые туры, индивидуальные программы, винные туры. Прямые контракты с итальянскими поставщиками.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A40;
+    --navy-soft: #2a3a52;
+    --navy-deep: #0f1a2b;
+    --cream: #F5EDD6;
+    --cream-soft: #FAF6E8;
+    --cream-deep: #EBE0C0;
+    --gold: #C9A84C;
+    --gold-soft: #d9bd6f;
+    --gold-deep: #a88a30;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #d9d2bc;
+    --line-soft: #e8e2cf;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4, .serif {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(245, 237, 214, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-img {
+    height: 42px;
+    width: auto;
+  }
+
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .logo-text span { color: var(--gold); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .b2b-access {
+    padding: 9px 18px;
+    border: 1px solid var(--gold);
+    color: var(--gold-deep);
+    background: transparent;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+
+  .b2b-access:hover { background: var(--gold); color: var(--cream); }
+
+  .lang-toggle {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+
+  .lang-btn.active { color: var(--navy); border-bottom: 1px solid var(--gold); }
+  .lang-divider { color: var(--line); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 130px 48px 80px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 45%;
+    background: var(--navy);
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero h1 {
+    font-size: clamp(44px, 5.2vw, 76px);
+    line-height: 1.05;
+    color: var(--navy);
+    margin: 24px 0 32px;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-family: inherit;
+    border: 1px solid transparent;
+  }
+
+  .cta.primary {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+  }
+
+  .cta.primary:hover { background: var(--gold); border-color: var(--gold); }
+
+  .cta.outline {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .cta.outline:hover { background: var(--navy); color: var(--cream); }
+
+  .cta::after { content: '→'; font-size: 15px; }
+
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-card {
+    background: var(--cream);
+    padding: 48px 40px;
+    border: 1px solid var(--gold);
+    max-width: 400px;
+    box-shadow: 0 30px 80px rgba(27, 42, 64, 0.35);
+  }
+
+  .hero-card .eyebrow { display: block; margin-bottom: 18px; }
+  .hero-card h3 {
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+  .hero-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .hero-card-meta {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* SECTIONS */
+  section { padding: 120px 48px; }
+
+  .section-header {
+    max-width: 1200px;
+    margin: 0 auto 72px;
+    text-align: center;
+  }
+
+  .section-header h2 {
+    font-size: clamp(38px, 5vw, 58px);
+    color: var(--navy);
+    margin-top: 16px;
+    line-height: 1.1;
+  }
+
+  .section-header p {
+    max-width: 680px;
+    margin: 24px auto 0;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  /* ABOUT */
+  #about { background: var(--cream-soft); }
+
+  .about-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+  }
+
+  .about-block { border-top: 1px solid var(--gold); padding-top: 32px; }
+
+  .about-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    color: var(--gold);
+    line-height: 1;
+    font-style: italic;
+  }
+
+  .about-block h4 {
+    font-size: 24px;
+    color: var(--navy);
+    margin: 16px 0 12px;
+  }
+
+  .about-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* PROGRAMMES */
+  .programmes-wrap { max-width: 1280px; margin: 0 auto; }
+
+  /* Group Tours section */
+  .group-section {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 56px 60px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .group-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  /* Worry-Free section (cream variant) */
+  .worryfree-section {
+    background: var(--cream-soft);
+    color: var(--ink);
+    padding: 56px 60px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .worryfree-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .worryfree-section .group-header .eyebrow { color: var(--gold-deep); }
+  .worryfree-section .group-header h3 { color: var(--navy); }
+  .worryfree-section .group-header .price-line {
+    color: var(--gold-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+  }
+  .worryfree-section .group-header p { color: var(--muted); }
+  .worryfree-section .group-header { border-bottom: 1px solid var(--line); }
+  .worryfree-section .stat { border-bottom: 1px solid var(--line-soft); }
+  .worryfree-section .stat .stat-label { color: var(--gold-deep); }
+  .worryfree-section .stat .stat-val { color: var(--navy); }
+  .worryfree-section .stat { color: var(--ink); }
+
+  .worryfree-section .tour-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+  }
+  .worryfree-section .tour-card:hover {
+    background: #fff;
+    border-color: var(--gold);
+  }
+  .worryfree-section .tour-card .tour-season { color: var(--gold-deep); }
+  .worryfree-section .tour-card h4 { color: var(--navy); }
+  .worryfree-section .tour-card .tour-tag { color: var(--muted); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .worryfree-section .tour-highlights li { color: var(--ink); }
+  .worryfree-section .tour-highlights li::before { color: var(--gold); }
+  .worryfree-section .tour-pdf {
+    background: transparent;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+  }
+  .worryfree-section .tour-pdf:hover {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+  }
+
+  /* VIP Signature section (deep navy with strong gold) */
+  .signature-section {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: 56px 60px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .signature-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .signature-section .group-header { border-bottom: 1px solid rgba(201,168,76,0.3); }
+  .signature-section .group-header .eyebrow { color: var(--gold-soft); letter-spacing: 0.3em; }
+  .signature-section .group-header h3 { 
+    color: var(--cream); 
+    font-size: 50px;
+    letter-spacing: 0.02em;
+  }
+  .signature-section .group-header .price-line { color: var(--gold); }
+  .signature-section .group-header p { color: rgba(245, 237, 214, 0.78); }
+
+  .signature-section .stat {
+    border-bottom: 1px solid rgba(245, 237, 214, 0.12);
+    color: rgba(245, 237, 214, 0.85);
+  }
+  .signature-section .stat .stat-label { color: var(--gold); }
+  .signature-section .stat .stat-val { color: var(--cream); }
+
+  .signature-section .tour-card {
+    background: rgba(245, 237, 214, 0.03);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+  }
+  .signature-section .tour-card:hover {
+    background: rgba(245, 237, 214, 0.08);
+    border-color: var(--gold);
+  }
+  .signature-section .tour-card .tour-season { color: var(--gold); }
+  .signature-section .tour-card h4 { color: var(--cream); }
+  .signature-section .tour-card .tour-tag { color: rgba(245, 237, 214, 0.7); }
+  .signature-section .tour-highlights li { color: rgba(245, 237, 214, 0.88); }
+  .signature-section .tour-highlights li::before { color: var(--gold); }
+  
+  .signature-section .tour-pdf {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--navy-deep);
+  }
+  .signature-section .tour-pdf:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--navy-deep);
+  }
+
+  /* University & Technical section (cream variant with navy accents) */
+  .university-section {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 56px 60px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .university-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--navy);
+  }
+
+  .university-section .group-header { border-bottom: 1px solid var(--line); }
+  .university-section .group-header .eyebrow { color: var(--navy); letter-spacing: 0.25em; }
+  .university-section .group-header h3 { color: var(--navy); }
+  .university-section .group-header .price-line {
+    color: var(--gold-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+  }
+  .university-section .group-header p { color: var(--muted); }
+  .university-section .stat { border-bottom: 1px solid var(--line-soft); }
+  .university-section .stat .stat-label { color: var(--navy); }
+  .university-section .stat .stat-val { color: var(--ink); }
+
+  .university-section .tour-card {
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+  }
+  .university-section .tour-card:hover {
+    background: #fff;
+    border-color: var(--navy);
+  }
+  .university-section .tour-card .tour-season { color: var(--gold-deep); }
+  .university-section .tour-card h4 { color: var(--navy); }
+  .university-section .tour-card .tour-tag { color: var(--muted); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .university-section .tour-highlights li { color: var(--ink); }
+  .university-section .tour-highlights li::before { color: var(--navy); }
+  .university-section .tour-pdf {
+    background: transparent;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+  }
+  .university-section .tour-pdf:hover {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+  }
+
+  .group-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(245, 237, 214, 0.18);
+  }
+
+  .group-header .eyebrow { color: var(--gold-soft); }
+  .group-header h3 {
+    font-size: 44px;
+    color: var(--cream);
+    margin: 14px 0 16px;
+    line-height: 1.1;
+  }
+  .group-header .price-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold-soft);
+    margin-bottom: 14px;
+  }
+  .group-header p {
+    color: rgba(245, 237, 214, 0.8);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 95%;
+  }
+
+  .group-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(245, 237, 214, 0.1);
+    font-size: 13px;
+    color: rgba(245, 237, 214, 0.85);
+  }
+
+  .stat:last-child { border-bottom: none; }
+  .stat .stat-label { letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px; color: var(--gold-soft); }
+  .stat .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--cream); }
+
+  /* Tour cards grid */
+  .tours-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .tour-card {
+    background: rgba(245, 237, 214, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    padding: 28px 28px 24px;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tour-card:hover {
+    background: rgba(245, 237, 214, 0.08);
+    border-color: var(--gold);
+  }
+
+  .tour-card .tour-season {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 10px;
+  }
+
+  .tour-card h4 {
+    font-size: 26px;
+    color: var(--cream);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .tour-card .tour-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(245, 237, 214, 0.7);
+    margin-bottom: 18px;
+  }
+
+  .tour-highlights {
+    list-style: none;
+    margin-bottom: 22px;
+    flex-grow: 1;
+  }
+
+  .tour-highlights li {
+    padding: 7px 0;
+    padding-left: 18px;
+    position: relative;
+    font-size: 13px;
+    color: rgba(245, 237, 214, 0.85);
+    line-height: 1.5;
+  }
+
+  .tour-highlights li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold-soft);
+  }
+
+  .tour-pdf {
+    background: transparent;
+    border: 1px solid rgba(245, 237, 214, 0.3);
+    color: var(--cream);
+    padding: 9px 14px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .tour-pdf:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+  /* Individual cards grid (4 categories below) */
+  .prog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .prog-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .prog-card.vip {
+    border: 1.5px solid var(--gold);
+    background: var(--cream);
+  }
+
+  .prog-card.vip::before {
+    content: 'TOP TIER';
+    position: absolute;
+    top: -10px;
+    left: 36px;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 4px 12px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    font-weight: 600;
+  }
+
+  .prog-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+  .prog-card .cat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .prog-card h3 {
+    font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+
+  .prog-card .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .prog-card .price-line {
+    padding: 12px 0;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+  }
+
+  .prog-card .price-line strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+
+  .prog-card .description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .prog-card .sample-title {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .sample-list {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .sample-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+  }
+
+  .sample-list li:last-child { border-bottom: none; }
+
+  .sample-list .sample-name {
+    color: var(--navy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+  }
+
+  .sample-list .sample-meta {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .pdf-btn {
+    background: transparent;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    padding: 7px 12px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .pdf-btn:hover { background: var(--navy); color: var(--cream); }
+
+  .prog-card .footer-action {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+
+  .request-link {
+    color: var(--gold-deep);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+  }
+
+  .request-link:hover { color: var(--navy); }
+  .request-link::after { content: ' →'; }
+
+  /* NETWORK */
+  #network { background: var(--cream-soft); }
+
+  .network-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .net-block {
+    background: var(--cream);
+    padding: 40px 36px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .net-block.full { grid-column: 1 / -1; }
+  .net-block .eyebrow { display: block; margin-bottom: 14px; }
+
+  .net-block h4 {
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 18px;
+  }
+
+  .net-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .net-block .feature { color: var(--navy); font-weight: 500; }
+
+  .partner-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .tag {
+    padding: 8px 14px;
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  .tag.partner {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+  }
+
+  .chain-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 20px 0 8px;
+  }
+
+  /* WINE PARTNER CARDS */
+  .wine-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  .wine-card {
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .wine-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+
+  .wine-card .wine-region {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 10px;
+  }
+
+  .wine-card h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .wine-card .wine-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .wine-card .wine-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 9px 16px;
+    border: 1px solid var(--gold);
+    color: var(--gold-deep);
+    background: transparent;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .wine-card .wine-pdf:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+
+  .wine-disclaimer {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* BRIEF BUILDER */
+  #brief { background: var(--navy); color: var(--cream); }
+  #brief .section-header h2 { color: var(--cream); }
+  #brief .section-header p { color: rgba(245, 237, 214, 0.72); }
+  #brief .eyebrow { color: var(--gold-soft); }
+
+  .brief-guarantee {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+    padding: 14px 24px;
+    border: 1px solid var(--gold);
+    background: rgba(201, 168, 76, 0.08);
+    border-radius: 2px;
+  }
+  .brief-guarantee .guarantee-icon {
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .brief-guarantee .guarantee-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+  }
+  .brief-guarantee .guarantee-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .brief-guarantee .guarantee-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--cream);
+  }
+
+  .brief-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 56px;
+    position: relative;
+  }
+
+  .brief-progress {
+    display: flex;
+    gap: 0;
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .step-tab {
+    flex: 1;
+    padding: 16px 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    cursor: default;
+    transition: color 0.3s;
+  }
+
+  .step-tab.active { color: var(--navy); }
+  .step-tab.completed { color: var(--gold-deep); }
+  .step-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    margin-right: 6px;
+  }
+
+  .step-panel { display: none; }
+  .step-panel.active { display: block; animation: fade 0.4s; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .step-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .step-hint {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .options-grid.three { grid-template-columns: repeat(3, 1fr); }
+  .options-grid.four { grid-template-columns: repeat(4, 1fr); }
+
+  .opt {
+    border: 1px solid var(--line);
+    background: var(--cream-soft);
+    padding: 18px 22px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .opt:hover { border-color: var(--gold); }
+  .opt.selected { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+
+  .opt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+  }
+  .opt-desc { font-size: 12px; color: var(--muted); }
+  .opt.selected .opt-desc { color: var(--cream-soft); opacity: 0.8; }
+
+  .brief-input, .brief-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    background: var(--cream-soft);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .brief-input:focus, .brief-textarea:focus { outline: none; border-color: var(--gold); }
+  .brief-textarea { min-height: 100px; resize: vertical; }
+
+  .input-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+
+  .config-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .btn {
+    padding: 14px 30px;
+    border: 1px solid var(--navy);
+    background: transparent;
+    color: var(--navy);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+
+  .btn:hover { background: var(--navy); color: var(--cream); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn.primary { background: var(--navy); color: var(--cream); }
+  .btn.primary:hover { background: var(--gold); border-color: var(--gold); }
+
+  .result-panel { display: none; }
+  .result-panel.active { display: block; animation: fade 0.5s; }
+
+  .result-header {
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+  }
+
+  .result-tag {
+    display: inline-block;
+    padding: 5px 13px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  .result-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+
+  .brief-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .brief-summary .item {
+    padding: 14px 18px;
+    background: var(--cream-soft);
+    border-left: 2px solid var(--gold);
+  }
+
+  .brief-summary .label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .brief-summary .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--navy);
+  }
+
+  .result-note {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-style: italic;
+    margin: 24px 0;
+    padding: 18px;
+    background: var(--cream-soft);
+    border-left: 2px solid var(--gold);
+  }
+
+  .result-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  /* MODAL */
+  .modal-bg {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 26, 43, 0.85);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(6px);
+  }
+
+  .modal-bg.active { display: flex; animation: fade 0.3s; }
+
+  .modal {
+    background: var(--cream);
+    max-width: 540px;
+    width: 100%;
+    padding: 48px;
+    position: relative;
+    border-top: 4px solid var(--gold);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--muted);
+    font-family: inherit;
+  }
+
+  .modal .eyebrow { display: block; margin-bottom: 14px; }
+  .modal h3 {
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .modal p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 80px 48px 40px;
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(245, 237, 214, 0.15);
+  }
+
+  .footer-grid h3 {
+    font-size: 30px;
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .footer-grid p {
+    color: rgba(245, 237, 214, 0.72);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .footer-grid h5 {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .footer-grid a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-grid a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(245, 237, 214, 0.5);
+    letter-spacing: 0.05em;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .b2b-access { padding: 7px 12px; font-size: 10px; }
+    .logo-img { height: 36px; }
+    .logo-text { font-size: 18px; }
+    section { padding: 80px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
+    .hero::before { width: 100%; height: 35%; bottom: 0; top: auto; }
+    .hero-visual { height: auto; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .group-section { padding: 36px 24px; }
+    .group-header { grid-template-columns: 1fr; gap: 24px; }
+    .group-header h3 { font-size: 34px; }
+    .tours-grid { grid-template-columns: 1fr; gap: 14px; }
+    .prog-grid { grid-template-columns: 1fr; }
+    .network-grid { grid-template-columns: 1fr; }
+    .brief-wrap { padding: 32px 22px; }
+    .options-grid, .options-grid.three, .options-grid.four { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .step-tab { font-size: 9px; padding: 12px 4px; }
+    .step-num { display: none; }
+    .brief-summary { grid-template-columns: 1fr; }
+    .modal { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <img src="data:image/png;base64,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" alt="Gusto Giusto" class="logo-img" id="logo-img">
+    <span class="logo-text">Gusto <span>Giusto</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">О компании</a></li>
+    <li><a href="#programmes" data-i18n="nav.programmes">Программы</a></li>
+    <li><a href="#network" data-i18n="nav.network">Партнёры</a></li>
+    <li><a href="#brief" data-i18n="nav.brief">Конструктор брифа</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Контакты</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="b2b-access" onclick="openModal('b2b')" data-i18n="nav.b2b">B2B-доступ</button>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <span class="lang-divider">/</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow" data-i18n="hero.eyebrow">Принимающая компания по Италии · B2B</span>
+    <h1 data-i18n-html="hero.title">Италия. Как её продают <em>профессионалы</em>.</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Принимающая компания по Италии для русскоговорящих туроператоров. Прямые контракты с итальянскими поставщиками, координация на трёх языках, документация под стандарты туроператора. Без посредников и наценок.</p>
+    <div class="hero-ctas">
+      <a href="#programmes" class="cta primary" data-i18n="hero.cta1">Перейти к программам</a>
+      <button class="cta outline" onclick="openModal('b2b')" data-i18n="hero.cta2">Запросить B2B-доступ</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <span class="eyebrow" data-i18n="hero.card.eyebrow">В работе</span>
+      <h3 data-i18n="hero.card.title">От Венеции до Сицилии — полный цикл.</h3>
+      <p data-i18n="hero.card.body">Прямые отношения с поставщиками во всех двадцати регионах. Координация на русском, итальянском и английском языках. Документы, которые туроператор может без правок передать клиенту.</p>
+      <div class="hero-card-meta">
+        <span data-i18n="hero.card.m1">20 регионов</span>
+        <span data-i18n="hero.card.m2">RU · IT · EN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header">
+    <span class="eyebrow" data-i18n="about.eyebrow">О компании</span>
+    <h2 data-i18n="about.title">Итальянская компания для российского рынка.</h2>
+    <p data-i18n="about.sub">Gusto Giusto основана в сентябре 2024 года итальянским предпринимателем Николасом Джулиано и российским партнёром Андреем Петровым. Офисы — в Санкт-Петербурге и Москве. Операционная база — Италия. Компания работает с теми, кто понимает: продажа Италии требует не каталога, а отношений.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-block">
+      <div class="about-num">01</div>
+      <h4 data-i18n="about.b1.title">Прямая работа с итальянскими поставщиками</h4>
+      <p data-i18n="about.b1.body">Никакой перепродажи готовых пакетов. Каждый отель, транспорт, ресторан и винодельня — наши прямые контракты. Это означает и более чистую маржу для партнёра, и качество, за которое не приходится извиняться перед клиентом.</p>
+    </div>
+    <div class="about-block">
+      <div class="about-num">02</div>
+      <h4 data-i18n="about.b2.title">Дисциплина работы B2B</h4>
+      <p data-i18n="about.b2.body">Все котировки, программы и операционные документы готовятся для туроператора, а не для конечного клиента. Поставщики, наценки и внутренняя стоимость никогда не раскрываются. Уважение к вашим отношениям с клиентом — основа того, как мы работаем.</p>
+    </div>
+    <div class="about-block">
+      <div class="about-num">03</div>
+      <h4 data-i18n="about.b3.title">Работа в трансграничном формате</h4>
+      <p data-i18n="about.b3.body">Двуязычные контракты, понятные обеим сторонам. Расчёты с поставщиками в евро через авторизованные платёжные механизмы. Содействие в визовых вопросах. Коммуникация без задержек на русском, итальянском и английском языках.</p>
+    </div>
+  </div>
+</section>
+
+<section id="programmes">
+  <div class="section-header">
+    <span class="eyebrow" data-i18n="prog.eyebrow">Пять направлений</span>
+    <h2 data-i18n="prog.title">Под сегмент, а не под брошюру.</h2>
+    <p data-i18n="prog.sub">У каждого направления — своя операционная логика, своя структура себестоимости, своя сеть поставщиков. Выбирайте линию, которая подходит вашему клиенту. Или сочетайте несколько направлений в одном туре.</p>
+  </div>
+
+  <div class="programmes-wrap">
+
+    <!-- GROUP TOURS WITH 6 REAL PRODUCTS -->
+    <div class="group-section">
+      <div class="group-header">
+        <div>
+          <span class="eyebrow" data-i18n="prog.group.eyebrow">Групповые программы · Направление 01</span>
+          <h3 data-i18n="prog.group.title">Групповые туры</h3>
+          <div class="price-line" data-i18n="prog.group.price">От €1.350 на человека · Только земля · Минимум 14 человек</div>
+          <p data-i18n="prog.group.body">Готовые региональные программы по шести направлениям. Подходит туроператорам, которые собирают группы из России и СНГ. Полный наземный сервис, русскоговорящие гиды, проверенные отели. Перелёт и визы остаются на стороне туроператора — со своей стороны мы оказываем содействие в подготовке документов для визы.</p>
+        </div>
+        <div class="group-stats">
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.group.s1">Группа</span>
+            <span class="stat-val" data-i18n="prog.group.s1v">Минимум 14 человек</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.group.s2">Длительность</span>
+            <span class="stat-val" data-i18n="prog.group.s2v">8 дней / 7 ночей</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.group.s3">Услуги</span>
+            <span class="stat-val" data-i18n="prog.group.s3v">Только наземные</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.group.s4">Содействие</span>
+            <span class="stat-val" data-i18n="prog.group.s4v">Визовые вопросы</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tours-grid">
+        <!-- TOUR 1: TUSCANY -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="tour.tuscany.season">Апр – Окт · 8 дней / 7 ночей</div>
+          <h4 data-i18n="tour.tuscany.name">Тоскана — La Dolce Vita</h4>
+          <div class="tour-tag" data-i18n="tour.tuscany.tag">Флоренция, Сиена, Пиза и холмы Кьянти</div>
+          <ul class="tour-highlights" data-i18n-list="tour.tuscany.hl">
+            <li>Размещение в Монтекатини-Терме: отель 4★ на территории исторического термального парка</li>
+            <li>Частная пешеходная экскурсия по Флоренции с русскоговорящим гидом</li>
+            <li>День в Тоскане: Сан-Джиминьяно, Сиена, Пиза, гастрономический обед и дегустация вин</li>
+            <li>Малоизвестная Тоскана: Монтериджони, Кьянти, кулинарный мастер-класс и винодельня</li>
+            <li>Лукка — полудневная экскурсия</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- TOUR 2: SICILY SPRING -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="tour.sicily_spring.season">Апр – Май · 8 дней / 7 ночей</div>
+          <h4 data-i18n="tour.sicily_spring.name">Сицилия — Весенняя редакция</h4>
+          <div class="tour-tag" data-i18n="tour.sicily_spring.tag">Катания, Сиракузы, Таормина, Палермо, Агридженто</div>
+          <ul class="tour-highlights" data-i18n-list="tour.sicily_spring.hl">
+            <li>Размещение в двух городах: исторический центр Катании и затем центр Палермо</li>
+            <li>Сиракузы и остров Ортиджа, далее Ното — объект ЮНЕСКО</li>
+            <li>Мессина, Форца-д'Аджо и греко-римский театр Таормины</li>
+            <li>Средневековый центр Чефалу по пути в Палермо</li>
+            <li>Агридженто и Долина храмов — объект ЮНЕСКО</li>
+            <li>Монреале — собор и клуатр в день отъезда</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- TOUR 3: SICILY SUMMER -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="tour.sicily_summer.season">Июнь – Сен · 8 дней / 7 ночей</div>
+          <h4 data-i18n="tour.sicily_summer.name">Сицилия — Летняя редакция</h4>
+          <div class="tour-tag" data-i18n="tour.sicily_summer.tag">Этна, Таормина, Сиракузы и Ионическое побережье</div>
+          <ul class="tour-highlights" data-i18n-list="tour.sicily_summer.hl">
+            <li>Размещение в районе Ачиреале: отель Grand Hotel на побережье</li>
+            <li>Полнодневная экскурсия на Этну и в Таормину</li>
+            <li>Полнодневная экскурсия в Ното и Сиракузы с русскоговорящим гидом</li>
+            <li>Морская прогулка из Джардини-Наксос</li>
+            <li>Исторический центр Катании и традиционная гранита с бриошью</li>
+            <li>День шопинга в Sicilia Outlet Village</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- TOUR 4: PUGLIA -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="tour.puglia.season">Апр – Окт · 8 дней / 7 ночей</div>
+          <h4 data-i18n="tour.puglia.name">Апулия — The Dream</h4>
+          <div class="tour-tag" data-i18n="tour.puglia.tag">Лечче, Альберобелло, Остуни, Полиньяно-а-Маре</div>
+          <ul class="tour-highlights" data-i18n-list="tour.puglia.hl">
+            <li>Размещение на побережье: отель 4★ Sup. с полупансионом</li>
+            <li>Винодельня Castello Monaci: погреба, музей вина, дегустация с апулийскими сырами и колбасами</li>
+            <li>Лечче — «южная Флоренция», столица апулийского барокко</li>
+            <li>Массерия: дегустация сыров и колбас на действующей ферме</li>
+            <li>Альберобелло — объект ЮНЕСКО и мировая столица трулли</li>
+            <li>Остуни — «белый город» — и скалы Полиньяно-а-Маре</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- TOUR 5: VENETO -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="tour.veneto.season">Апр – Окт · 8 дней / 7 ночей</div>
+          <h4 data-i18n="tour.veneto.name">Венето — Italian Uniqueness</h4>
+          <div class="tour-tag" data-i18n="tour.veneto.tag">Венеция, Верона, Валеджо, Тревизо и земля Просекко</div>
+          <ul class="tour-highlights" data-i18n-list="tour.veneto.hl">
+            <li>Размещение в Виченце: отель 4★ группы Starhotels</li>
+            <li>Полный день в Вероне с посещением Арены и русскоговорящим гидом</li>
+            <li>Валеджо-суль-Минчо: Венето вне туристических маршрутов</li>
+            <li>Венеция и острова лагуны: Бурано, Мурано, Торчелло, мастерская стекла на Мурано</li>
+            <li>Тревизо и дегустация Просекко на винодельне</li>
+            <li>День шопинга в Designer Outlet Noventa di Piave</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- TOUR 6: LOMBARDY -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="tour.lombardy.season">Ноя – Дек · 8 дней / 7 ночей</div>
+          <h4 data-i18n="tour.lombardy.name">Милан — Зимняя редакция</h4>
+          <div class="tour-tag" data-i18n="tour.lombardy.tag">Милан, Комо, Червиния, Франчакорта</div>
+          <ul class="tour-highlights" data-i18n-list="tour.lombardy.hl">
+            <li>Размещение в центре Милана: отель 4★ Starhotels Ritz</li>
+            <li>«Тайная вечеря» Леонардо и главные памятники Милана</li>
+            <li>Персональный шопинг в Quadrilatero della Moda</li>
+            <li>Полнодневная поездка на озеро Комо и в Белладжо</li>
+            <li>Червиния — день в итальянских Альпах</li>
+            <li>По выбору: новогодний ужин в траттории и Пьяцца Дуомо</li>
+            <li>Винодельня Франчакорта и озеро Изео</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITALY WORRY-FREE SECTION -->
+    <div class="worryfree-section">
+      <div class="group-header">
+        <div>
+          <span class="eyebrow" data-i18n="prog.wf.eyebrow">Серия «Италия без забот» · Направление 02</span>
+          <h3 data-i18n="prog.wf.title">«Италия без забот»</h3>
+          <div class="price-line" data-i18n="prog.wf.price">От €1.800 на человека · Только земля · От 2 человек</div>
+          <p data-i18n="prog.wf.body">Серия из пяти индивидуальных программ по 7 ночей с фиксированной структурой и открытыми датами вылета. Лицензированные русскоговорящие гиды на каждом ключевом этапе, поддержка Gusto Giusto 24/7 через Telegram, цифровой welcome-kit на русском языке и трансферы с водителем по прилёту. Продукт для туроператоров, чьи клиенты не говорят на иностранных языках и не хотят ехать в группе.</p>
+        </div>
+        <div class="group-stats">
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.wf.s1">Размещение</span>
+            <span class="stat-val" data-i18n="prog.wf.s1v">Отели 3★ в центре</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.wf.s2">Длительность</span>
+            <span class="stat-val" data-i18n="prog.wf.s2v">8 дней / 7 ночей</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.wf.s3">Поддержка</span>
+            <span class="stat-val" data-i18n="prog.wf.s3v">24/7 в Telegram</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.wf.s4">Минимум</span>
+            <span class="stat-val" data-i18n="prog.wf.s4v">2 человека</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tours-grid">
+        <!-- WF-1: ROMA FIRENZE VENEZIA -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="wf.1.label">Направление 01 · 7 ночей / 8 дней</div>
+          <h4 data-i18n="wf.1.name">Рим · Флоренция · Венеция</h4>
+          <div class="tour-tag" data-i18n="wf.1.tag">Три города-символа и день в Кьянти</div>
+          <ul class="tour-highlights" data-i18n-list="wf.1.hl">
+            <li>Императорский Рим и Ватикан с лицензированным русскоговорящим гидом</li>
+            <li>День на винодельне Кьянти Классико: дегустация и тосканский обед</li>
+            <li>Флоренция и Венеция: пешеходные экскурсии с русскоговорящими гидами</li>
+            <li>Отели в шаговой доступности от вокзалов в Риме, Флоренции и Венеции</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- WF-2: NORTHERN GEMS -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="wf.2.label">Направление 02 · 7 ночей / 8 дней</div>
+          <h4 data-i18n="wf.2.name">Жемчужины Северной Италии</h4>
+          <div class="tour-tag" data-i18n="wf.2.tag">Озеро Комо, Милан, Бергамо, Верона, Сирмионе</div>
+          <ul class="tour-highlights" data-i18n-list="wf.2.hl">
+            <li>Пять городов и два озера в одном маршруте</li>
+            <li>Дневной билет на катер по озеру Комо включён</li>
+            <li>Поезд Frecciarossa или Italo между Миланом и Вероной</li>
+            <li>Шесть частных экскурсий с лицензированными русскоговорящими гидами</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- WF-3: ROMA NAPOLI SORRENTO -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="wf.3.label">Направление 03 · 7 ночей / 8 дней</div>
+          <h4 data-i18n="wf.3.name">Рим · Неаполь · Сорренто</h4>
+          <div class="tour-tag" data-i18n="wf.3.tag">Императорский Рим, Неаполь ЮНЕСКО и побережье</div>
+          <ul class="tour-highlights" data-i18n-list="wf.3.hl">
+            <li>Рим, Ватикан, Помпеи и Везувий — с русскоговорящими гидами</li>
+            <li>Лицензированный гид-археолог на день в Помпеях</li>
+            <li>Три ночи в Сорренто у Тирренского моря</li>
+            <li>Персональная встреча на вокзале Napoli Centrale</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- WF-4: TUSCANY DEEP -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="wf.4.label">Направление 04 · 7 ночей / 8 дней</div>
+          <h4 data-i18n="wf.4.name">Истинная Тоскана</h4>
+          <div class="tour-tag" data-i18n="wf.4.tag">Флоренция, Лукка, Пиза и две ночи на винодельне</div>
+          <ul class="tour-highlights" data-i18n-list="wf.4.hl">
+            <li>Пять ночей в историческом центре Флоренции</li>
+            <li>Полный день в Лукке и Пизе с русскоговорящим гидом</li>
+            <li>Две ночи на премиальной винодельне-агротуризме на холмах</li>
+            <li>Дегустация Кьянти Классико DOCG с тосканскими продуктами</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+
+        <!-- WF-5: SICILY TAORMINA -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="wf.5.label">Направление 05 · 7 ночей / 8 дней</div>
+          <h4 data-i18n="wf.5.name">Сицилия · Таормина</h4>
+          <div class="tour-tag" data-i18n="wf.5.tag">Этна, ионическое побережье, dolce vita</div>
+          <ul class="tour-highlights" data-i18n-list="wf.5.hl">
+            <li>Семь ночей в Таормине без переездов между отелями</li>
+            <li>Этна с лицензированным русскоговорящим гидом-вулканологом</li>
+            <li>Дегустация вулканических вин на склонах Этны</li>
+            <li>Четыре свободных дня для моря и самостоятельного отдыха</li>
+          </ul>
+          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIP SIGNATURE SECTION -->
+    <div class="signature-section">
+      <div class="group-header">
+        <div>
+          <span class="eyebrow" data-i18n="prog.vip.eyebrow">Серия Signature · Направление 03</span>
+          <h3 data-i18n="prog.vip.title">VIP — Signature</h3>
+          <div class="price-line" data-i18n="prog.vip.price">Эксклюзивные программы с прямой работой с резиденциями уровня Aman, Belmond, Bulgari, Mandarin Oriental и историческими виллами</div>
+          <p data-i18n="prog.vip.body">Пять программ для гостей, которые приезжают в Италию не за достопримечательностями, а за редкими опытами. Знаковые резиденции, частные ателье, доступы после закрытия в музеях и базиликах, перелёты на частном вертолёте, шопинг с международными стилистами. Серия Signature — самый эксклюзивный сегмент каталога Gusto Giusto.</p>
+        </div>
+        <div class="group-stats">
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.vip.s1">Размещение</span>
+            <span class="stat-val" data-i18n="prog.vip.s1v">5★ Suite и резиденции</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.vip.s2">Длительность</span>
+            <span class="stat-val" data-i18n="prog.vip.s2v">6 – 28 дней</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.vip.s3">Гиды и сервис</span>
+            <span class="stat-val" data-i18n="prog.vip.s3v">Лицензированные RU-гиды</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.vip.s4">Цена</span>
+            <span class="stat-val" data-i18n="prog.vip.s4v">По запросу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tours-grid">
+        <!-- VIP-1: DOLCE VITA GRAND TOUR -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="vip.1.label">Направление 01 · 28 дней / 27 ночей</div>
+          <h4 data-i18n="vip.1.name">Dolce Vita Grand Tour</h4>
+          <div class="tour-tag" data-i18n="vip.1.tag">Италия от Амальфи до Милана — 8 регионов, 28 дней</div>
+          <ul class="tour-highlights" data-i18n-list="vip.1.hl">
+            <li>Восемь регионов Италии в одной программе: Амальфи, Рим, Тоскана, Эмилия, Венето, Комо, Милан</li>
+            <li>Знаковые резиденции в каждом регионе — характер вместо рейтинга</li>
+            <li>Частная лодка на Амальфитанском побережье и на озере Комо</li>
+            <li>Два дня люксового шопинга в The Mall Firenze с персональным стилистом</li>
+            <li>Опыт Motor Valley, верховая езда, охота на трюфели, мастер-класс по пасте</li>
+            <li>Индивидуальный автомобиль с водителем на протяжении всех 28 дней</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_VIP_01_DolceVita.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+
+        <!-- VIP-2: TUSCANY & VENICE PINNACLE -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="vip.2.label">Направление 02 · 6 ночей / 7 дней</div>
+          <h4 data-i18n="vip.2.name">Тоскана и Венеция — вершина</h4>
+          <div class="tour-tag" data-i18n="vip.2.tag">Флоренция и Венеция как их видят только избранные</div>
+          <ul class="tour-highlights" data-i18n-list="vip.2.hl">
+            <li>Перелёт Флоренция–Венеция на частном вертолёте</li>
+            <li>Доступ к Базилике Сан-Марко и Дворцу Дожей после закрытия</li>
+            <li>Вертолётный тур над Кьянти с обедом в ресторане со звездой Michelin</li>
+            <li>Частная экскурсия по Уффици до открытия для публики</li>
+            <li>Закрытое ювелирное или кожевенное ателье во Флоренции</li>
+            <li>Острова лагуны на частной luxury-лодке</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_VIP_02_TuscanyVenice.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+
+        <!-- VIP-3: NORTHERN ITALY SIGNATURE -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="vip.3.label">Направление 03 · 6 ночей / 7 дней</div>
+          <h4 data-i18n="vip.3.name">Север Италии — signature-маршрут</h4>
+          <div class="tour-tag" data-i18n="vip.3.tag">Милан, Комо, Верона, Доломиты и Венеция</div>
+          <ul class="tour-highlights" data-i18n-list="vip.3.hl">
+            <li>Частная лодка с капитаном на озере Комо с визитом исторической виллы</li>
+            <li>Винодельня Франчакорта с дегустацией и обедом в имении</li>
+            <li>Вертолётный тур над Доломитами с обедом в горной хижине</li>
+            <li>Частная гондола в Венеции на закате с Просекко</li>
+            <li>Размещение в 5★ Deluxe отелях в Милане, Вероне и Венеции</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_VIP_03_NorthernSignature.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+
+        <!-- VIP-4: PIEMONTE ROYAL HERITAGE -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="vip.4.label">Направление 04 · 7 ночей / 8 дней</div>
+          <h4 data-i18n="vip.4.name">Пьемонт — королевское наследие</h4>
+          <div class="tour-tag" data-i18n="vip.4.tag">Турин, Венария, Альпы и винные Ланге</div>
+          <ul class="tour-highlights" data-i18n-list="vip.4.hl">
+            <li>Размещение в 5★ Junior Suite в самом центре Турина</li>
+            <li>Королевский Турин: Palazzo Reale, Королевская Оружейная, Часовня Плащаницы</li>
+            <li>Museo Egizio с частным гидом-египтологом</li>
+            <li>Венария Реале — резиденция Савойских королей, объект ЮНЕСКО</li>
+            <li>Две ночи в винном имении в Ланге с дегустациями Бароло и Барбареско</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_VIP_04_PiemonteRoyal.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+
+        <!-- VIP-5: MILANO FASHION INSIDER -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="vip.5.label">Направление 05 · 5 ночей / 6 дней</div>
+          <h4 data-i18n="vip.5.name">Милан — insider моды и стиля</h4>
+          <div class="tour-tag" data-i18n="vip.5.tag">Мода, ателье, дизайн — Милан изнутри</div>
+          <ul class="tour-highlights" data-i18n-list="vip.5.hl">
+            <li>Trend Talk с журналистом fashion-индустрии уровня Vogue Italia</li>
+            <li>Частный визит в миланское ателье с дизайнером или мастером-портным</li>
+            <li>Закрытый шоурум-визит с персональным стилистом</li>
+            <li>Фрагрансовый ателье: создание персонального аромата</li>
+            <li>По запросу: доступ к показу или event Fashion Week (в сезон февраля и сентября)</li>
+            <li>Размещение в 5★ бутик-отеле в Quadrilatero della Moda</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_VIP_05_MilanoFashion.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNIVERSITY & TECHNICAL SECTION -->
+    <div class="university-section">
+      <div class="group-header">
+        <div>
+          <span class="eyebrow" data-i18n="prog.uni.eyebrow">University & Technical · Направление 04</span>
+          <h3 data-i18n="prog.uni.title">University & Technical</h3>
+          <div class="price-line" data-i18n="prog.uni.price">Программы для университетских делегаций, MBA-групп и профессиональных учебных программ</div>
+          <p data-i18n="prog.uni.body">Три полноценные программы, разработанные специально для академических групп и корпоративных обучающих программ. Технические визиты на знаковые итальянские компании (Pirelli, Ferrari, Campari, Mutti, Panerai), классы в Accademia del Lusso, посещения винодельческих хозяйств — с презентациями, Q&A-сессиями и встречами с менеджерами. Каждая программа адаптируется под академические интересы конкретной группы.</p>
+        </div>
+        <div class="group-stats">
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.uni.s1">Размер группы</span>
+            <span class="stat-val" data-i18n="prog.uni.s1v">От 10 человек</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.uni.s2">Длительность</span>
+            <span class="stat-val" data-i18n="prog.uni.s2v">8 – 9 дней</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.uni.s3">Формат</span>
+            <span class="stat-val" data-i18n="prog.uni.s3v">Визиты + классы + культура</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label" data-i18n="prog.uni.s4">Цена</span>
+            <span class="stat-val" data-i18n="prog.uni.s4v">По запросу</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tours-grid">
+        <!-- UNI-1: LOMBARDIA TECH & CULTURE -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="uni.1.label">Направление 01 · 9 дней / 8 ночей</div>
+          <h4 data-i18n="uni.1.name">Ломбардия — индустрия и культура</h4>
+          <div class="tour-tag" data-i18n="uni.1.tag">Pirelli, WPP, Campari и культура Милана для MBA-студентов</div>
+          <ul class="tour-highlights" data-i18n-list="uni.1.hl">
+            <li>Технический визит в Pirelli (R&D и устойчивая мобильность) с презентацией и Q&A</li>
+            <li>Визит на WPP Campus Milano — один из ведущих innovation hub Европы</li>
+            <li>Galleria Campari — бренд-билдинг, mixology workshop и тур по штаб-квартире</li>
+            <li>Визит на итальянское luxury-производство (Zegna / Molteni&C или эквивалент)</li>
+            <li>День на озере Комо с туром на катере</li>
+            <li>База в отеле 4★ в центре Милана на все 8 ночей</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_UNI_01_Lombardia.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+
+        <!-- UNI-2: ITALIAN INDUSTRY TOUR -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="uni.2.label">Направление 02 · 9 дней / 8 ночей</div>
+          <h4 data-i18n="uni.2.name">Италия — индустриальный тур</h4>
+          <div class="tour-tag" data-i18n="uni.2.tag">Ferrari, Parmigiano, Panerai — Рим, Болонья, Флоренция</div>
+          <ul class="tour-highlights" data-i18n-list="uni.2.hl">
+            <li>Музей Ferrari в Маранелло с панорамным туром по фабрике и workshop в Red Campus</li>
+            <li>Тур по производству Parmigiano Reggiano с дегустацией трёх возрастов</li>
+            <li>Гид-сопровождаемый тур по фабрике Mutti — итальянская пищевая индустрия</li>
+            <li>Технический визит в Panerai во Флоренции — luxury-часовое производство</li>
+            <li>Винные хозяйства Кьянти: Altezza Winery и Torciano с дегустациями</li>
+            <li>Размещение в отелях Starhotels 4★ в Риме, Болонье и Флоренции</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_UNI_02_Industry.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+
+        <!-- UNI-3: MILAN FASHION WEEK ACADEMIC -->
+        <div class="tour-card">
+          <div class="tour-season" data-i18n="uni.3.label">Направление 03 · 8 дней / 7 ночей</div>
+          <h4 data-i18n="uni.3.name">Миланская неделя моды — академическая программа</h4>
+          <div class="tour-tag" data-i18n="uni.3.tag">Accademia del Lusso, показы Fashion Week и luxury-атейтле</div>
+          <ul class="tour-highlights" data-i18n-list="uni.3.hl">
+            <li>Три класса в Accademia del Lusso: Fashion Events, Retail Experience, Trends & Forecasting</li>
+            <li>Участие в показе или презентации Milan Fashion Week (по доступности)</li>
+            <li>Визит в шоурум luxury-бренда (Gucci, LV, Etro)</li>
+            <li>Визит в исторический atelier или vintage luxury boutique</li>
+            <li>Fashion Walking Tour по Quadrilatero della Moda и concept stores</li>
+            <li>День на озере Комо и день в Франчакорте с luxury-design experience</li>
+            <li>Сертификат об участии в программе</li>
+          </ul>
+          <a class="tour-pdf" href="pdf/GG_UNI_03_Fashion.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="network">
+  <div class="section-header">
+    <span class="eyebrow" data-i18n="net.eyebrow">Партнёрская сеть</span>
+    <h2 data-i18n="net.title">Прямые отношения, без посредников.</h2>
+    <p data-i18n="net.sub">Партнёрства и операционные возможности, на которых построена работа компании. Полные данные о поставщиках, объектах и тарифные карты предоставляются туроператорам после прохождения квалификации.</p>
+  </div>
+
+  <div class="network-grid">
+    <div class="net-block full">
+      <span class="eyebrow" data-i18n="net.hos.eyebrow">Размещение</span>
+      <h4 data-i18n="net.hos.title">Отели и резиденции</h4>
+      <p data-i18n="net.hos.body1">Прямые контракты с пятизвёздочными отелями Амальфитанского побережья, виноградарскими поместьями в Кьянти и Маремме, бутик-отелями Капри и Форте-дей-Марми, дворцами на каналах Венеции и семейными объектами по всем регионам Италии.</p>
+      <div class="partner-tags">
+        <span class="tag partner" data-i18n="net.hos.partner">Starhotels — официальный партнёр</span>
+      </div>
+      <span class="chain-label" data-i18n="net.hos.chains">Сети-партнёры</span>
+      <div class="partner-tags">
+        <span class="tag">Belmond</span>
+        <span class="tag">NH · NH Collection</span>
+        <span class="tag">Gruppo UNA · UNA Esperienze</span>
+        <span class="tag">Exe Hotels</span>
+      </div>
+      <p style="margin-top:16px;font-size:13px" data-i18n="net.hos.body2">Названия конкретных объектов раскрываются после подтверждения статуса B2B-партнёра. Полное hospitality-досье — по запросу.</p>
+    </div>
+
+    <div class="net-block full">
+      <span class="eyebrow" data-i18n="net.wine.eyebrow">Вино и винодельни</span>
+      <h4 data-i18n="net.wine.title">Винные партнёры</h4>
+      <p data-i18n="net.wine.body">Установленные рабочие отношения с производителями из ключевых итальянских винных регионов. Закрытые визиты в погреба, вертикальные дегустации с виноделом, обеды и ужины на территории имения.</p>
+
+      <div class="wine-cards">
+        <div class="wine-card">
+          <span class="wine-region" data-i18n="net.wine.c1.r">Венето · Вальполичелла</span>
+          <h5>Massimago</h5>
+          <p class="wine-desc" data-i18n="net.wine.c1.d">Амароне и Вальполичелла. Релайс среди виноградников, авторский ресторан и спа. 20 минут от Вероны.</p>
+          <a class="wine-pdf" href="pdf/GG_WINE_01_Massimago.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+        </div>
+
+        <div class="wine-card">
+          <span class="wine-region" data-i18n="net.wine.c2.r">Венето · Вальполичелла</span>
+          <h5>Musella</h5>
+          <p class="wine-desc" data-i18n="net.wine.c2.d">Биодинамическая усадьба XVI века, остерия Al Ponte, гольф и природный парк-заповедник. 10 минут от Вероны.</p>
+          <a class="wine-pdf" href="pdf/GG_WINE_02_Musella.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+        </div>
+
+        <div class="wine-card">
+          <span class="wine-region" data-i18n="net.wine.c3.r">Умбрия · Тоди</span>
+          <h5>Roccafiore</h5>
+          <p class="wine-desc" data-i18n="net.wine.c3.d">Wine Resort &amp; Spa, ресторан Fiorfiore, впечатления в зелёном сердце Умбрии. 1 час от Рима.</p>
+          <a class="wine-pdf" href="pdf/GG_WINE_03_Roccafiore.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+        </div>
+
+        <div class="wine-card">
+          <span class="wine-region" data-i18n="net.wine.c4.r">Эмилия · Каносса</span>
+          <h5>Roncolo 1888 · Venturini Baldini</h5>
+          <p class="wine-desc" data-i18n="net.wine.c4.d">Релайс на исторической вилле Манодори, Ачетайя ди Каносса, кухня Эмилии. Рядом Модена, Парма, Болонья.</p>
+          <a class="wine-pdf" href="pdf/GG_WINE_04_Roncolo1888.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+        </div>
+
+        <div class="wine-card">
+          <span class="wine-region" data-i18n="net.wine.c5.r">Тоскана · Флоренция</span>
+          <h5>Torre a Cona</h5>
+          <p class="wine-desc" data-i18n="net.wine.c5.d">Вилла XVIII века на холмах Флоренции, авторская остерия, Vin Santo. База для путешествий по всей Тоскане.</p>
+          <a class="wine-pdf" href="pdf/GG_WINE_05_TorreACona.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+        </div>
+      </div>
+
+      <p style="margin-top:18px;font-size:13px" data-i18n="net.wine.body2">В сети также — отобранные имения Кьянти, Болгери, Ланге и Этны.</p>
+      <p class="wine-disclaimer" data-i18n="net.wine.disc">Доступ к хозяйствам, бронирование и условия — исключительно через Gusto Giusto. Презентации являются материалами партнёров.</p>
+    </div>
+
+    <div class="net-block full">
+      <span class="eyebrow" data-i18n="net.op.eyebrow">Операции</span>
+      <h4 data-i18n="net.op.title">Операционная инфраструктура</h4>
+      <p data-i18n-html="net.op.body1"><span class="feature">Частный автопарк NCC</span> по всем регионам · <span class="feature">Русскоговорящие гиды</span> в 12+ городах · <span class="feature">Документация на трёх языках</span> (RU · IT · EN) · <span class="feature">Прямые платежи поставщикам</span> · <span class="feature">Трансграничная контрактная структура</span> с переводом RUB → EUR через авторизованные платёжные механизмы · <span class="feature">Содействие в визовых вопросах</span> · <span class="feature">Координация по ж/д первого класса</span> · <span class="feature">Частный водный и авиатрансфер</span> по запросу.</p>
+    </div>
+  </div>
+</section>
+
+<section id="brief">
+  <div class="section-header">
+    <span class="eyebrow" data-i18n="brf.eyebrow">Индивидуальный запрос · Ответ за 24–48 часов</span>
+    <h2 data-i18n="brf.title">Не нашли подходящий продукт в каталоге?</h2>
+    <p data-i18n="brf.sub">Опишите задачу — операционный отдел Gusto Giusto подготовит индивидуальное предложение под клиента вашего туроператора. Профиль гостей, бюджет, регионы, особые пожелания — мы строим программу с нуля или адаптируем существующую под конкретный запрос.</p>
+    <div class="brief-guarantee">
+      <div class="guarantee-icon">●</div>
+      <div class="guarantee-text">
+        <span class="guarantee-label" data-i18n="brf.guarantee.label">Гарантия времени ответа</span>
+        <span class="guarantee-value" data-i18n="brf.guarantee.value">24–48 часов на квалифицированный B2B-бриф</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="brief-wrap">
+    <div class="brief-progress">
+      <div class="step-tab active" data-step-tab="1"><span class="step-num">I.</span><span data-i18n="brf.s1.tab">Направление</span></div>
+      <div class="step-tab" data-step-tab="2"><span class="step-num">II.</span><span data-i18n="brf.s2.tab">Регион</span></div>
+      <div class="step-tab" data-step-tab="3"><span class="step-num">III.</span><span data-i18n="brf.s3.tab">Формат</span></div>
+      <div class="step-tab" data-step-tab="4"><span class="step-num">IV.</span><span data-i18n="brf.s4.tab">Детали</span></div>
+    </div>
+
+    <div class="step-panel active" data-step="1">
+      <div class="step-question" data-i18n="brf.s1.q">Какое направление подходит для брифа?</div>
+      <div class="step-hint" data-i18n="brf.s1.hint">Это определяет операционную структуру, уровень поставщиков и стиль документов.</div>
+      <div class="options-grid">
+        <button class="opt" data-field="segment" data-value="group">
+          <span class="opt-title" data-i18n="brf.s1.o1.t">Групповой тур</span>
+          <span class="opt-desc" data-i18n="brf.s1.o1.d">Мин. 14 чел. · регулярная программа</span>
+        </button>
+        <button class="opt" data-field="segment" data-value="essentials">
+          <span class="opt-title" data-i18n="brf.s1.o2.t">«Италия без забот»</span>
+          <span class="opt-desc" data-i18n="brf.s1.o2.d">Готовые маршруты · от €1.800</span>
+        </button>
+        <button class="opt" data-field="segment" data-value="vip">
+          <span class="opt-title" data-i18n="brf.s1.o3.t">VIP — Signature</span>
+          <span class="opt-desc" data-i18n="brf.s1.o3.d">Эксклюзивные программы · по запросу</span>
+        </button>
+        <button class="opt" data-field="segment" data-value="university">
+          <span class="opt-title" data-i18n="brf.s1.o4.t">University &amp; Technical</span>
+          <span class="opt-desc" data-i18n="brf.s1.o4.d">Академические и промышленные визиты</span>
+        </button>
+        <button class="opt" data-field="segment" data-value="custom">
+          <span class="opt-title" data-i18n="brf.s1.o5.t">Полностью индивидуальный</span>
+          <span class="opt-desc" data-i18n="brf.s1.o5.d">Программа с нуля под клиента</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-panel" data-step="2">
+      <div class="step-question" data-i18n="brf.s2.q">Какие итальянские регионы задействованы?</div>
+      <div class="step-hint" data-i18n="brf.s2.hint">Выберите основной регион. Соседние объединим там, где это логистически разумно.</div>
+      <div class="options-grid three">
+        <button class="opt" data-field="region" data-value="north">
+          <span class="opt-title" data-i18n="brf.s2.o1.t">Север</span>
+          <span class="opt-desc" data-i18n="brf.s2.o1.d">Венеция · Верона · Озёра · Милан · Пьемонт</span>
+        </button>
+        <button class="opt" data-field="region" data-value="centre">
+          <span class="opt-title" data-i18n="brf.s2.o2.t">Центр</span>
+          <span class="opt-desc" data-i18n="brf.s2.o2.d">Тоскана · Умбрия · Рим · Марке</span>
+        </button>
+        <button class="opt" data-field="region" data-value="south">
+          <span class="opt-title" data-i18n="brf.s2.o3.t">Юг и острова</span>
+          <span class="opt-desc" data-i18n="brf.s2.o3.d">Неаполь · Амальфи · Апулия · Сицилия</span>
+        </button>
+        <button class="opt" data-field="region" data-value="grand">
+          <span class="opt-title" data-i18n="brf.s2.o4.t">Гранд-тур</span>
+          <span class="opt-desc" data-i18n="brf.s2.o4.d">Север → Центр → Юг · от 12 дней</span>
+        </button>
+        <button class="opt" data-field="region" data-value="wine-n">
+          <span class="opt-title" data-i18n="brf.s2.o5.t">Вино Север</span>
+          <span class="opt-desc" data-i18n="brf.s2.o5.d">Вальполичелла · Вальдоббьядене · Ланге</span>
+        </button>
+        <button class="opt" data-field="region" data-value="wine-c">
+          <span class="opt-title" data-i18n="brf.s2.o6.t">Вино Центр</span>
+          <span class="opt-desc" data-i18n="brf.s2.o6.d">Кьянти · Монтальчино · Болгери</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-panel" data-step="3">
+      <div class="step-question" data-i18n="brf.s3.q">Длительность и количество человек?</div>
+      <div class="step-hint" data-i18n="brf.s3.hint">Эти два числа определяют почти всё — уровень транспорта, категорию отелей, структуру гидов.</div>
+      <div class="options-grid">
+        <button class="opt" data-field="duration" data-value="short">
+          <span class="opt-title" data-i18n="brf.s3.o1.t">4–6 дней</span>
+          <span class="opt-desc" data-i18n="brf.s3.o1.d">Один регион, глубокое погружение</span>
+        </button>
+        <button class="opt" data-field="duration" data-value="medium">
+          <span class="opt-title" data-i18n="brf.s3.o2.t">7–10 дней</span>
+          <span class="opt-desc" data-i18n="brf.s3.o2.d">Два региона, сбалансированный ритм</span>
+        </button>
+        <button class="opt" data-field="duration" data-value="long">
+          <span class="opt-title" data-i18n="brf.s3.o3.t">11–14 дней</span>
+          <span class="opt-desc" data-i18n="brf.s3.o3.d">Несколько регионов, signature-программа</span>
+        </button>
+        <button class="opt" data-field="duration" data-value="grand">
+          <span class="opt-title" data-i18n="brf.s3.o4.t">15+ дней</span>
+          <span class="opt-desc" data-i18n="brf.s3.o4.d">Гранд-тур / расширенный VIP</span>
+        </button>
+      </div>
+      <div style="height:16px"></div>
+      <div class="options-grid four">
+        <button class="opt" data-field="group" data-value="couple">
+          <span class="opt-title" data-i18n="brf.s3.g1.t">1–2 чел.</span>
+          <span class="opt-desc" data-i18n="brf.s3.g1.d">Индивидуально</span>
+        </button>
+        <button class="opt" data-field="group" data-value="family">
+          <span class="opt-title" data-i18n="brf.s3.g2.t">3–8 чел.</span>
+          <span class="opt-desc" data-i18n="brf.s3.g2.d">Семья / приват</span>
+        </button>
+        <button class="opt" data-field="group" data-value="small">
+          <span class="opt-title" data-i18n="brf.s3.g3.t">9–20 чел.</span>
+          <span class="opt-desc" data-i18n="brf.s3.g3.d">Малая группа</span>
+        </button>
+        <button class="opt" data-field="group" data-value="large">
+          <span class="opt-title" data-i18n="brf.s3.g4.t">21+ чел.</span>
+          <span class="opt-desc" data-i18n="brf.s3.g4.d">Полная группа</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="step-panel" data-step="4">
+      <div class="step-question" data-i18n="brf.s4.q">Реквизиты оператора и примечания</div>
+      <div class="step-hint" data-i18n="brf.s4.hint">Наш операционный отдел свяжется напрямую. Конфиденциально — используется только для котировки.</div>
+
+      <label class="input-label" data-i18n="brf.s4.l1">Туроператор / агентство</label>
+      <input class="brief-input" id="op-name" placeholder="—">
+
+      <label class="input-label" data-i18n="brf.s4.l2">Контактное лицо и e-mail</label>
+      <input class="brief-input" id="op-contact" placeholder="—">
+
+      <label class="input-label" data-i18n="brf.s4.l3">Ориентировочные даты и примечания</label>
+      <textarea class="brief-textarea" id="op-notes" data-i18n-ph="brf.s4.l3.ph" placeholder="Окно дат, профиль клиента, ключевые пожелания, предпочтения по отелям…"></textarea>
+    </div>
+
+    <div class="result-panel" data-step="result">
+      <div class="result-header">
+        <span class="result-tag" data-i18n="brf.res.tag">Бриф готов · К отправке</span>
+        <h3 class="result-title" data-i18n="brf.res.title">Ваш бриф готов к отправке.</h3>
+      </div>
+
+      <div class="brief-summary">
+        <div class="item"><span class="label" data-i18n="brf.res.l1">Направление</span><span class="value" id="r-segment">—</span></div>
+        <div class="item"><span class="label" data-i18n="brf.res.l2">Регион</span><span class="value" id="r-region">—</span></div>
+        <div class="item"><span class="label" data-i18n="brf.res.l3">Длительность</span><span class="value" id="r-duration">—</span></div>
+        <div class="item"><span class="label" data-i18n="brf.res.l4">Чел.</span><span class="value" id="r-group">—</span></div>
+      </div>
+
+      <div class="result-note" data-i18n="brf.res.note">Нажмите ниже, чтобы открыть почтовый клиент с уже подготовленным брифом для нашего операционного отдела. На квалифицированные B2B-брифы отвечаем в течение 24–48 часов — с индивидуальной котировкой, операционными примечаниями и рекомендованными объектами.</div>
+
+      <div class="result-actions">
+        <a href="#" class="cta primary" id="send-brief" data-i18n="brf.res.send">Отправить бриф</a>
+        <button class="btn" id="restart-brief" data-i18n="brf.res.restart">Новый бриф</button>
+      </div>
+    </div>
+
+    <div class="config-nav">
+      <button class="btn" id="prev-btn" disabled data-i18n="brf.nav.prev">← Назад</button>
+      <button class="btn primary" id="next-btn" data-i18n="brf.nav.next">Далее →</button>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <span class="eyebrow" data-i18n="ft.eyebrow">Связаться с нами</span>
+      <h3 data-i18n="ft.title">Давайте обсудим конкретный бриф.</h3>
+      <p data-i18n="ft.body">На квалифицированные B2B-запросы отвечаем в течение 24–48 часов. Для конфиденциальных коммерческих переговоров, тарифных карт и полных данных о поставщиках — пишите напрямую.</p>
+    </div>
+    <div>
+      <h5 data-i18n="ft.h1">Адрес</h5>
+      <a data-i18n="ft.cmp">ООО «Густо Джусто»</a>
+      <a data-i18n="ft.legal">Юридический адрес: Санкт-Петербург</a>
+      <a data-i18n="ft.opaddr">Операционный офис: Москва</a>
+      <a data-i18n="ft.italy">Операционная база: Италия</a>
+    </div>
+    <div>
+      <h5 data-i18n="ft.h2">Прямой контакт</h5>
+      <a href="mailto:info@gustogiustotour.ru">info@gustogiustotour.ru</a>
+      <a data-i18n="ft.langs">RU · IT · EN</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="ft.copy">© 2026 ООО «Густо Джусто» · ОГРН 1247800094255 · ИНН 7801736613</span>
+    <span data-i18n="ft.tag">Действует с сентября 2024 года · B2B Destination Management</span>
+  </div>
+</footer>
+
+<div class="modal-bg" id="modal-b2b">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <span class="eyebrow" data-i18n="mod.b2b.eyebrow">B2B-доступ для партнёров</span>
+    <h3 data-i18n="mod.b2b.title">Детальные материалы — для квалифицированных партнёров.</h3>
+    <p data-i18n="mod.b2b.body">Полная документация по программам, B2B-тарифные карты, данные поставщиков и материалы только для партнёров предоставляются после короткой квалификации. Пожалуйста, направьте краткое сообщение с указанием туроператора или агентства — наш отдел партнёрств ответит в течение 24–48 часов.</p>
+    <a href="mailto:info@gustogiustotour.ru?subject=B2B%20Partner%20Access&body=Здравствуйте%2C%0A%0AЗапрашиваю%20B2B-доступ%20партнёра.%0A%0A%E2%80%94%20Туроператор%20%2F%20Агентство%3A%20%0A%E2%80%94%20Контактное%20лицо%3A%20%0A%E2%80%94%20Рынки%2C%20на%20которых%20работаете%3A%20%0A%E2%80%94%20Интересующие%20направления%3A%20%0A%0AС%20уважением%2C" class="cta primary" data-i18n="mod.b2b.cta">Запросить доступ</a>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-pdf">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <span class="eyebrow" data-i18n="mod.pdf.eyebrow">Документация по программам</span>
+    <h3 data-i18n="mod.pdf.title">Полные PDF программ — по запросу.</h3>
+    <p data-i18n="mod.pdf.body">Детальные маршруты по дням, включённые сервисы и B2B-тарифные листы направляются непосредственно идентифицированным туроператорам и агентствам. Напишите нам — отправим полное досье по интересующей программе в течение 24–48 часов.</p>
+    <a href="mailto:info@gustogiustotour.ru?subject=Запрос%20документации&body=Здравствуйте%2C%0A%0AХотел(а)%20бы%20получить%20полную%20документацию%20по%20программе%3A%0A%0A%E2%80%94%20Программа%3A%20%0A%E2%80%94%20Туроператор%20%2F%20Агентство%3A%20%0A%E2%80%94%20Контакт%3A%20%0A%0AС%20уважением%2C" class="cta primary" data-i18n="mod.pdf.cta">Запросить документацию</a>
+  </div>
+</div>
+
+<script>
+  const i18n = {
+    ru: {
+      "nav.about": "О компании",
+      "nav.programmes": "Программы",
+      "nav.network": "Партнёры",
+      "nav.brief": "Конструктор брифа",
+      "nav.contact": "Контакты",
+      "nav.b2b": "B2B-доступ",
+
+      "hero.eyebrow": "Принимающая компания по Италии · B2B",
+      "hero.title": "Италия. Как её продают <em>профессионалы</em>.",
+      "hero.sub": "Принимающая компания по Италии для русскоговорящих туроператоров. Прямые контракты с итальянскими поставщиками, координация на трёх языках, документация под стандарты туроператора. Без посредников и наценок.",
+      "hero.cta1": "Перейти к программам",
+      "hero.cta2": "Запросить B2B-доступ",
+      "hero.card.eyebrow": "В работе",
+      "hero.card.title": "От Венеции до Сицилии — полный цикл.",
+      "hero.card.body": "Прямые отношения с поставщиками во всех двадцати регионах. Координация на русском, итальянском и английском языках. Документы, которые туроператор может без правок передать клиенту.",
+      "hero.card.m1": "20 регионов",
+      "hero.card.m2": "RU · IT · EN",
+
+      "about.eyebrow": "О компании",
+      "about.title": "Итальянская компания для российского рынка.",
+      "about.sub": "Gusto Giusto основана в сентябре 2024 года итальянским предпринимателем Николасом Джулиано и российским партнёром Андреем Петровым. Офисы — в Санкт-Петербурге и Москве. Операционная база — Италия. Компания работает с теми, кто понимает: продажа Италии требует не каталога, а отношений.",
+      "about.b1.title": "Прямая работа с итальянскими поставщиками",
+      "about.b1.body": "Никакой перепродажи готовых пакетов. Каждый отель, транспорт, ресторан и винодельня — наши прямые контракты. Это означает и более чистую маржу для партнёра, и качество, за которое не приходится извиняться перед клиентом.",
+      "about.b2.title": "Дисциплина работы B2B",
+      "about.b2.body": "Все котировки, программы и операционные документы готовятся для туроператора, а не для конечного клиента. Поставщики, наценки и внутренняя стоимость никогда не раскрываются. Уважение к вашим отношениям с клиентом — основа того, как мы работаем.",
+      "about.b3.title": "Работа в трансграничном формате",
+      "about.b3.body": "Двуязычные контракты, понятные обеим сторонам. Расчёты с поставщиками в евро через авторизованные платёжные механизмы. Содействие в визовых вопросах. Коммуникация без задержек на русском, итальянском и английском языках.",
+
+      "prog.eyebrow": "Пять направлений",
+      "prog.title": "Под сегмент, а не под брошюру.",
+      "prog.sub": "У каждого направления — своя операционная логика, своя структура себестоимости, своя сеть поставщиков. Выбирайте линию, которая подходит вашему клиенту. Или сочетайте несколько направлений в одном туре.",
+
+      "prog.group.eyebrow": "Групповые программы · Направление 01",
+      "prog.group.title": "Групповые туры",
+      "prog.group.price": "От €1.350 на человека · Только земля · Минимум 14 человек",
+      "prog.group.body": "Готовые региональные программы по шести направлениям. Подходит туроператорам, которые собирают группы из России и СНГ. Полный наземный сервис, русскоговорящие гиды, проверенные отели. Перелёт и визы остаются на стороне туроператора — со своей стороны мы оказываем содействие в подготовке документов для визы.",
+      "prog.group.s1": "Группа", "prog.group.s1v": "Минимум 14 человек",
+      "prog.group.s2": "Длительность", "prog.group.s2v": "8 дней / 7 ночей",
+      "prog.group.s3": "Услуги", "prog.group.s3v": "Только наземные",
+      "prog.group.s4": "Содействие", "prog.group.s4v": "Визовые вопросы",
+
+      "tour.pdf": "Запросить PDF →",
+      "tour.tuscany.season": "Апрель – октябрь · 8 дней / 7 ночей",
+      "tour.tuscany.name": "Тоскана — La Dolce Vita",
+      "tour.tuscany.tag": "Флоренция, Сиена, Пиза и холмы Кьянти",
+      "tour.sicily_spring.season": "Апрель – май · 8 дней / 7 ночей",
+      "tour.sicily_spring.name": "Сицилия — Весенняя редакция",
+      "tour.sicily_spring.tag": "Катания, Сиракузы, Таормина, Палермо, Агридженто",
+      "tour.sicily_summer.season": "Июнь – сентябрь · 8 дней / 7 ночей",
+      "tour.sicily_summer.name": "Сицилия — Летняя редакция",
+      "tour.sicily_summer.tag": "Этна, Таормина, Сиракузы и Ионическое побережье",
+      "tour.puglia.season": "Апрель – октябрь · 8 дней / 7 ночей",
+      "tour.puglia.name": "Апулия — The Dream",
+      "tour.puglia.tag": "Лечче, Альберобелло, Остуни, Полиньяно-а-Маре",
+      "tour.veneto.season": "Апрель – октябрь · 8 дней / 7 ночей",
+      "tour.veneto.name": "Венето — Italian Uniqueness",
+      "tour.veneto.tag": "Венеция, Верона, Валеджо, Тревизо и земля Просекко",
+      "tour.lombardy.season": "Ноябрь – декабрь · 8 дней / 7 ночей",
+      "tour.lombardy.name": "Милан — Зимняя редакция",
+      "tour.lombardy.tag": "Милан, Комо, Червиния, Франчакорта",
+
+      "tour.tuscany.hl": [
+        "Размещение в Монтекатини-Терме: отель 4★ на территории исторического термального парка",
+        "Частная пешеходная экскурсия по Флоренции с русскоговорящим гидом",
+        "День в Тоскане: Сан-Джиминьяно, Сиена, Пиза, гастрономический обед и дегустация вин",
+        "Малоизвестная Тоскана: Монтериджони, Кьянти, кулинарный мастер-класс и винодельня",
+        "Лукка — полудневная экскурсия"
+      ],
+      "tour.sicily_spring.hl": [
+        "Размещение в двух городах: исторический центр Катании и затем центр Палермо",
+        "Сиракузы и остров Ортиджа, далее Ното — объект ЮНЕСКО",
+        "Мессина, Форца-д'Аджо и греко-римский театр Таормины",
+        "Средневековый центр Чефалу по пути в Палермо",
+        "Агридженто и Долина храмов — объект ЮНЕСКО",
+        "Монреале — собор и клуатр в день отъезда"
+      ],
+      "tour.sicily_summer.hl": [
+        "Размещение в районе Ачиреале: отель Grand Hotel на побережье",
+        "Полнодневная экскурсия на Этну и в Таормину",
+        "Полнодневная экскурсия в Ното и Сиракузы с русскоговорящим гидом",
+        "Морская прогулка из Джардини-Наксос",
+        "Исторический центр Катании и традиционная гранита с бриошью",
+        "День шопинга в Sicilia Outlet Village"
+      ],
+      "tour.puglia.hl": [
+        "Размещение на побережье: отель 4★ Sup. с полупансионом",
+        "Винодельня Castello Monaci: погреба, музей вина, дегустация с апулийскими сырами и колбасами",
+        "Лечче — «южная Флоренция», столица апулийского барокко",
+        "Массерия: дегустация сыров и колбас на действующей ферме",
+        "Альберобелло — объект ЮНЕСКО и мировая столица трулли",
+        "Остуни — «белый город» — и скалы Полиньяно-а-Маре"
+      ],
+      "tour.veneto.hl": [
+        "Размещение в Виченце: отель 4★ группы Starhotels",
+        "Полный день в Вероне с посещением Арены и русскоговорящим гидом",
+        "Валеджо-суль-Минчо: Венето вне туристических маршрутов",
+        "Венеция и острова лагуны: Бурано, Мурано, Торчелло, мастерская стекла на Мурано",
+        "Тревизо и дегустация Просекко на винодельне",
+        "День шопинга в Designer Outlet Noventa di Piave"
+      ],
+      "tour.lombardy.hl": [
+        "Размещение в центре Милана: отель 4★ Starhotels Ritz",
+        "«Тайная вечеря» Леонардо и главные памятники Милана",
+        "Персональный шопинг в Quadrilatero della Moda",
+        "Полнодневная поездка на озеро Комо и в Белладжо",
+        "Червиния — день в итальянских Альпах",
+        "По выбору: новогодний ужин в траттории и Пьяцца Дуомо",
+        "Винодельня Франчакорта и озеро Изео"
+      ],
+
+      "prog.wf.eyebrow": "Серия «Италия без забот» · Направление 02",
+      "prog.wf.title": "«Италия без забот»",
+      "prog.wf.price": "От €1.800 на человека · Только земля · От 2 человек",
+      "prog.wf.body": "Серия из пяти индивидуальных программ по 7 ночей с фиксированной структурой и открытыми датами вылета. Лицензированные русскоговорящие гиды на каждом ключевом этапе, поддержка Gusto Giusto 24/7 через Telegram, цифровой welcome-kit на русском языке и трансферы с водителем по прилёту. Продукт для туроператоров, чьи клиенты не говорят на иностранных языках и не хотят ехать в группе.",
+      "prog.wf.s1": "Размещение", "prog.wf.s1v": "Отели 3★ в центре",
+      "prog.wf.s2": "Длительность", "prog.wf.s2v": "8 дней / 7 ночей",
+      "prog.wf.s3": "Поддержка", "prog.wf.s3v": "24/7 в Telegram",
+      "prog.wf.s4": "Минимум", "prog.wf.s4v": "2 человека",
+
+      "wf.1.label": "Направление 01 · 7 ночей / 8 дней",
+      "wf.1.name": "Рим · Флоренция · Венеция",
+      "wf.1.tag": "Три города-символа и день в Кьянти",
+      "wf.1.hl": [
+        "Императорский Рим и Ватикан с лицензированным русскоговорящим гидом",
+        "День на винодельне Кьянти Классико: дегустация и тосканский обед",
+        "Флоренция и Венеция: пешеходные экскурсии с русскоговорящими гидами",
+        "Отели в шаговой доступности от вокзалов в Риме, Флоренции и Венеции"
+      ],
+      "wf.2.label": "Направление 02 · 7 ночей / 8 дней",
+      "wf.2.name": "Жемчужины Северной Италии",
+      "wf.2.tag": "Озеро Комо, Милан, Бергамо, Верона, Сирмионе",
+      "wf.2.hl": [
+        "Пять городов и два озера в одном маршруте",
+        "Дневной билет на катер по озеру Комо включён",
+        "Поезд Frecciarossa или Italo между Миланом и Вероной",
+        "Шесть частных экскурсий с лицензированными русскоговорящими гидами"
+      ],
+      "wf.3.label": "Направление 03 · 7 ночей / 8 дней",
+      "wf.3.name": "Рим · Неаполь · Сорренто",
+      "wf.3.tag": "Императорский Рим, Неаполь ЮНЕСКО и побережье",
+      "wf.3.hl": [
+        "Рим, Ватикан, Помпеи и Везувий — с русскоговорящими гидами",
+        "Лицензированный гид-археолог на день в Помпеях",
+        "Три ночи в Сорренто у Тирренского моря",
+        "Персональная встреча на вокзале Napoli Centrale"
+      ],
+      "wf.4.label": "Направление 04 · 7 ночей / 8 дней",
+      "wf.4.name": "Истинная Тоскана",
+      "wf.4.tag": "Флоренция, Лукка, Пиза и две ночи на винодельне",
+      "wf.4.hl": [
+        "Пять ночей в историческом центре Флоренции",
+        "Полный день в Лукке и Пизе с русскоговорящим гидом",
+        "Две ночи на премиальной винодельне-агротуризме на холмах",
+        "Дегустация Кьянти Классико DOCG с тосканскими продуктами"
+      ],
+      "wf.5.label": "Направление 05 · 7 ночей / 8 дней",
+      "wf.5.name": "Сицилия · Таормина",
+      "wf.5.tag": "Этна, ионическое побережье, dolce vita",
+      "wf.5.hl": [
+        "Семь ночей в Таормине без переездов между отелями",
+        "Этна с лицензированным русскоговорящим гидом-вулканологом",
+        "Дегустация вулканических вин на склонах Этны",
+        "Четыре свободных дня для моря и самостоятельного отдыха"
+      ],
+
+
+      "prog.vip.eyebrow": "Серия Signature · Направление 03",
+      "prog.vip.title": "VIP — Signature",
+      "prog.vip.price": "Эксклюзивные программы с прямой работой с резиденциями уровня Aman, Belmond, Bulgari, Mandarin Oriental и историческими виллами",
+      "prog.vip.body": "Пять программ для гостей, которые приезжают в Италию не за достопримечательностями, а за редкими опытами. Знаковые резиденции, частные ателье, доступы после закрытия в музеях и базиликах, перелёты на частном вертолёте, шопинг с международными стилистами. Серия Signature — самый эксклюзивный сегмент каталога Gusto Giusto.",
+      "prog.vip.s1": "Размещение", "prog.vip.s1v": "5★ Suite и резиденции",
+      "prog.vip.s2": "Длительность", "prog.vip.s2v": "6 – 28 дней",
+      "prog.vip.s3": "Гиды и сервис", "prog.vip.s3v": "Лицензированные RU-гиды",
+      "prog.vip.s4": "Цена", "prog.vip.s4v": "По запросу",
+
+      "tour.pdf.download": "Скачать PDF →",
+
+      "vip.1.label": "Направление 01 · 28 дней / 27 ночей",
+      "vip.1.name": "Dolce Vita Grand Tour",
+      "vip.1.tag": "Италия от Амальфи до Милана — 8 регионов, 28 дней",
+      "vip.1.hl": [
+        "Восемь регионов Италии в одной программе: Амальфи, Рим, Тоскана, Эмилия, Венето, Комо, Милан",
+        "Знаковые резиденции в каждом регионе — характер вместо рейтинга",
+        "Частная лодка на Амальфитанском побережье и на озере Комо",
+        "Два дня люксового шопинга в The Mall Firenze с персональным стилистом",
+        "Опыт Motor Valley, верховая езда, охота на трюфели, мастер-класс по пасте",
+        "Индивидуальный автомобиль с водителем на протяжении всех 28 дней"
+      ],
+      "vip.2.label": "Направление 02 · 6 ночей / 7 дней",
+      "vip.2.name": "Тоскана и Венеция — вершина",
+      "vip.2.tag": "Флоренция и Венеция как их видят только избранные",
+      "vip.2.hl": [
+        "Перелёт Флоренция–Венеция на частном вертолёте",
+        "Доступ к Базилике Сан-Марко и Дворцу Дожей после закрытия",
+        "Вертолётный тур над Кьянти с обедом в ресторане со звездой Michelin",
+        "Частная экскурсия по Уффици до открытия для публики",
+        "Закрытое ювелирное или кожевенное ателье во Флоренции",
+        "Острова лагуны на частной luxury-лодке"
+      ],
+      "vip.3.label": "Направление 03 · 6 ночей / 7 дней",
+      "vip.3.name": "Север Италии — signature-маршрут",
+      "vip.3.tag": "Милан, Комо, Верона, Доломиты и Венеция",
+      "vip.3.hl": [
+        "Частная лодка с капитаном на озере Комо с визитом исторической виллы",
+        "Винодельня Франчакорта с дегустацией и обедом в имении",
+        "Вертолётный тур над Доломитами с обедом в горной хижине",
+        "Частная гондола в Венеции на закате с Просекко",
+        "Размещение в 5★ Deluxe отелях в Милане, Вероне и Венеции"
+      ],
+      "vip.4.label": "Направление 04 · 7 ночей / 8 дней",
+      "vip.4.name": "Пьемонт — королевское наследие",
+      "vip.4.tag": "Турин, Венария, Альпы и винные Ланге",
+      "vip.4.hl": [
+        "Размещение в 5★ Junior Suite в самом центре Турина",
+        "Королевский Турин: Palazzo Reale, Королевская Оружейная, Часовня Плащаницы",
+        "Museo Egizio с частным гидом-египтологом",
+        "Венария Реале — резиденция Савойских королей, объект ЮНЕСКО",
+        "Две ночи в винном имении в Ланге с дегустациями Бароло и Барбареско"
+      ],
+      "vip.5.label": "Направление 05 · 5 ночей / 6 дней",
+      "vip.5.name": "Милан — insider моды и стиля",
+      "vip.5.tag": "Мода, ателье, дизайн — Милан изнутри",
+      "vip.5.hl": [
+        "Trend Talk с журналистом fashion-индустрии уровня Vogue Italia",
+        "Частный визит в миланское ателье с дизайнером или мастером-портным",
+        "Закрытый шоурум-визит с персональным стилистом",
+        "Фрагрансовый ателье: создание персонального аромата",
+        "По запросу: доступ к показу или event Fashion Week (в сезон февраля и сентября)",
+        "Размещение в 5★ бутик-отеле в Quadrilatero della Moda"
+      ],
+
+      "prog.uni.eyebrow": "University & Technical · Направление 04",
+      "prog.uni.title": "University & Technical",
+      "prog.uni.price": "Программы для университетских делегаций, MBA-групп и профессиональных учебных программ",
+      "prog.uni.body": "Три полноценные программы, разработанные специально для академических групп и корпоративных обучающих программ. Технические визиты на знаковые итальянские компании (Pirelli, Ferrari, Campari, Mutti, Panerai), классы в Accademia del Lusso, посещения винодельческих хозяйств — с презентациями, Q&A-сессиями и встречами с менеджерами. Каждая программа адаптируется под академические интересы конкретной группы.",
+      "prog.uni.s1": "Размер группы", "prog.uni.s1v": "От 10 человек",
+      "prog.uni.s2": "Длительность", "prog.uni.s2v": "8 – 9 дней",
+      "prog.uni.s3": "Формат", "prog.uni.s3v": "Визиты + классы + культура",
+      "prog.uni.s4": "Цена", "prog.uni.s4v": "По запросу",
+
+      "uni.1.label": "Направление 01 · 9 дней / 8 ночей",
+      "uni.1.name": "Ломбардия — индустрия и культура",
+      "uni.1.tag": "Pirelli, WPP, Campari и культура Милана для MBA-студентов",
+      "uni.1.hl": [
+        "Технический визит в Pirelli (R&D и устойчивая мобильность) с презентацией и Q&A",
+        "Визит на WPP Campus Milano — один из ведущих innovation hub Европы",
+        "Galleria Campari — бренд-билдинг, mixology workshop и тур по штаб-квартире",
+        "Визит на итальянское luxury-производство (Zegna / Molteni&C или эквивалент)",
+        "День на озере Комо с туром на катере",
+        "База в отеле 4★ в центре Милана на все 8 ночей"
+      ],
+      "uni.2.label": "Направление 02 · 9 дней / 8 ночей",
+      "uni.2.name": "Италия — индустриальный тур",
+      "uni.2.tag": "Ferrari, Parmigiano, Panerai — Рим, Болонья, Флоренция",
+      "uni.2.hl": [
+        "Музей Ferrari в Маранелло с панорамным туром по фабрике и workshop в Red Campus",
+        "Тур по производству Parmigiano Reggiano с дегустацией трёх возрастов",
+        "Гид-сопровождаемый тур по фабрике Mutti — итальянская пищевая индустрия",
+        "Технический визит в Panerai во Флоренции — luxury-часовое производство",
+        "Винные хозяйства Кьянти: Altezza Winery и Torciano с дегустациями",
+        "Размещение в отелях Starhotels 4★ в Риме, Болонье и Флоренции"
+      ],
+      "uni.3.label": "Направление 03 · 8 дней / 7 ночей",
+      "uni.3.name": "Миланская неделя моды — академическая программа",
+      "uni.3.tag": "Accademia del Lusso, показы Fashion Week и luxury-атейтле",
+      "uni.3.hl": [
+        "Три класса в Accademia del Lusso: Fashion Events, Retail Experience, Trends & Forecasting",
+        "Участие в показе или презентации Milan Fashion Week (по доступности)",
+        "Визит в шоурум luxury-бренда (Gucci, LV, Etro)",
+        "Визит в исторический atelier или vintage luxury boutique",
+        "Fashion Walking Tour по Quadrilatero della Moda и concept stores",
+        "День на озере Комо и день в Франчакорте с luxury-design experience",
+        "Сертификат об участии в программе"
+      ],
+
+      "net.eyebrow": "Партнёрская сеть",
+      "net.title": "Прямые отношения, без посредников.",
+      "net.sub": "Партнёрства и операционные возможности, на которых построена работа компании. Полные данные о поставщиках, объектах и тарифные карты предоставляются туроператорам после прохождения квалификации.",
+      "net.hos.eyebrow": "Размещение",
+      "net.hos.title": "Отели и резиденции",
+      "net.hos.body1": "Прямые контракты с пятизвёздочными отелями Амальфитанского побережья, виноградарскими поместьями в Кьянти и Маремме, бутик-отелями Капри и Форте-дей-Марми, дворцами на каналах Венеции и семейными объектами по всем регионам Италии.",
+      "net.hos.partner": "Starhotels — официальный партнёр",
+      "net.hos.body2": "Названия конкретных объектов раскрываются после подтверждения статуса B2B-партнёра. Полное hospitality-досье — по запросу.",
+      "net.wine.eyebrow": "Вино и винодельни",
+      "net.wine.title": "Винные партнёры",
+      "net.wine.body": "Установленные рабочие отношения с производителями из ключевых итальянских винных регионов. Закрытые визиты в погреба, вертикальные дегустации с виноделом, обеды и ужины на территории имения.",
+      "net.wine.body2": "В сети также — отобранные имения Кьянти, Болгери, Ланге и Этны.",
+      "net.op.eyebrow": "Операции",
+      "net.op.title": "Операционная инфраструктура",
+      "net.op.body1": "<span class=\"feature\">Частный автопарк NCC</span> по всем регионам · <span class=\"feature\">Русскоговорящие гиды</span> в 12+ городах · <span class=\"feature\">Документация на трёх языках</span> (RU · IT · EN) · <span class=\"feature\">Прямые платежи поставщикам</span> · <span class=\"feature\">Трансграничная контрактная структура</span> с переводом RUB → EUR через авторизованные платёжные механизмы · <span class=\"feature\">Содействие в визовых вопросах</span> · <span class=\"feature\">Координация по ж/д первого класса</span> · <span class=\"feature\">Частный водный и авиатрансфер</span> по запросу.",
+      "net.hos.chains": "Сети-партнёры",
+      "net.wine.pdf": "Презентация →",
+      "net.wine.c1.r": "Венето · Вальполичелла",
+      "net.wine.c1.d": "Амароне и Вальполичелла. Релайс среди виноградников, авторский ресторан и спа. 20 минут от Вероны.",
+      "net.wine.c2.r": "Венето · Вальполичелла",
+      "net.wine.c2.d": "Биодинамическая усадьба XVI века, остерия Al Ponte, гольф и природный парк-заповедник. 10 минут от Вероны.",
+      "net.wine.c3.r": "Умбрия · Тоди",
+      "net.wine.c3.d": "Wine Resort & Spa, ресторан Fiorfiore, впечатления в зелёном сердце Умбрии. 1 час от Рима.",
+      "net.wine.c4.r": "Эмилия · Каносса",
+      "net.wine.c4.d": "Релайс на исторической вилле Манодори, Ачетайя ди Каносса, кухня Эмилии. Рядом Модена, Парма, Болонья.",
+      "net.wine.c5.r": "Тоскана · Флоренция",
+      "net.wine.c5.d": "Вилла XVIII века на холмах Флоренции, авторская остерия, Vin Santo. База для путешествий по всей Тоскане.",
+      "net.wine.disc": "Доступ к хозяйствам, бронирование и условия — исключительно через Gusto Giusto. Презентации являются материалами партнёров.",
+
+      "brf.eyebrow": "Индивидуальный запрос · Ответ за 24–48 часов",
+      "brf.title": "Не нашли подходящий продукт в каталоге?",
+      "brf.sub": "Опишите задачу — операционный отдел Gusto Giusto подготовит индивидуальное предложение под клиента вашего туроператора. Профиль гостей, бюджет, регионы, особые пожелания — мы строим программу с нуля или адаптируем существующую под конкретный запрос.",
+      "brf.guarantee.label": "Гарантия времени ответа",
+      "brf.guarantee.value": "24–48 часов на квалифицированный B2B-бриф",
+      "brf.s1.tab": "Направление", "brf.s2.tab": "Регион", "brf.s3.tab": "Формат", "brf.s4.tab": "Детали",
+      "brf.s1.q": "Какое направление подходит под этот бриф?",
+      "brf.s1.hint": "От ответа зависит структура работы, уровень поставщиков и формат документов.",
+      "brf.s1.o1.t": "Групповой тур", "brf.s1.o1.d": "Минимум 14 человек · готовая программа",
+      "brf.s1.o2.t": "«Италия без забот»", "brf.s1.o2.d": "Готовые маршруты · от €1.800",
+      "brf.s1.o3.t": "VIP — Signature", "brf.s1.o3.d": "Эксклюзивные программы · по запросу",
+      "brf.s1.o4.t": "University & Technical", "brf.s1.o4.d": "Академические и промышленные визиты",
+      "brf.s1.o5.t": "Полностью индивидуальный", "brf.s1.o5.d": "Программа с нуля под клиента",
+
+      "brf.s2.q": "Какие регионы Италии задействованы?",
+      "brf.s2.hint": "Выберите основной регион. Соседние подключим там, где это оправдано логистикой.",
+      "brf.s2.o1.t": "Север", "brf.s2.o1.d": "Венеция · Верона · Озёра · Милан · Пьемонт",
+      "brf.s2.o2.t": "Центр", "brf.s2.o2.d": "Тоскана · Умбрия · Рим · Марке",
+      "brf.s2.o3.t": "Юг и острова", "brf.s2.o3.d": "Неаполь · Амальфи · Апулия · Сицилия",
+      "brf.s2.o4.t": "Гранд-тур", "brf.s2.o4.d": "Север → Центр → Юг · от 12 дней",
+      "brf.s2.o5.t": "Винный север", "brf.s2.o5.d": "Вальполичелла · Вальдоббьядене · Ланге",
+      "brf.s2.o6.t": "Винный центр", "brf.s2.o6.d": "Кьянти · Монтальчино · Болгери",
+
+      "brf.s3.q": "Длительность и количество человек?",
+      "brf.s3.hint": "Два показателя, которые определяют почти всё: уровень транспорта, категорию отелей, структуру работы гида.",
+      "brf.s3.o1.t": "4–6 дней", "brf.s3.o1.d": "Один регион, глубокое погружение",
+      "brf.s3.o2.t": "7–10 дней", "brf.s3.o2.d": "Два региона, спокойный ритм",
+      "brf.s3.o3.t": "11–14 дней", "brf.s3.o3.d": "Несколько регионов, программа с акцентами",
+      "brf.s3.o4.t": "От 15 дней", "brf.s3.o4.d": "Гранд-тур или расширенный VIP",
+      "brf.s3.g1.t": "1–2 чел.", "brf.s3.g1.d": "Индивидуально",
+      "brf.s3.g2.t": "3–8 чел.", "brf.s3.g2.d": "Семья или приватная группа",
+      "brf.s3.g3.t": "9–20 чел.", "brf.s3.g3.d": "Малая группа",
+      "brf.s3.g4.t": "От 21 чел.", "brf.s3.g4.d": "Полная группа или делегация",
+
+      "brf.s4.q": "Реквизиты оператора и комментарии",
+      "brf.s4.hint": "Наш отдел свяжется напрямую. Информация используется только для подготовки этой котировки.",
+      "brf.s4.l1": "Туроператор или агентство",
+      "brf.s4.l2": "Контактное лицо и e-mail",
+      "brf.s4.l3": "Даты и комментарии к брифу",
+      "brf.s4.l3.ph": "Окно дат, профиль клиента, ключевые пожелания, предпочтения по отелям…",
+
+      "brf.res.tag": "Бриф готов к отправке",
+      "brf.res.title": "Ваш бриф готов.",
+      "brf.res.l1": "Направление", "brf.res.l2": "Регион", "brf.res.l3": "Длительность", "brf.res.l4": "Кол-во",
+      "brf.res.note": "Нажмите кнопку ниже — откроется почтовый клиент с уже подготовленным письмом для нашего операционного отдела. На квалифицированные B2B-брифы отвечаем в течение 24–48 часов: котировка, операционные комментарии, рекомендованные объекты по сегменту.",
+      "brf.res.send": "Отправить бриф",
+      "brf.res.restart": "Новый бриф",
+      "brf.nav.prev": "← Назад", "brf.nav.next": "Далее →", "brf.nav.generate": "Сформировать бриф →",
+
+      "ft.eyebrow": "Контакты",
+      "ft.title": "Давайте обсудим конкретный бриф.",
+      "ft.body": "На квалифицированные B2B-запросы отвечаем в течение 24–48 часов. Для конфиденциальных коммерческих переговоров, тарифных карт и полных данных о поставщиках — пишите напрямую.",
+      "ft.h1": "Адрес", "ft.h2": "Прямой контакт",
+      "ft.cmp": "ООО «Густо Джусто»",
+      "ft.legal": "Юридический адрес: Санкт-Петербург",
+      "ft.opaddr": "Операционный офис: Москва",
+      "ft.italy": "Операционная база: Италия",
+      "ft.langs": "RU · IT · EN",
+      "ft.copy": "© 2026 ООО «Густо Джусто» · ОГРН 1247800094255 · ИНН 7801736613",
+      "ft.tag": "Действует с сентября 2024 года · B2B Destination Management",
+
+      "mod.b2b.eyebrow": "B2B-доступ для партнёров",
+      "mod.b2b.title": "Детальные материалы — для квалифицированных партнёров.",
+      "mod.b2b.body": "Полная документация по программам, B2B-тарифные карты, данные поставщиков и материалы только для партнёров предоставляются после короткого этапа квалификации. Отправьте краткое сообщение с указанием туроператора или агентства — отдел партнёрств ответит в течение 24–48 часов.",
+      "mod.b2b.cta": "Запросить доступ",
+
+      "mod.pdf.eyebrow": "Документация по программам",
+      "mod.pdf.title": "Полные PDF — по запросу.",
+      "mod.pdf.body": "Подробные маршруты по дням, включённые услуги и B2B-тарифные листы направляются непосредственно идентифицированным туроператорам и агентствам. Напишите нам — отправим полное досье по интересующей программе в течение 24–48 часов.",
+      "mod.pdf.cta": "Запросить документацию"
+    },
+
+    en: {
+      "nav.about": "About",
+      "nav.programmes": "Programmes",
+      "nav.network": "Network",
+      "nav.brief": "Brief Builder",
+      "nav.contact": "Contact",
+      "nav.b2b": "B2B Access",
+
+      "hero.eyebrow": "Italy for Tour Operators · Premium DMC",
+      "hero.title": "Italy, for those who <em>sell it</em>.",
+      "hero.sub": "A boutique destination management partner for Russian-speaking tour operators. Five product lines, direct Italian sourcing, multilingual coordination — engineered to fit your sales pipeline.",
+      "hero.cta1": "Explore Programmes",
+      "hero.cta2": "Request B2B Access",
+      "hero.card.eyebrow": "In Operation",
+      "hero.card.title": "From Venice to Sicily, end-to-end.",
+      "hero.card.body": "Direct supplier relationships across all 20 regions. Multilingual coordination in Russian, Italian and English. Documents your clients are proud to receive.",
+      "hero.card.m1": "20 Regions",
+      "hero.card.m2": "RU · IT · EN",
+
+      "about.eyebrow": "Who We Are",
+      "about.title": "An Italian operator, built for Russian-speaking markets.",
+      "about.sub": "Gusto Giusto is led from Moscow by an Italian founder, with a direct operational team on the ground in Italy. A partner who speaks your language — commercially and culturally — without ever compromising on what makes Italy worth selling.",
+      "about.b1.title": "Direct Italian sourcing",
+      "about.b1.body": "No re-sold packages. We negotiate hotels, transport, wineries, and experiences ourselves — the difference reaches your margin and your client's plate.",
+      "about.b2.title": "B2B-first discipline",
+      "about.b2.body": "Quotations, programmes and operational documents are built for the tour operator — never exposing what should stay confidential, always respecting your client relationship.",
+      "about.b3.title": "Cross-border operations",
+      "about.b3.body": "Bilingual contracts, payment routing adapted to the Russian-Italian context, fluent communication in three languages — built around the operational realities our partners face.",
+
+      "prog.eyebrow": "Five Product Lines",
+      "prog.title": "Built for the segment, not the brochure.",
+      "prog.sub": "Each line has its own operational logic, pricing structure, and supplier network. Choose the one that fits your client — or combine them.",
+
+      "prog.group.eyebrow": "Group Programmes · Line 01",
+      "prog.group.title": "Group Tours",
+      "prog.group.price": "From €1.350 per person · Flights included",
+      "prog.group.body": "Scheduled regional programmes across six signature destinations. Built for tour operators assembling groups, with departures throughout the year, flights from Moscow, full ground services, and Russian-speaking guides. The reliable backbone of your Italy catalogue.",
+      "prog.group.s1": "Group", "prog.group.s1v": "Min. 14 pax",
+      "prog.group.s2": "Duration", "prog.group.s2v": "8 days / 7 nights",
+      "prog.group.s3": "Flights", "prog.group.s3v": "From Moscow — included",
+      "prog.group.s4": "Guide", "prog.group.s4v": "Russian-speaking",
+
+      "tour.pdf": "Request PDF →",
+      "tour.tuscany.season": "Apr – Oct · 8 days / 7 nights",
+      "tour.tuscany.name": "Tuscany — La Dolce Vita",
+      "tour.tuscany.tag": "Florence, Siena, Pisa and the Chianti hills",
+      "tour.sicily_spring.season": "Apr – May · 8 days / 7 nights",
+      "tour.sicily_spring.name": "Sicily — Spring Edition",
+      "tour.sicily_spring.tag": "Catania, Syracuse, Taormina, Palermo, Agrigento",
+      "tour.sicily_summer.season": "Jun – Sep · 8 days / 7 nights",
+      "tour.sicily_summer.name": "Sicily — Summer Edition",
+      "tour.sicily_summer.tag": "Etna, Taormina, Syracuse and the Ionian coast",
+      "tour.puglia.season": "Apr – Oct · 8 days / 7 nights",
+      "tour.puglia.name": "Puglia — The Dream",
+      "tour.puglia.tag": "Lecce, Alberobello, Ostuni, Polignano a Mare",
+      "tour.veneto.season": "Apr – Oct · 8 days / 7 nights",
+      "tour.veneto.name": "Veneto — Italian Uniqueness",
+      "tour.veneto.tag": "Venice, Verona, Valeggio, Treviso and Prosecco country",
+      "tour.lombardy.season": "Nov – Dec · 8 days / 7 nights",
+      "tour.lombardy.name": "Milan — Winter Edition",
+      "tour.lombardy.tag": "Milan, Como, Cervinia, Franciacorta",
+
+      "tour.tuscany.hl": [
+        "Base: Montecatini Terme (4★ property within historic thermal park)",
+        "Florence private walking tour with Russian-speaking guide",
+        "Best of Tuscany: San Gimignano, Siena, Pisa with gourmet lunch & wine tasting",
+        "Hidden Tuscany: Chianti villages, cooking class, exclusive winery",
+        "Lucca half-day tour"
+      ],
+      "tour.sicily_spring.hl": [
+        "Twin-base: Catania historic centre, then central Palermo",
+        "Syracuse and Ortigia Island guided visit, then UNESCO Noto",
+        "Messina, Forza d'Agrò and Taormina Greek-Roman Theatre",
+        "Cefalù medieval centre en route to Palermo",
+        "Agrigento and the Valley of the Temples (UNESCO)",
+        "Monreale Cathedral and Cloister before departure"
+      ],
+      "tour.sicily_summer.hl": [
+        "Base: Grand Hotel beachfront property in Aci Reale area",
+        "Etna and Taormina full-day excursion",
+        "Noto and Syracuse full-day with Russian-speaking guide",
+        "Shared boat excursion from Giardini Naxos",
+        "Catania historic centre with traditional granita tasting",
+        "Sicilia Outlet Village shopping day"
+      ],
+      "tour.puglia.hl": [
+        "Base: 4★ Sup. coastal property with half-board",
+        "Castello Monaci winery: cellar, wine museum, tasting with Apulian cheeses & cold cuts",
+        "Lecce — the \"Florence of the South\", capital of Apulian Baroque",
+        "Masseria experience: cheese and salumi tasting at a working farm",
+        "Alberobello (UNESCO) — the capital of trulli",
+        "Ostuni \"the white city\" and the cliffs of Polignano a Mare"
+      ],
+      "tour.veneto.hl": [
+        "Base: 4★ Starhotels group property in Vicenza",
+        "Verona full day with Arena admission and Russian-speaking guide",
+        "Valeggio sul Mincio — the unknown Veneto",
+        "Venice full day with islands tour: Burano, Murano, Torcello + Murano glass demonstration",
+        "Treviso and Prosecco winery tasting",
+        "Designer Outlet Noventa di Piave shopping day"
+      ],
+      "tour.lombardy.hl": [
+        "Base: 4★ Starhotels Ritz in central Milan",
+        "Last Supper guided visit and Milan highlights (Duomo, Galleria, La Scala)",
+        "Personal shopping walk through the fashion district",
+        "Lake Como and Bellagio full day",
+        "Cervinia — winter escape to the Italian Alps",
+        "Optional: New Year's Eve dinner in a typical trattoria + Piazza Duomo",
+        "Franciacorta winery and Lake Iseo"
+      ],
+
+      "prog.wf.eyebrow": "Worry-Free Italy Series · Line 02",
+      "prog.wf.title": "Italy, Worry-Free",
+      "prog.wf.price": "From €1.800 per person · Land services only · From 2 pax",
+      "prog.wf.body": "A series of five private 7-night programmes with fixed structure and open departure dates. Licensed Russian-speaking guides at every key stage, 24/7 Gusto Giusto support via Telegram, full digital welcome-kit in Russian, and meet-and-greet transfers with named driver on arrival. Built for tour operators whose clients don't speak foreign languages and don't want to travel in a group.",
+      "prog.wf.s1": "Hotels", "prog.wf.s1v": "3★ city centre",
+      "prog.wf.s2": "Duration", "prog.wf.s2v": "8 days / 7 nights",
+      "prog.wf.s3": "Support", "prog.wf.s3v": "24/7 Telegram",
+      "prog.wf.s4": "Minimum", "prog.wf.s4v": "2 pax",
+
+      "wf.1.label": "Line 01 · 7 nights / 8 days",
+      "wf.1.name": "Rome · Florence · Venice",
+      "wf.1.tag": "Three iconic cities and a day in Chianti",
+      "wf.1.hl": [
+        "Imperial Rome and the Vatican with licensed Russian-speaking guide",
+        "Day at a Chianti Classico winery: tasting and Tuscan lunch",
+        "Florence and Venice walking tours with Russian-speaking guides",
+        "Hotels within walking distance of railway stations in all three cities"
+      ],
+      "wf.2.label": "Line 02 · 7 nights / 8 days",
+      "wf.2.name": "Northern Italy Gems",
+      "wf.2.tag": "Lake Como, Milan, Bergamo, Verona, Sirmione",
+      "wf.2.hl": [
+        "Five cities and two lakes in one journey",
+        "Full-day Lake Como ferry pass included",
+        "Frecciarossa or Italo high-speed rail between Milan and Verona",
+        "Six private tours with licensed Russian-speaking guides"
+      ],
+      "wf.3.label": "Line 03 · 7 nights / 8 days",
+      "wf.3.name": "Rome · Naples · Sorrento",
+      "wf.3.tag": "Imperial Rome, UNESCO Naples and the southern coast",
+      "wf.3.hl": [
+        "Rome, Vatican, Pompeii and Vesuvius with Russian-speaking guides",
+        "Licensed archaeologist guide for the Pompeii day",
+        "Three nights in Sorrento on the Tyrrhenian coast",
+        "Personal meet-and-greet at Napoli Centrale station"
+      ],
+      "wf.4.label": "Line 04 · 7 nights / 8 days",
+      "wf.4.name": "Tuscany Deep",
+      "wf.4.tag": "Florence, Lucca, Pisa and two nights at a wine estate",
+      "wf.4.hl": [
+        "Five nights in the historic centre of Florence",
+        "Full day in Lucca and Pisa with Russian-speaking guide",
+        "Two nights at a premium wine estate in the Florentine hills",
+        "Chianti Classico DOCG tasting paired with Tuscan products"
+      ],
+      "wf.5.label": "Line 05 · 7 nights / 8 days",
+      "wf.5.name": "Sicily · Taormina",
+      "wf.5.tag": "Mount Etna, the Ionian coast, dolce vita",
+      "wf.5.hl": [
+        "Seven nights in Taormina — no hotel changes",
+        "Mount Etna with licensed Russian-speaking volcanologist guide",
+        "Volcanic wine tasting on the slopes of Etna",
+        "Four free days for the sea and independent exploration"
+      ],
+
+
+      "prog.vip.eyebrow": "Signature Series · Line 03",
+      "prog.vip.title": "VIP Signature",
+      "prog.vip.price": "Exclusive programmes with direct access to landmark estates and properties at Aman, Belmond, Bulgari, Mandarin Oriental level",
+      "prog.vip.body": "Five programmes for guests who travel to Italy not for sights, but for rare experiences. Iconic residences, private ateliers, after-hours access to museums and basilicas, private helicopter transfers, shopping with international stylists. The Signature series is the most exclusive segment of the Gusto Giusto catalogue.",
+      "prog.vip.s1": "Hotels", "prog.vip.s1v": "5★ Suites and residences",
+      "prog.vip.s2": "Duration", "prog.vip.s2v": "6 to 28 days",
+      "prog.vip.s3": "Guides", "prog.vip.s3v": "Licensed Russian-speaking",
+      "prog.vip.s4": "Pricing", "prog.vip.s4v": "On request",
+
+      "tour.pdf.download": "Download PDF →",
+
+      "vip.1.label": "Line 01 · 28 days / 27 nights",
+      "vip.1.name": "Dolce Vita Grand Tour",
+      "vip.1.tag": "Italy from Amalfi to Milan — 8 regions, 28 days",
+      "vip.1.hl": [
+        "Eight Italian regions in one programme: Amalfi, Rome, Tuscany, Emilia, Veneto, Como, Milan",
+        "Landmark estates in each region — character over rating",
+        "Private boat on the Amalfi Coast and on Lake Como",
+        "Two days of luxury shopping at The Mall Firenze with a personal stylist",
+        "Motor Valley experience, horseback riding, truffle hunting, fresh pasta masterclass",
+        "Private car and driver throughout all 28 days"
+      ],
+      "vip.2.label": "Line 02 · 6 nights / 7 days",
+      "vip.2.name": "Tuscany & Venice Pinnacle",
+      "vip.2.tag": "Florence and Venice as only the few see them",
+      "vip.2.hl": [
+        "Florence-Venice transfer by private helicopter",
+        "After-hours access to St Mark's Basilica and the Doge's Palace",
+        "Helicopter tour over Chianti with lunch at a Michelin-starred restaurant",
+        "Private Uffizi visit before public opening hours",
+        "Closed jewellery or leather atelier visit in Florence",
+        "Lagoon islands tour by private luxury boat"
+      ],
+      "vip.3.label": "Line 03 · 6 nights / 7 days",
+      "vip.3.name": "Northern Italy Signature",
+      "vip.3.tag": "Milan, Como, Verona, the Dolomites and Venice",
+      "vip.3.hl": [
+        "Private boat with captain on Lake Como with historic villa visit",
+        "Franciacorta winery with tasting and lunch on the estate",
+        "Private helicopter tour over the Dolomites with lunch in a mountain hut",
+        "Private gondola in Venice at sunset with Prosecco",
+        "5★ Deluxe hotels in Milan, Verona and Venice"
+      ],
+      "vip.4.label": "Line 04 · 7 nights / 8 days",
+      "vip.4.name": "Piemonte Royal Heritage",
+      "vip.4.tag": "Turin, Venaria, the Alps and the Langhe wine country",
+      "vip.4.hl": [
+        "5★ Junior Suite accommodation in the heart of Turin",
+        "Royal Turin: Palazzo Reale, Royal Armoury, Chapel of the Shroud",
+        "Museo Egizio with private Egyptologist guide",
+        "Venaria Reale — Savoy royal residence, UNESCO World Heritage",
+        "Two nights at a wine estate in Langhe with Barolo and Barbaresco tastings"
+      ],
+      "vip.5.label": "Line 05 · 5 nights / 6 days",
+      "vip.5.name": "Milano Fashion Insider",
+      "vip.5.tag": "Fashion, ateliers, design — Milan from the inside",
+      "vip.5.hl": [
+        "Trend Talk with Vogue Italia-level fashion journalist",
+        "Private Milan atelier visit with designer or master tailor",
+        "Closed showroom visit with personal stylist",
+        "Fragrance atelier: creating a bespoke perfume",
+        "On request: access to Fashion Week show or event (February and September seasons)",
+        "5★ boutique hotel in the heart of Quadrilatero della Moda"
+      ],
+
+      "prog.uni.eyebrow": "University & Technical · Line 04",
+      "prog.uni.title": "University & Technical",
+      "prog.uni.price": "Programmes for university delegations, MBA groups and professional learning programmes",
+      "prog.uni.body": "Three complete programmes designed for academic groups and corporate learning programmes. Technical visits to landmark Italian companies (Pirelli, Ferrari, Campari, Mutti, Panerai), classes at Accademia del Lusso, winery visits — with presentations, Q&A sessions, and meetings with managers. Each programme adapts to the specific academic interests of the group.",
+      "prog.uni.s1": "Group size", "prog.uni.s1v": "From 10 pax",
+      "prog.uni.s2": "Duration", "prog.uni.s2v": "8 – 9 days",
+      "prog.uni.s3": "Format", "prog.uni.s3v": "Visits + classes + culture",
+      "prog.uni.s4": "Pricing", "prog.uni.s4v": "On request",
+
+      "uni.1.label": "Line 01 · 9 days / 8 nights",
+      "uni.1.name": "Lombardia Tech & Culture",
+      "uni.1.tag": "Pirelli, WPP, Campari and Milanese culture for MBA students",
+      "uni.1.hl": [
+        "Technical visit to Pirelli (R&D and sustainable mobility) with presentation and Q&A",
+        "Visit to WPP Campus Milano — one of Europe's leading innovation hubs",
+        "Galleria Campari — brand building, mixology workshop and HQ tour",
+        "Visit to an Italian luxury production facility (Zegna / Molteni&C or equivalent)",
+        "Day at Lake Como with boat tour",
+        "Base at a 4★ hotel in central Milan for all 8 nights"
+      ],
+      "uni.2.label": "Line 02 · 9 days / 8 nights",
+      "uni.2.name": "Italian Industry Tour",
+      "uni.2.tag": "Ferrari, Parmigiano, Panerai — Rome, Bologna, Florence",
+      "uni.2.hl": [
+        "Ferrari Museum in Maranello with factory panoramic tour and Red Campus workshop",
+        "Parmigiano Reggiano production tour with tasting of three ages",
+        "Guided tour of Mutti tomato factory — Italian food industry",
+        "Technical visit to Panerai in Florence — luxury watchmaking",
+        "Chianti wineries: Altezza and Torciano with tastings",
+        "Accommodation at Starhotels 4★ in Rome, Bologna and Florence"
+      ],
+      "uni.3.label": "Line 03 · 8 days / 7 nights",
+      "uni.3.name": "Milan Fashion Week Academic",
+      "uni.3.tag": "Accademia del Lusso classes, Fashion Week shows and luxury ateliers",
+      "uni.3.hl": [
+        "Three classes at Accademia del Lusso: Fashion Events, Retail Experience, Trends & Forecasting",
+        "Participation in a Milan Fashion Week show or presentation (subject to availability)",
+        "Luxury brand showroom visit (Gucci, LV, Etro)",
+        "Visit to a historic atelier or vintage luxury boutique",
+        "Fashion Walking Tour through Quadrilatero della Moda and concept stores",
+        "Day at Lake Como and day in Franciacorta with luxury design experience",
+        "Programme completion certificate"
+      ],
+
+      "net.eyebrow": "Our Network",
+      "net.title": "Direct relationships, end to end.",
+      "net.sub": "Selected partnerships and operational capabilities that underpin every programme. Detailed property lists, rate cards, and full supplier credentials available to qualified B2B partners on request.",
+      "net.hos.eyebrow": "Hospitality",
+      "net.hos.title": "Hotels & Properties",
+      "net.hos.body1": "Direct relationships with iconic 5★ properties on the Amalfi Coast, Chianti and Maremma estates, Capri and Forte dei Marmi heritage hotels, Venice canal-side palazzi, and family-run boutique properties across all 20 regions.",
+      "net.hos.partner": "Starhotels · Official Partner",
+      "net.hos.body2": "Property names disclosed upon B2B partner identification. Full hospitality dossier available on request.",
+      "net.wine.eyebrow": "Wine & Estate",
+      "net.wine.title": "Wine Partners",
+      "net.wine.body": "Established working relationships with producers across the most distinctive Italian wine regions. Private cellar visits, vertical tastings with the winemaker, lunches and dinners hosted on the estate.",
+      "net.wine.body2": "Plus selected estates in Chianti, Bolgheri, Langhe, Etna.",
+      "net.op.eyebrow": "Operations",
+      "net.op.title": "Operational Capabilities",
+      "net.op.body1": "<span class=\"feature\">Private NCC fleet</span> across all regions · <span class=\"feature\">Russian-speaking guides</span> in 12+ cities · <span class=\"feature\">Multilingual documentation</span> (RU · IT · EN) · <span class=\"feature\">Direct supplier payment routing</span> · <span class=\"feature\">Cross-border contractual framework</span> with RUB→EUR transfer via authorized payment agents · <span class=\"feature\">First-class rail coordination</span> · <span class=\"feature\">Private boat and aviation transfers</span> on request.",
+      "net.hos.chains": "Partner chains",
+      "net.wine.pdf": "Presentation →",
+      "net.wine.c1.r": "Veneto · Valpolicella",
+      "net.wine.c1.d": "Amarone and Valpolicella. Relais among the vineyards, signature restaurant and spa. 20 min from Verona.",
+      "net.wine.c2.r": "Veneto · Valpolicella",
+      "net.wine.c2.d": "Biodynamic 16th-century estate, Osteria Al Ponte, golf and a private nature park. 10 min from Verona.",
+      "net.wine.c3.r": "Umbria · Todi",
+      "net.wine.c3.d": "Wine Resort & Spa, Fiorfiore restaurant, experiences in Umbria's green heart. 1h from Rome.",
+      "net.wine.c4.r": "Emilia · Canossa",
+      "net.wine.c4.d": "Relais in the historic Villa Manodori, Acetaia di Canossa, Emilian cuisine. Near Modena, Parma, Bologna.",
+      "net.wine.c5.r": "Tuscany · Florence",
+      "net.wine.c5.d": "18th-century villa in the Florentine hills, signature osteria, Vin Santo. A base for all of Tuscany.",
+      "net.wine.disc": "Access to the estates, bookings and terms — exclusively through Gusto Giusto. Presentations are partner-supplied materials.",
+
+      "brf.eyebrow": "Custom Request · 24–48 hours response",
+      "brf.title": "Didn't find the right product in the catalogue?",
+      "brf.sub": "Describe the brief and our operations team will prepare a tailored proposal for your tour operator's client. Guest profile, budget, regions, special requests — we build programmes from scratch or adapt existing ones to a specific request.",
+      "brf.guarantee.label": "Response time guarantee",
+      "brf.guarantee.value": "24–48 hours on qualified B2B briefs",
+      "brf.s1.tab": "Product Line", "brf.s2.tab": "Region", "brf.s3.tab": "Format", "brf.s4.tab": "Details",
+      "brf.s1.q": "Which product line fits the brief?",
+      "brf.s1.hint": "This determines the operational structure, supplier tier, and document style we'll build.",
+      "brf.s1.o1.t": "Group Tour", "brf.s1.o1.d": "Min. 14 pax · scheduled regional programme",
+      "brf.s1.o2.t": "Italy, Worry-Free", "brf.s1.o2.d": "Pre-built itineraries · from €1.800",
+      "brf.s1.o3.t": "VIP Signature", "brf.s1.o3.d": "Exclusive programmes · on request",
+      "brf.s1.o4.t": "University & Technical", "brf.s1.o4.d": "Academic and industrial visits",
+      "brf.s1.o5.t": "Fully Custom", "brf.s1.o5.d": "Programme built from scratch for the client",
+
+      "brf.s2.q": "Which Italian regions are involved?",
+      "brf.s2.hint": "Select the primary region. We'll combine adjacent areas where logistically sensible.",
+      "brf.s2.o1.t": "North", "brf.s2.o1.d": "Venice · Verona · Lakes · Milan · Piedmont",
+      "brf.s2.o2.t": "Centre", "brf.s2.o2.d": "Tuscany · Umbria · Rome · Marche",
+      "brf.s2.o3.t": "South & Islands", "brf.s2.o3.d": "Naples · Amalfi · Apulia · Sicily",
+      "brf.s2.o4.t": "Grand Tour", "brf.s2.o4.d": "North → Centre → South · 12+ days",
+      "brf.s2.o5.t": "Wine North", "brf.s2.o5.d": "Valpolicella · Valdobbiadene · Langhe",
+      "brf.s2.o6.t": "Wine Centre", "brf.s2.o6.d": "Chianti · Montalcino · Bolgheri",
+
+      "brf.s3.q": "Duration and pax count?",
+      "brf.s3.hint": "These two numbers drive almost everything — transport tier, hotel category, guide structure.",
+      "brf.s3.o1.t": "4–6 days", "brf.s3.o1.d": "Single region, deep focus",
+      "brf.s3.o2.t": "7–10 days", "brf.s3.o2.d": "Two regions, balanced rhythm",
+      "brf.s3.o3.t": "11–14 days", "brf.s3.o3.d": "Multi-region, signature programme",
+      "brf.s3.o4.t": "15+ days", "brf.s3.o4.d": "Grand Tour / extended VIP",
+      "brf.s3.g1.t": "1–2 pax", "brf.s3.g1.d": "Individual",
+      "brf.s3.g2.t": "3–8 pax", "brf.s3.g2.d": "Family / small private",
+      "brf.s3.g3.t": "9–20 pax", "brf.s3.g3.d": "Small group",
+      "brf.s3.g4.t": "21+ pax", "brf.s3.g4.d": "Full group / delegation",
+
+      "brf.s4.q": "Operator details and brief notes",
+      "brf.s4.hint": "Our operations team will follow up on this brief directly. Confidential — used only for this quotation.",
+      "brf.s4.l1": "Tour Operator / Agency name",
+      "brf.s4.l2": "Contact person and email",
+      "brf.s4.l3": "Indicative dates and brief notes",
+      "brf.s4.l3.ph": "Travel window, client profile, key requests, hotel preferences if any…",
+
+      "brf.res.tag": "Brief Ready · Pending Submission",
+      "brf.res.title": "Your brief is ready to send.",
+      "brf.res.l1": "Product Line", "brf.res.l2": "Region", "brf.res.l3": "Duration", "brf.res.l4": "Pax",
+      "brf.res.note": "Click below to open your default mail client with this brief pre-formatted to our operations team. We respond to qualified B2B briefs within 24–48 hours with a tailored quotation, operational notes, and recommended properties matching the segment.",
+      "brf.res.send": "Send Brief to Operations",
+      "brf.res.restart": "Start a new brief",
+      "brf.nav.prev": "← Back", "brf.nav.next": "Next →", "brf.nav.generate": "Generate Brief →",
+
+      "ft.eyebrow": "Get in Touch",
+      "ft.title": "Let's talk about a specific brief.",
+      "ft.body": "We respond to qualified B2B enquiries within 24–48 hours. For confidential commercial discussions, rate cards, and full supplier credentials, please contact us directly.",
+      "ft.h1": "Office", "ft.h2": "Direct",
+      "ft.cities": "Moscow · Saint Petersburg",
+      "ft.italy": "Operational base: Italy",
+      "ft.langs": "RU · IT · EN",
+      "ft.tag": "B2B Destination Management · Italy",
+
+      "mod.b2b.eyebrow": "B2B Partner Access",
+      "mod.b2b.title": "Detailed materials available to qualified partners.",
+      "mod.b2b.body": "Full programme documentation, B2B rate cards, supplier credentials, and partner-only resources are released after a brief qualification step. Please send a short message identifying your tour operator or agency, and our partnerships team will respond within 24–48 hours.",
+      "mod.b2b.cta": "Request Access",
+
+      "mod.pdf.eyebrow": "Programme Documentation",
+      "mod.pdf.title": "Full programme PDFs available on request.",
+      "mod.pdf.body": "Detailed itineraries, day-by-day programmes, included services, and B2B rate sheets are sent directly to identified tour operators and agencies. Drop us a message and we'll send the full dossier for the programme of interest within 24–48 hours.",
+      "mod.pdf.cta": "Request Documentation"
+    }
+  };
+
+  let currentLang = 'ru';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const t = i18n[lang];
+    
+    // Plain text translations
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        if (typeof t[key] === 'string' && (key.endsWith('.price') || key === 'net.op.body1')) {
+          el.innerHTML = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
+    });
+    
+    // HTML translations
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    
+    // Placeholder translations
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (t[key] !== undefined) el.placeholder = t[key];
+    });
+    
+    // List translations (highlights)
+    document.querySelectorAll('[data-i18n-list]').forEach(el => {
+      const key = el.getAttribute('data-i18n-list');
+      if (t[key] !== undefined && Array.isArray(t[key])) {
+        el.innerHTML = t[key].map(item => `<li>${item}</li>`).join('');
+      }
+    });
+    
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    
+    if (currentStep === 'result') renderResult();
+    updateNav();
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  function openModal(type) {
+    document.getElementById('modal-' + type).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.querySelectorAll('.modal-bg').forEach(m => m.classList.remove('active'));
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-bg').forEach(bg => {
+    bg.addEventListener('click', e => { if (e.target === bg) closeModal(); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  let currentStep = 1;
+  const selections = { segment: null, region: null, duration: null, group: null };
+
+  document.querySelectorAll('.opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const field = opt.dataset.field;
+      const value = opt.dataset.value;
+      selections[field] = value;
+      document.querySelectorAll(`.opt[data-field="${field}"]`).forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      updateNav();
+    });
+  });
+
+  function isStepComplete(n) {
+    if (n === 1) return !!selections.segment;
+    if (n === 2) return !!selections.region;
+    if (n === 3) return !!selections.duration && !!selections.group;
+    if (n === 4) return true;
+    return false;
+  }
+
+  function showStep(n) {
+    currentStep = n;
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.step-tab').forEach(t => t.classList.remove('active'));
+    if (n === 'result') {
+      document.querySelector('.result-panel').classList.add('active');
+      document.querySelectorAll('.step-tab').forEach(t => t.classList.add('completed'));
+      renderResult();
+    } else {
+      document.querySelector(`.step-panel[data-step="${n}"]`).classList.add('active');
+      document.querySelector(`.step-tab[data-step-tab="${n}"]`).classList.add('active');
+      for (let i = 1; i < n; i++) {
+        document.querySelector(`.step-tab[data-step-tab="${i}"]`).classList.add('completed');
+      }
+    }
+    updateNav();
+  }
+
+  function updateNav() {
+    const prev = document.getElementById('prev-btn');
+    const next = document.getElementById('next-btn');
+    const t = i18n[currentLang];
+    if (currentStep === 'result') {
+      prev.disabled = false;
+      prev.textContent = t['brf.nav.prev'];
+      next.style.display = 'none';
+      return;
+    }
+    next.style.display = '';
+    prev.disabled = currentStep === 1;
+    prev.textContent = t['brf.nav.prev'];
+    next.disabled = !isStepComplete(currentStep);
+    next.textContent = currentStep === 4 ? t['brf.nav.generate'] : t['brf.nav.next'];
+  }
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    if (!isStepComplete(currentStep)) return;
+    if (currentStep === 4) showStep('result');
+    else showStep(currentStep + 1);
+  });
+
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    if (currentStep === 'result') showStep(4);
+    else if (currentStep > 1) showStep(currentStep - 1);
+  });
+
+  document.getElementById('restart-brief').addEventListener('click', () => {
+    Object.keys(selections).forEach(k => selections[k] = null);
+    document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+    document.querySelectorAll('.step-tab').forEach(t => t.classList.remove('completed'));
+    document.getElementById('op-name').value = '';
+    document.getElementById('op-contact').value = '';
+    document.getElementById('op-notes').value = '';
+    document.querySelector('.result-panel').classList.remove('active');
+    showStep(1);
+  });
+
+  function renderResult() {
+    const t = i18n[currentLang];
+    const segMap = { group:1, vip:2, premium:3, essentials:4, university:5 };
+    const regMap = { north:1, centre:2, south:3, grand:4, 'wine-n':5, 'wine-c':6 };
+    const durMap = { short:1, medium:2, long:3, grand:4 };
+    const grpMap = { couple:1, family:2, small:3, large:4 };
+
+    document.getElementById('r-segment').textContent = t[`brf.s1.o${segMap[selections.segment]}.t`] || '—';
+    document.getElementById('r-region').textContent = t[`brf.s2.o${regMap[selections.region]}.t`] || '—';
+    document.getElementById('r-duration').textContent = t[`brf.s3.o${durMap[selections.duration]}.t`] || '—';
+    document.getElementById('r-group').textContent = t[`brf.s3.g${grpMap[selections.group]}.t`] || '—';
+
+    const opName = document.getElementById('op-name').value.trim() || '[Tour Operator]';
+    const opContact = document.getElementById('op-contact').value.trim() || '[Contact]';
+    const opNotes = document.getElementById('op-notes').value.trim() || '[no additional notes]';
+
+    const isRu = currentLang === 'ru';
+    const subject = isRu
+      ? `B2B-бриф — ${document.getElementById('r-segment').textContent}`
+      : `B2B Brief — ${document.getElementById('r-segment').textContent}`;
+
+    const body = isRu
+      ? `Здравствуйте,\n\nНаправляю структурированный бриф через ваш сайт:\n\n— Направление: ${document.getElementById('r-segment').textContent}\n— Регион: ${document.getElementById('r-region').textContent}\n— Длительность: ${document.getElementById('r-duration').textContent}\n— Кол-во чел.: ${document.getElementById('r-group').textContent}\n\nТуроператор/агентство: ${opName}\nКонтакт: ${opContact}\n\nПримечания:\n${opNotes}\n\nЖду котировку.\n\nС уважением,`
+      : `Hello,\n\nI am submitting a structured brief via your site:\n\n— Product Line: ${document.getElementById('r-segment').textContent}\n— Region: ${document.getElementById('r-region').textContent}\n— Duration: ${document.getElementById('r-duration').textContent}\n— Pax: ${document.getElementById('r-group').textContent}\n\nTour Operator / Agency: ${opName}\nContact: ${opContact}\n\nNotes:\n${opNotes}\n\nLooking forward to your quotation.\n\nBest regards,`;
+
+    document.getElementById('send-brief').href =
+      `mailto:info@gustogiustotour.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  // Logo fallback: if logo.png doesn't load, hide the image
+  const logoImg = document.getElementById('logo-img');
+  if (logoImg) {
+    logoImg.addEventListener('error', () => {
+      logoImg.style.display = 'none';
+    });
+  }
+
+  applyLang('ru');
+  updateNav();
+</script>
+
+</body>
+</html>
