@@ -8,390 +8,329 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script>/* JS attivo: abilita layer animazioni e nasconde i reveal solo con JS */
-  document.documentElement.classList.add('js');</script>
-<noscript><style>.intro{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script>document.documentElement.classList.add('js');</script>
+<noscript><style>.intro{display:none!important}.reveal,.stagger>*{opacity:1!important;transform:none!important}</style></noscript>
 <style>
   :root{
-    /* Brand core */
-    --navy:#1B2A40; --navy-900:#0E1828; --navy-800:#142136; --navy-700:#1B2A40; --navy-600:#243A59; --navy-500:#33507A;
-    --cream:#F5EDD6; --cream-100:#FBF7EA; --paper:#FCFAF3;
-    --gold:#C9A84C; --gold-200:#E7D08A; --gold-300:#D9BD6F; --gold-600:#A8862F;
-    --ink:#1C2536; --ink-soft:#54607A; --ink-mute:#7A859B;
-    --line:#E4DBC1; --line-soft:#EEE7D2;
-    /* Decorative */
-    --grad-gold:linear-gradient(118deg,#E7D08A 0%,#C9A84C 46%,#A8862F 100%);
-    --grad-navy:radial-gradient(125% 120% at 72% 8%, #2A4267 0%, #1B2A40 42%, #0E1828 100%);
-    --shadow-card:0 1px 0 rgba(28,37,54,.04), 0 18px 40px -24px rgba(14,24,40,.30);
-    --shadow-hi:0 30px 70px -34px rgba(14,24,40,.55);
-    --ease:cubic-bezier(.22,.61,.36,1); --ease-soft:cubic-bezier(.4,0,.2,1);
+    --navy:#1B2A40; --navy-deep:#13202F; --navy-soft:#2A3A52;
+    --cream:#F5EDD6; --cream-soft:#FAF6E8; --cream-deep:#EBE0C0; --paper:#FBF7EA;
+    --gold:#C9A84C; --gold-soft:#D9BD6F; --gold-deep:#A8862F; --gold-tint:rgba(201,168,76,.14);
+    --ink:#23313F; --ink-soft:#5A6573; --ink-mute:#8A8470;
+    --line:#E2D9BF; --line-soft:#EDE6D1;
+    --shadow:0 18px 44px -26px rgba(27,42,64,.30);
+    --shadow-hi:0 30px 64px -30px rgba(27,42,64,.42);
+    --ease:cubic-bezier(.22,.61,.36,1);
     --maxw:1240px; --pad:clamp(20px,5vw,72px);
   }
-
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   html.intro-active{overflow:hidden}
-  body{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    font-weight:300; color:var(--ink); background:var(--paper);
-    line-height:1.65; font-size:16px; overflow-x:hidden;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  h1,h2,h3,h4,h5,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.06;letter-spacing:-.01em;color:var(--navy)}
-  em{font-style:italic}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:300;color:var(--ink);
+    background:var(--cream);line-height:1.65;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,h5,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:.005em;color:var(--navy)}
+  em{font-style:italic;color:var(--gold-deep)}
   a{color:inherit;text-decoration:none}
   img,svg{display:block}
-  ::selection{background:var(--gold);color:var(--navy-900)}
+  ::selection{background:var(--gold);color:var(--navy)}
 
-  .eyebrow{
-    font-family:'Inter',sans-serif;font-weight:500;font-size:.7rem;
-    text-transform:uppercase;letter-spacing:.26em;color:var(--gold-600);
-    display:inline-flex;align-items:center;gap:.7em;
-  }
-  .eyebrow::before{content:"";width:26px;height:1px;background:var(--grad-gold);display:inline-block}
-  section .eyebrow,.group-header .eyebrow,.net-block .eyebrow{margin-bottom:18px}
+  .eyebrow{font-family:'Inter',sans-serif;font-weight:500;font-size:.7rem;text-transform:uppercase;
+    letter-spacing:.24em;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.7em}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);display:inline-block}
+  section .eyebrow,.group-header .eyebrow,.net-block .eyebrow{margin-bottom:16px}
 
-  /* ============ SCROLL PROGRESS ============ */
-  .scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:1200;
-    transform:scaleX(0);transform-origin:0 50%;background:var(--grad-gold);will-change:transform}
+  .scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:1200;transform:scaleX(0);
+    transform-origin:0 50%;background:var(--gold);will-change:transform}
 
-  /* ============ NAV ============ */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:1000;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px var(--pad);
-    transition:padding .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);
-    border-bottom:1px solid transparent;
-  }
-  nav.scrolled{
-    padding:12px var(--pad);
-    background:rgba(252,250,243,.82);backdrop-filter:blur(16px) saturate(140%);
-    -webkit-backdrop-filter:blur(16px) saturate(140%);
-    border-bottom:1px solid var(--line-soft);
-    box-shadow:0 10px 30px -26px rgba(14,24,40,.5);
-  }
-  .logo{display:flex;align-items:center;gap:12px;position:relative;z-index:2}
-  .logo .amphora{height:38px;width:auto;flex:none}
-  .logo-text{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;letter-spacing:.01em;color:var(--navy);line-height:1}
-  .logo-text span{color:var(--gold-600);font-style:italic}
-
-  .nav-links{display:flex;gap:30px;list-style:none;align-items:center}
-  .nav-links a{
-    font-size:.82rem;font-weight:400;letter-spacing:.04em;color:var(--ink-soft);
-    position:relative;padding:6px 0;transition:color .35s var(--ease)
-  }
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
-    background:var(--grad-gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--ease)}
-  .nav-links a:hover{color:var(--navy)}
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;
+    padding:18px var(--pad);transition:padding .45s var(--ease),background .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
+    border-bottom:1px solid transparent}
+  nav.scrolled{padding:11px var(--pad);background:rgba(245,237,214,.92);backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line);box-shadow:0 8px 26px -22px rgba(27,42,64,.5)}
+  .logo{display:flex;align-items:center;gap:11px;position:relative;z-index:2}
+  .logo .amphora{height:40px;width:auto;flex:none}
+  .logo .amphora .amph-body-fill{transition:fill-opacity .5s var(--ease)}
+  .logo:hover .amphora{animation:tip 1.2s var(--ease)}
+  @keyframes tip{30%{transform:rotate(-4deg)}60%{transform:rotate(2deg)}100%{transform:none}}
+  .logo-text{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;letter-spacing:.03em;color:var(--navy);line-height:1}
+  .logo-text span{color:var(--gold-deep);font-style:italic}
+  .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+  .nav-links a{font-size:.82rem;font-weight:400;letter-spacing:.04em;color:var(--navy);position:relative;padding:6px 0;transition:color .3s var(--ease)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+  .nav-links a:hover{color:var(--gold-deep)}
   .nav-links a:hover::after{transform:scaleX(1)}
-
-  .nav-right{display:flex;align-items:center;gap:18px}
-  .b2b-access{
-    font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--navy);background:transparent;border:1px solid var(--gold);border-radius:2px;
-    padding:9px 18px;cursor:pointer;position:relative;overflow:hidden;transition:color .45s var(--ease)
-  }
-  .b2b-access::before{content:"";position:absolute;inset:0;background:var(--grad-gold);transform:translateY(101%);transition:transform .45s var(--ease);z-index:-1}
-  .b2b-access:hover{color:var(--navy-900)}
-  .b2b-access:hover::before{transform:translateY(0)}
-
+  .nav-right{display:flex;align-items:center;gap:16px}
+  .b2b-access{font-family:'Inter',sans-serif;font-size:.74rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold-deep);background:transparent;border:1px solid var(--gold);border-radius:2px;padding:9px 18px;cursor:pointer;
+    transition:background .35s var(--ease),color .35s var(--ease)}
+  .b2b-access:hover{background:var(--gold);color:#fff}
+  body.gg-registered .b2b-access{border-color:var(--navy);color:var(--navy)}
+  body.gg-registered .b2b-access:hover{background:var(--navy);color:var(--cream)}
   .lang-toggle{display:flex;align-items:center;gap:6px;font-size:.78rem;letter-spacing:.06em}
-  .lang-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;
-    color:var(--ink-mute);padding:2px 2px;transition:color .3s var(--ease)}
-  .lang-btn.active{color:var(--gold-600)}
+  .lang-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;color:var(--ink-mute);padding:2px;transition:color .3s var(--ease)}
+  .lang-btn.active{color:var(--gold-deep)}
   .lang-btn:hover{color:var(--navy)}
   .lang-divider{color:var(--line);font-weight:300}
-
   .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:2}
   .nav-burger span{display:block;width:24px;height:1.5px;background:var(--navy);transition:transform .4s var(--ease),opacity .3s var(--ease)}
   .nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
   .nav-burger.open span:nth-child(2){opacity:0}
   .nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-  /* ============ INTRO OVERLAY ============ */
-  .intro{position:fixed;inset:0;z-index:2000;background:var(--grad-navy);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
-    transition:transform 1s var(--ease),opacity .9s var(--ease);overflow:hidden}
-  .intro::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(60% 50% at 50% 42%, rgba(201,168,76,.10), transparent 70%);opacity:0;animation:introGlow 2.6s var(--ease) .6s forwards}
-  html.intro-done .intro{transform:translateY(-102%);opacity:0;pointer-events:none}
-  .intro .amphora{height:min(34vh,260px);width:auto;filter:drop-shadow(0 24px 50px rgba(0,0,0,.45))}
-  .intro-word{font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--cream);
-    font-size:clamp(2rem,6vw,3.6rem);letter-spacing:.04em;display:flex;gap:.28em;overflow:hidden}
-  .intro-word span{font-style:italic;color:var(--gold-200)}
-  .intro-word .w{display:inline-block;opacity:0;transform:translateY(120%);animation:introWord .9s var(--ease) forwards}
-  .intro-word .w:nth-child(2){animation-delay:1.55s}
-  .intro-word .w:nth-child(1){animation-delay:1.4s}
-  .intro-tag{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
-    color:var(--gold-300);opacity:0;animation:introFade 1s var(--ease) 2.1s forwards}
-  .intro-skip{position:absolute;bottom:34px;right:34px;background:none;border:1px solid rgba(231,208,138,.4);
-    color:var(--gold-300);font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
-    padding:8px 16px;border-radius:2px;cursor:pointer;opacity:0;animation:introFade 1s var(--ease) 1.6s forwards;transition:border-color .3s,color .3s}
-  .intro-skip:hover{border-color:var(--gold-200);color:var(--cream)}
-
-  /* Amphora drawing */
+  /* INTRO — amphora appears, then dissolves */
+  .intro{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+    background:radial-gradient(120% 90% at 50% 30%, #FBF7EA 0%, #F5EDD6 55%, #EBE0C0 100%);
+    transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .intro::after{content:"";position:absolute;width:60vmin;height:60vmin;border-radius:50%;
+    background:radial-gradient(circle, rgba(201,168,76,.22), transparent 65%);animation:sunBreathe 5s ease-in-out infinite}
+  html.intro-done .intro{opacity:0;transform:scale(1.08);pointer-events:none}
+  .intro .amphora{height:min(38vh,300px);width:auto;position:relative;z-index:2;filter:drop-shadow(0 18px 40px rgba(27,42,64,.18))}
+  .intro-word{position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--navy);
+    font-size:clamp(2rem,6vw,3.4rem);letter-spacing:.04em;display:flex;gap:.28em;overflow:hidden}
+  .intro-word span{font-style:italic;color:var(--gold-deep)}
+  .intro-word .w{display:inline-block;opacity:0;transform:translateY(110%);animation:introWord .9s var(--ease) forwards}
+  .intro-word .w:nth-child(1){animation-delay:1.35s}
+  .intro-word .w:nth-child(2){animation-delay:1.5s}
+  .intro-tag{position:relative;z-index:2;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--ink-mute);opacity:0;animation:introFade 1s var(--ease) 2s forwards}
+  .intro-skip{position:absolute;bottom:30px;right:30px;z-index:3;background:none;border:1px solid var(--line);color:var(--ink-soft);
+    font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px;border-radius:2px;cursor:pointer;
+    opacity:0;animation:introFade 1s var(--ease) 1.4s forwards;transition:border-color .3s,color .3s}
+  .intro-skip:hover{border-color:var(--gold);color:var(--gold-deep)}
   .amph-draw{stroke-dasharray:1;stroke-dashoffset:1}
   .intro .amph-draw{animation:amphDraw 1.7s var(--ease) forwards}
-  .intro .amph-rim{animation-delay:.15s}
-  .intro .amph-body{animation-delay:.25s;animation-duration:1.9s}
-  .intro .amph-handle{animation-delay:1s;animation-duration:1.1s}
-  .intro .amph-foot{animation-delay:1.45s;animation-duration:.9s}
-  .intro .amph-fill{opacity:0;animation:introFade 1.4s var(--ease) 1.5s forwards}
-
+  .intro .amph-rim{animation-delay:.1s}
+  .intro .amph-body{animation-delay:.2s;animation-duration:1.8s}
+  .intro .amph-handle{animation-delay:.95s;animation-duration:1.05s}
+  .intro .amph-foot{animation-delay:1.35s;animation-duration:.85s}
+  .intro .amph-body-fill{fill-opacity:0;animation:fillIn 1.3s var(--ease) 1.4s forwards}
   @keyframes amphDraw{to{stroke-dashoffset:0}}
+  @keyframes fillIn{to{fill-opacity:.16}}
   @keyframes introWord{to{opacity:1;transform:none}}
   @keyframes introFade{to{opacity:1}}
-  @keyframes introGlow{to{opacity:1}}
+  @keyframes sunBreathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
 </style>
 </head>
+
 <body>
 <style>
-  /* ============ LAYOUT ============ */
-  section{padding:clamp(80px,11vh,150px) var(--pad);max-width:var(--maxw);margin:0 auto;position:relative}
-  .section-header{max-width:780px;margin-bottom:clamp(44px,6vw,72px)}
-  .section-header h2{font-size:clamp(2.1rem,4.6vw,3.7rem);margin:14px 0 20px}
-  .section-header h2 em{color:var(--gold-600)}
-  .section-header p{color:var(--ink-soft);font-size:1.08rem;max-width:62ch}
+  section{padding:clamp(76px,10vh,140px) var(--pad);max-width:var(--maxw);margin:0 auto;position:relative}
+  .section-header{max-width:780px;margin-bottom:clamp(40px,6vw,68px)}
+  .section-header h2{font-size:clamp(2.1rem,4.6vw,3.6rem);margin:12px 0 18px}
+  .section-header p{color:var(--ink-soft);font-size:1.06rem;max-width:62ch}
 
-  /* ============ BUTTONS ============ */
-  .cta{
-    display:inline-flex;align-items:center;justify-content:center;gap:.6em;cursor:pointer;
-    font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-    padding:16px 30px;border-radius:2px;border:1px solid transparent;position:relative;overflow:hidden;
-    transition:transform .5s var(--ease),box-shadow .5s var(--ease),color .45s var(--ease),border-color .45s var(--ease)
-  }
-  .cta.primary{color:var(--navy-900);background:var(--grad-gold);box-shadow:0 14px 30px -16px rgba(168,134,47,.7)}
-  .cta.primary::before{content:"";position:absolute;inset:0;background:linear-gradient(118deg,#F0DD9B,#D9BD6F);opacity:0;transition:opacity .45s var(--ease)}
-  .cta.primary span,.cta.primary{position:relative}
-  .cta.primary:hover{transform:translateY(-3px);box-shadow:0 22px 44px -18px rgba(168,134,47,.8)}
-  .cta.primary:hover::before{opacity:1}
-  .cta.outline{color:var(--cream);border-color:rgba(231,208,138,.5);background:transparent}
-  .cta.outline::before{content:"";position:absolute;inset:0;background:var(--grad-gold);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1}
-  .cta.outline:hover{color:var(--navy-900);border-color:var(--gold);transform:translateY(-3px)}
-  .cta.outline:hover::before{transform:translateY(0)}
-  .btn{
-    font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.06em;cursor:pointer;
-    padding:12px 22px;border-radius:2px;border:1px solid var(--line);background:var(--paper);color:var(--ink);
-    transition:border-color .35s var(--ease),background .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)
-  }
+  /* BUTTONS — brand "of always" */
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:.6em;cursor:pointer;font-family:'Inter',sans-serif;
+    font-size:.8rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;border-radius:2px;border:1px solid transparent;
+    transition:transform .4s var(--ease),background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+  .cta.primary{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+  .cta.primary:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:translateY(-3px);box-shadow:var(--shadow)}
+  .cta.outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+  .cta.outline:hover{background:var(--navy);color:var(--cream);transform:translateY(-3px)}
+  .cta::after{content:'→';font-size:1em;transition:transform .4s var(--ease)}
+  .cta:hover::after{transform:translateX(4px)}
+  .btn{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.05em;cursor:pointer;padding:12px 22px;border-radius:2px;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink);transition:border-color .3s var(--ease),background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
   .btn:hover:not(:disabled){border-color:var(--gold);transform:translateY(-2px)}
   .btn:disabled{opacity:.4;cursor:not-allowed}
   .btn.primary{background:var(--navy);color:var(--cream);border-color:var(--navy)}
-  .btn.primary:hover:not(:disabled){background:var(--navy-600);border-color:var(--navy-600)}
+  .btn.primary:hover:not(:disabled){background:var(--gold);border-color:var(--gold);color:var(--navy)}
 
-  /* ============ HERO ============ */
-  .hero{min-height:100vh;min-height:100svh;background:var(--grad-navy);color:var(--cream);
-    max-width:none;margin:0;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,80px);
-    align-items:center;padding-top:140px;padding-bottom:90px;overflow:hidden;position:relative}
-  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
-    background-image:radial-gradient(circle at 18% 28%,rgba(201,168,76,.16),transparent 26%),radial-gradient(circle at 88% 78%,rgba(201,168,76,.10),transparent 32%)}
-  .hero-orbit{position:absolute;right:-10%;top:50%;width:min(70vw,820px);aspect-ratio:1;transform:translateY(-50%);
-    border:1px solid rgba(231,208,138,.12);border-radius:50%;pointer-events:none}
-  .hero-orbit::after{content:"";position:absolute;inset:9%;border:1px solid rgba(231,208,138,.08);border-radius:50%}
+  /* HERO — warm, light, "already on holiday" */
+  .hero{min-height:100vh;min-height:100svh;max-width:none;margin:0;display:grid;grid-template-columns:1.15fr .85fr;
+    gap:clamp(30px,5vw,80px);align-items:center;padding:150px var(--pad) 120px;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,#FBF7EA 0%,#F7F0DC 48%,#F2E9CC 100%)}
+  .hero-sun{position:absolute;top:8%;right:8%;width:min(34vw,360px);aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle, rgba(201,168,76,.34) 0%, rgba(201,168,76,.10) 45%, transparent 70%);animation:sunBreathe 7s ease-in-out infinite}
+  .hero-hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;z-index:0;pointer-events:none;opacity:.5}
   .hero-content{position:relative;z-index:2;max-width:640px}
-  .hero-content .eyebrow{color:var(--gold-300)}
-  .hero-content .eyebrow::before{background:var(--gold-300)}
-  .hero h1{color:var(--cream);font-size:clamp(2.9rem,6.6vw,5.6rem);font-weight:500;margin:24px 0 26px;letter-spacing:-.02em}
-  .hero h1 em{color:transparent;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text}
-  .hero-sub{font-size:1.1rem;color:rgba(245,237,214,.78);max-width:54ch;margin-bottom:38px;font-weight:300}
+  .hero h1{font-size:clamp(2.9rem,6.4vw,5.4rem);font-weight:500;margin:22px 0 24px;letter-spacing:-.01em;color:var(--navy)}
+  .hero-sub{font-size:1.1rem;color:var(--ink-soft);max-width:54ch;margin-bottom:34px;font-weight:300}
   .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
   .hero-visual{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
-  .hero-card{
-    background:linear-gradient(155deg,rgba(36,58,89,.55),rgba(14,24,40,.35));
-    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-    border:1px solid rgba(231,208,138,.22);border-radius:4px;padding:38px 34px;max-width:380px;position:relative;
-    box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
-  .hero-card .eyebrow{color:var(--gold-300)}
-  .hero-card h3{color:var(--cream);font-size:1.85rem;margin:14px 0 16px}
-  .hero-card p{color:rgba(245,237,214,.7);font-size:.96rem}
-  .hero-card-meta{display:flex;gap:14px;margin-top:24px;padding-top:22px;border-top:1px solid rgba(231,208,138,.18)}
-  .hero-card-meta span{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-300)}
-  .hero-cue{position:absolute;left:var(--pad);bottom:34px;display:flex;align-items:center;gap:12px;z-index:2;
-    font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(245,237,214,.55)}
-  .hero-cue .line{width:1px;height:40px;background:linear-gradient(var(--gold-300),transparent);position:relative;overflow:hidden}
-  .hero-cue .line::after{content:"";position:absolute;top:-40px;left:0;width:100%;height:40px;background:var(--gold-200);animation:cueRun 2.2s var(--ease) infinite}
-  @keyframes cueRun{to{transform:translateY(80px)}}
+  .hero-card{background:rgba(255,253,247,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:6px;padding:36px 32px;max-width:380px;box-shadow:var(--shadow)}
+  .hero-card h3{font-size:1.85rem;margin:12px 0 14px;color:var(--navy)}
+  .hero-card p{color:var(--ink-soft);font-size:.96rem}
+  .hero-card-meta{display:flex;gap:14px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+  .hero-card-meta span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep)}
+  .hero-cue{position:absolute;left:var(--pad);bottom:32px;display:flex;align-items:center;gap:12px;z-index:2;
+    font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute)}
+  .hero-cue .line{width:1px;height:38px;background:linear-gradient(var(--gold),transparent);position:relative;overflow:hidden}
+  .hero-cue .line::after{content:"";position:absolute;top:-38px;left:0;width:100%;height:38px;background:var(--gold-deep);animation:cueRun 2.2s var(--ease) infinite}
+  @keyframes cueRun{to{transform:translateY(76px)}}
+  @media(prefers-reduced-motion:no-preference){
+    .js .hero-content>*{opacity:0;animation:heroUp .9s var(--ease) forwards}
+    .js .hero-content .eyebrow{animation-delay:2.4s}
+    .js .hero-content h1{animation-delay:2.55s}
+    .js .hero-content .hero-sub{animation-delay:2.7s}
+    .js .hero-content .hero-ctas{animation-delay:2.85s}
+    .js .hero-visual{opacity:0;animation:heroUp 1s var(--ease) 2.7s forwards}
+    @keyframes heroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  }
 
-  /* ============ ABOUT ============ */
-  #about{background:var(--paper)}
-  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px)}
-  .about-block{position:relative;padding-top:30px;border-top:1px solid var(--line)}
-  .about-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-style:italic;color:var(--gold);line-height:1;margin-bottom:18px;
-    background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .about-block h4{font-size:1.5rem;margin-bottom:14px;color:var(--navy)}
+  /* ABOUT */
+  #about{background:var(--cream)}
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,52px)}
+  .about-block{position:relative;padding-top:28px;border-top:2px solid var(--gold)}
+  .about-num{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-style:italic;color:var(--gold-deep);line-height:1;margin-bottom:14px}
+  .about-block h4{font-size:1.5rem;margin-bottom:12px;color:var(--navy)}
   .about-block p{color:var(--ink-soft);font-size:.98rem}
 
-  /* ============ PROGRAMMES ============ */
-  #programmes{background:linear-gradient(180deg,var(--paper),var(--cream-100))}
-  .programmes-wrap{display:flex;flex-direction:column;gap:clamp(70px,9vw,120px)}
-  .group-header{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(30px,5vw,64px);align-items:start;
-    padding-bottom:40px;margin-bottom:46px;border-bottom:1px solid var(--line)}
-  .group-header h3{font-size:clamp(1.9rem,3.8vw,3rem);margin:10px 0 16px}
-  .price-line{font-size:.92rem;color:var(--gold-600);letter-spacing:.02em;margin-bottom:18px;font-weight:400}
-  .price-line em{font-style:italic;color:var(--navy)}
+  /* PROGRAMMES */
+  #programmes{background:var(--cream-soft)}
+  .programmes-wrap{display:flex;flex-direction:column;gap:clamp(66px,9vw,116px)}
+  .group-header{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(30px,5vw,60px);align-items:start;padding-bottom:36px;margin-bottom:42px;border-bottom:1px solid var(--line)}
+  .group-header h3{font-size:clamp(1.9rem,3.8vw,3rem);margin:8px 0 14px}
+  .price-line{font-size:.92rem;color:var(--gold-deep);letter-spacing:.01em;margin-bottom:16px;font-weight:400}
   .group-header p{color:var(--ink-soft);font-size:1rem;max-width:60ch}
-  .group-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-  .stat{background:var(--paper);padding:18px 20px;display:flex;flex-direction:column;gap:4px}
-  .stat-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
-  .stat-val{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--navy);font-weight:600}
-
-  .tours-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .tour-card{
-    background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:30px 28px;
-    display:flex;flex-direction:column;position:relative;overflow:hidden;
-    transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .55s var(--ease)}
-  .tour-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--grad-gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .55s var(--ease)}
-  .tour-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hi);border-color:transparent}
+  .group-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .stat{background:var(--paper);padding:17px 20px;display:flex;flex-direction:column;gap:4px}
+  .stat-label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+  .stat-val{font-family:'Cormorant Garamond',serif;font-size:1.22rem;color:var(--navy);font-weight:600}
+  .tours-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tour-card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:28px 26px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+    transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease)}
+  .tour-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease)}
+  .tour-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hi);border-color:var(--gold-soft)}
   .tour-card:hover::before{transform:scaleX(1)}
-  .tour-season{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-600);margin-bottom:12px}
-  .tour-card h4{font-size:1.5rem;margin-bottom:8px;color:var(--navy)}
-  .tour-tag{font-size:.9rem;color:var(--ink-soft);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:18px}
-  .tour-highlights{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;flex:1}
+  .tour-season{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:11px}
+  .tour-card h4{font-size:1.5rem;margin-bottom:7px;color:var(--navy)}
+  .tour-tag{font-size:.92rem;color:var(--ink-soft);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:16px}
+  .tour-highlights{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px;flex:1}
   .tour-highlights li{position:relative;padding-left:20px;font-size:.86rem;color:var(--ink-soft);line-height:1.5}
-  .tour-highlights li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg)}
-  .tour-pdf{align-self:flex-start;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;
-    font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);
-    padding:8px 0;position:relative;transition:color .35s var(--ease)}
-  .tour-pdf::after{content:"";position:absolute;left:0;bottom:2px;width:100%;height:1px;background:var(--grad-gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--ease)}
-  .tour-pdf:hover{color:var(--gold-600)}
+  .tour-highlights li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg)}
+  .tour-pdf{align-self:flex-start;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.76rem;font-weight:500;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--navy);padding:8px 0;position:relative;transition:color .3s var(--ease)}
+  .tour-pdf::after{content:"";position:absolute;left:0;bottom:2px;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+  .tour-pdf:hover{color:var(--gold-deep)}
   .tour-pdf:hover::after{transform:scaleX(1)}
-</style>
-<style>
-  /* ============ NETWORK ============ */
+  .pdf-gated::before{content:"";display:inline-block;width:11px;height:11px;margin-right:7px;vertical-align:-1px;
+    background:currentColor;-webkit-mask:no-repeat center/contain;mask:no-repeat center/contain;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Crect x='5' y='11' width='14' height='9' rx='1'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Crect x='5' y='11' width='14' height='9' rx='1'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");opacity:.85}
+  body.gg-registered .pdf-gated::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Crect x='5' y='11' width='14' height='9' rx='1'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 7-2.6'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Crect x='5' y='11' width='14' height='9' rx='1'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 7-2.6'/%3E%3C/svg%3E");color:var(--gold-deep)}
+
+  /* NETWORK — rich navy accent */
   #network{background:var(--navy);color:var(--cream);max-width:none}
   #network>*{max-width:var(--maxw);margin-left:auto;margin-right:auto}
   #network .section-header h2{color:var(--cream)}
-  #network .section-header p{color:rgba(245,237,214,.72)}
-  #network .eyebrow{color:var(--gold-300)}
-  #network .eyebrow::before{background:var(--gold-300)}
-  .network-grid{display:flex;flex-direction:column;gap:24px}
-  .net-block{background:linear-gradient(160deg,rgba(36,58,89,.4),rgba(14,24,40,.25));
-    border:1px solid rgba(231,208,138,.18);border-radius:4px;padding:clamp(28px,4vw,46px);position:relative}
-  .net-block h4{color:var(--cream);font-size:1.9rem;margin:8px 0 16px}
-  .net-block>p{color:rgba(245,237,214,.74);font-size:.98rem;max-width:70ch}
-  .net-block .feature{color:var(--gold-200);font-weight:400}
-  .partner-tags{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
-  .tag{font-size:.78rem;letter-spacing:.04em;padding:7px 15px;border:1px solid rgba(231,208,138,.3);
-    border-radius:2px;color:rgba(245,237,214,.85);transition:border-color .35s var(--ease),color .35s var(--ease)}
-  .tag:hover{border-color:var(--gold);color:var(--cream)}
-  .tag.partner{background:var(--grad-gold);color:var(--navy-900);border-color:transparent;font-weight:500}
-  .chain-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-300);margin-top:18px}
-  .wine-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:26px}
-  .wine-card{background:rgba(14,24,40,.4);border:1px solid rgba(231,208,138,.16);border-radius:4px;padding:24px 22px;
-    display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .5s var(--ease)}
+  #network .section-header p{color:rgba(245,237,214,.74)}
+  #network .eyebrow{color:var(--gold-soft)}#network .eyebrow::before{background:var(--gold)}
+  .network-grid{display:flex;flex-direction:column;gap:22px}
+  .net-block{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.22);border-radius:6px;padding:clamp(26px,4vw,44px)}
+  .net-block h4{color:var(--cream);font-size:1.85rem;margin:6px 0 14px}
+  .net-block>p{color:rgba(245,237,214,.76);font-size:.98rem;max-width:70ch}
+  .net-block .feature{color:var(--gold-soft);font-weight:400}
+  .partner-tags{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+  .tag{font-size:.78rem;letter-spacing:.03em;padding:7px 15px;border:1px solid rgba(201,168,76,.34);border-radius:2px;color:rgba(245,237,214,.88);transition:border-color .3s,color .3s}
+  .tag:hover{border-color:var(--gold);color:#fff}
+  .tag.partner{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:500}
+  .chain-label{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-top:16px}
+  .wine-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}
+  .wine-card{background:rgba(0,0,0,.16);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;transition:transform .45s var(--ease),border-color .45s var(--ease)}
   .wine-card:hover{transform:translateY(-5px);border-color:var(--gold)}
-  .wine-region{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300);margin-bottom:10px}
-  .wine-card h5{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cream);font-weight:600;margin-bottom:10px}
-  .wine-desc{font-size:.84rem;color:rgba(245,237,214,.66);flex:1;margin-bottom:16px}
-  .wine-pdf{font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-200);
-    align-self:flex-start;position:relative;padding-bottom:3px;transition:color .3s var(--ease)}
-  .wine-pdf::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--grad-gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--ease)}
-  .wine-pdf:hover{color:var(--cream)}.wine-pdf:hover::after{transform:scaleX(1)}
-  .wine-disclaimer{font-size:.78rem!important;color:rgba(245,237,214,.5)!important;font-style:italic;margin-top:14px;max-width:70ch}
+  .wine-region{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:9px}
+  .wine-card h5{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cream);font-weight:600;margin-bottom:9px}
+  .wine-desc{font-size:.84rem;color:rgba(245,237,214,.7);flex:1;margin-bottom:15px}
+  .wine-pdf{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-soft);align-self:flex-start;position:relative;padding-bottom:3px;transition:color .3s var(--ease);cursor:pointer}
+  .wine-pdf::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+  .wine-pdf:hover{color:#fff}.wine-pdf:hover::after{transform:scaleX(1)}
+  .wine-disclaimer{font-size:.78rem!important;color:rgba(245,237,214,.52)!important;font-style:italic;margin-top:13px;max-width:70ch}
 
-  /* ============ BRIEF ============ */
-  #brief{background:var(--cream-100)}
-  .brief-guarantee{display:inline-flex;align-items:center;gap:14px;margin-top:26px;padding:14px 22px;
-    background:var(--paper);border:1px solid var(--line);border-radius:3px}
-  .guarantee-icon{width:9px;height:9px;border-radius:50%;background:var(--grad-gold);box-shadow:0 0 0 4px rgba(201,168,76,.18);animation:pulseDot 2.4s var(--ease) infinite}
-  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,.18)}50%{box-shadow:0 0 0 8px rgba(201,168,76,.05)}}
+  /* BRIEF */
+  #brief{background:var(--cream)}
+  .brief-guarantee{display:inline-flex;align-items:center;gap:13px;margin-top:24px;padding:13px 20px;background:var(--paper);border:1px solid var(--line);border-radius:3px}
+  .guarantee-icon{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-tint);animation:pulseDot 2.4s var(--ease) infinite}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px var(--gold-tint)}50%{box-shadow:0 0 0 8px rgba(201,168,76,.05)}}
   .guarantee-text{display:flex;flex-direction:column}
-  .guarantee-label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
-  .guarantee-value{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--navy);font-weight:600}
-  .brief-wrap{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow-card)}
-  .brief-progress{display:flex;gap:8px;margin-bottom:34px;flex-wrap:wrap}
-  .step-tab{display:flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.04em;color:var(--ink-mute);
-    padding:8px 0;flex:1;min-width:120px;border-top:2px solid var(--line);padding-top:12px;transition:color .4s var(--ease),border-color .4s var(--ease)}
-  .step-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--ink-mute);transition:color .4s var(--ease)}
+  .guarantee-label{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+  .guarantee-value{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);font-weight:600}
+  .brief-wrap{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:clamp(24px,4vw,42px);box-shadow:var(--shadow)}
+  .brief-progress{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+  .step-tab{display:flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.03em;color:var(--ink-mute);flex:1;min-width:120px;border-top:2px solid var(--line);padding-top:12px;transition:color .35s var(--ease),border-color .35s var(--ease)}
+  .step-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--ink-mute);transition:color .35s var(--ease)}
   .step-tab.active{color:var(--navy);border-top-color:var(--gold)}
-  .step-tab.active .step-num{color:var(--gold-600)}
-  .step-tab.completed{color:var(--ink-soft);border-top-color:var(--gold-300)}
-  .step-tab.completed .step-num{color:var(--gold-600)}
-  .step-panel,.result-panel{display:none;animation:stepIn .55s var(--ease)}
+  .step-tab.active .step-num,.step-tab.completed .step-num{color:var(--gold-deep)}
+  .step-tab.completed{color:var(--ink-soft);border-top-color:var(--gold-soft)}
+  .step-panel,.result-panel{display:none;animation:stepIn .5s var(--ease)}
   .step-panel.active,.result-panel.active{display:block}
-  @keyframes stepIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .step-question{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--navy);margin-bottom:8px}
-  .step-hint{font-size:.92rem;color:var(--ink-soft);margin-bottom:26px;max-width:66ch}
+  @keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .step-question{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--navy);margin-bottom:7px}
+  .step-hint{font-size:.92rem;color:var(--ink-soft);margin-bottom:24px;max-width:66ch}
   .options-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
   .options-grid.three{grid-template-columns:repeat(3,1fr)}
   .options-grid.four{grid-template-columns:repeat(4,1fr)}
-  .opt{text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px 20px;
-    cursor:pointer;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;
-    transition:border-color .4s var(--ease),transform .4s var(--ease),background .4s var(--ease)}
-  .opt::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--grad-gold);transform:scaleY(0);transform-origin:50% 0;transition:transform .4s var(--ease)}
-  .opt:hover{border-color:var(--gold-300);transform:translateY(-3px)}
-  .opt.selected{border-color:var(--gold);background:linear-gradient(180deg,rgba(201,168,76,.08),transparent)}
+  .opt{text-align:left;background:var(--cream-soft);border:1px solid var(--line);border-radius:5px;padding:17px 19px;cursor:pointer;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;
+    transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease)}
+  .opt::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:50% 0;transition:transform .35s var(--ease)}
+  .opt:hover{border-color:var(--gold-soft);transform:translateY(-3px)}
+  .opt.selected{border-color:var(--gold);background:var(--gold-tint)}
   .opt.selected::before{transform:scaleY(1)}
   .opt-title{font-family:'Inter',sans-serif;font-size:.94rem;font-weight:500;color:var(--navy)}
   .opt-desc{font-size:.8rem;color:var(--ink-soft)}
-  .input-label{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:18px 0 8px}
-  .brief-input,.brief-textarea{width:100%;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);
-    background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:13px 15px;transition:border-color .35s var(--ease),box-shadow .35s var(--ease)}
-  .brief-input:focus,.brief-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.14)}
-  .brief-textarea{min-height:110px;resize:vertical;line-height:1.6}
-  .config-nav{display:flex;justify-content:space-between;gap:14px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
-  .result-panel{text-align:left}
-  .result-tag{display:inline-block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-600);
-    border:1px solid var(--gold-300);border-radius:2px;padding:6px 14px;margin-bottom:16px}
-  .result-title{font-size:2rem;margin-bottom:24px}
-  .brief-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:24px}
-  .brief-summary .item{background:var(--paper);padding:18px 20px;display:flex;flex-direction:column;gap:5px}
-  .brief-summary .label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
-  .brief-summary .value{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);font-weight:600}
-  .result-note{font-size:.92rem;color:var(--ink-soft);margin-bottom:26px;max-width:70ch}
+  .input-label{display:block;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin:18px 0 8px}
+  .brief-input,.brief-textarea{width:100%;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);background:var(--cream-soft);border:1px solid var(--line);border-radius:3px;padding:13px 15px;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+  .brief-input:focus,.brief-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-tint)}
+  .brief-textarea{min-height:108px;resize:vertical;line-height:1.6}
+  .config-nav{display:flex;justify-content:space-between;gap:14px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+  .result-tag{display:inline-block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--gold-soft);border-radius:2px;padding:6px 14px;margin-bottom:14px}
+  .result-title{font-size:2rem;margin-bottom:22px}
+  .brief-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:22px}
+  .brief-summary .item{background:var(--cream-soft);padding:17px 19px;display:flex;flex-direction:column;gap:5px}
+  .brief-summary .label{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+  .brief-summary .value{font-family:'Cormorant Garamond',serif;font-size:1.28rem;color:var(--navy);font-weight:600}
+  .result-note{font-size:.92rem;color:var(--ink-soft);margin-bottom:24px;max-width:70ch}
   .result-actions{display:flex;gap:14px;flex-wrap:wrap}
 
-  /* ============ FOOTER ============ */
-  footer{background:var(--navy-900);color:var(--cream);padding:clamp(64px,8vw,100px) var(--pad) 40px}
-  .footer-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:clamp(30px,5vw,64px);
-    padding-bottom:50px;border-bottom:1px solid rgba(231,208,138,.16)}
-  .footer-grid .eyebrow{color:var(--gold-300)}.footer-grid .eyebrow::before{background:var(--gold-300)}
-  .footer-grid h3{color:var(--cream);font-size:2rem;margin:14px 0 16px;max-width:18ch}
-  .footer-grid p{color:rgba(245,237,214,.66);font-size:.95rem;max-width:46ch}
-  .footer-grid h5{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300);margin-bottom:18px}
-  .footer-grid a{display:block;color:rgba(245,237,214,.78);font-size:.92rem;margin-bottom:9px;transition:color .3s var(--ease)}
-  .footer-grid a[href]:hover{color:var(--gold-200)}
-  .footer-bottom{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-    padding-top:30px;font-size:.78rem;color:rgba(245,237,214,.45);letter-spacing:.02em}
+  /* FOOTER */
+  footer{background:var(--navy-deep);color:var(--cream);padding:clamp(62px,8vw,96px) var(--pad) 38px}
+  .footer-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:clamp(30px,5vw,60px);padding-bottom:46px;border-bottom:1px solid rgba(201,168,76,.2)}
+  .footer-grid .eyebrow{color:var(--gold-soft)}.footer-grid .eyebrow::before{background:var(--gold)}
+  .footer-grid h3{color:var(--cream);font-size:2rem;margin:12px 0 14px;max-width:18ch}
+  .footer-grid p{color:rgba(245,237,214,.68);font-size:.95rem;max-width:46ch}
+  .footer-grid h5{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+  .footer-grid a{display:block;color:rgba(245,237,214,.8);font-size:.92rem;margin-bottom:9px;transition:color .3s var(--ease)}
+  .footer-grid a[href]:hover{color:var(--gold-soft)}
+  .footer-bottom{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:28px;font-size:.78rem;color:rgba(245,237,214,.46)}
 
-  /* ============ MODAL ============ */
-  .modal-bg{position:fixed;inset:0;z-index:1500;background:rgba(14,24,40,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-    display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+  /* MODAL + REGISTER */
+  .modal-bg{position:fixed;inset:0;z-index:1500;background:rgba(19,32,47,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);overflow-y:auto}
   .modal-bg.active{opacity:1;pointer-events:auto}
-  .modal{background:var(--paper);border-radius:6px;border:1px solid var(--line);max-width:520px;width:100%;
-    padding:clamp(30px,4vw,48px);position:relative;box-shadow:var(--shadow-hi);
-    transform:translateY(24px) scale(.97);transition:transform .5s var(--ease)}
+  .modal{background:var(--paper);border-radius:8px;border:1px solid var(--line);max-width:540px;width:100%;padding:clamp(28px,4vw,46px);position:relative;box-shadow:var(--shadow-hi);transform:translateY(22px) scale(.97);transition:transform .45s var(--ease);margin:auto}
   .modal-bg.active .modal{transform:none}
-  .modal h3{font-size:1.8rem;margin:12px 0 16px}
-  .modal p{color:var(--ink-soft);font-size:.95rem;margin-bottom:26px}
-  .modal-close{position:absolute;top:18px;right:20px;background:none;border:none;font-size:1.6rem;line-height:1;
-    color:var(--ink-mute);cursor:pointer;transition:color .3s var(--ease),transform .3s var(--ease)}
+  .modal h3{font-size:1.8rem;margin:10px 0 14px}
+  .modal p{color:var(--ink-soft);font-size:.95rem;margin-bottom:22px}
+  .modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:1.6rem;line-height:1;color:var(--ink-mute);cursor:pointer;transition:color .3s,transform .3s}
   .modal-close:hover{color:var(--navy);transform:rotate(90deg)}
+  .reg-error{color:#a6361f;font-size:.84rem;margin-top:12px}
+  .reg-note{font-size:.78rem;color:var(--ink-mute);margin-top:14px;margin-bottom:0}
+  #reg-success{text-align:center}
+  .reg-check{width:58px;height:58px;border-radius:50%;background:var(--gold-tint);color:var(--gold-deep);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 16px;animation:pop .5s var(--ease)}
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
 
-  /* ============ REVEAL ANIMATIONS ============ */
-  .js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  /* REVEAL */
+  .js .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
   .js .reveal.is-visible{opacity:1;transform:none}
-  .js .stagger>*{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+  .js .stagger>*{opacity:0;transform:translateY(30px);transition:opacity .75s var(--ease),transform .75s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
   .js .stagger.is-visible>*{opacity:1;transform:none}
 
-  /* ============ RESPONSIVE ============ */
+  /* RESPONSIVE */
   @media(max-width:1000px){
-    .hero{grid-template-columns:1fr;gap:48px;padding-top:120px}
+    .hero{grid-template-columns:1fr;gap:44px;padding-top:124px}
     .hero-visual{justify-content:flex-start}
-    .group-header{grid-template-columns:1fr;gap:30px}
+    .group-header{grid-template-columns:1fr;gap:28px}
     .tours-grid{grid-template-columns:repeat(2,1fr)}
     .about-grid{grid-template-columns:1fr}
     .footer-grid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:760px){
-    nav{padding:14px var(--pad)}
+    nav{padding:13px var(--pad)}
     .nav-burger{display:flex}
-    .nav-links{position:fixed;inset:0 0 0 auto;width:min(78vw,320px);flex-direction:column;align-items:flex-start;
-      justify-content:center;gap:26px;background:var(--grad-navy);padding:80px 36px;transform:translateX(105%);
-      transition:transform .55s var(--ease);box-shadow:-20px 0 60px -30px rgba(0,0,0,.7)}
+    .nav-links{position:fixed;inset:0 0 0 auto;width:min(78vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:24px;
+      background:linear-gradient(160deg,#FBF7EA,#EBE0C0);padding:80px 36px;transform:translateX(105%);transition:transform .5s var(--ease);box-shadow:-20px 0 60px -30px rgba(27,42,64,.4)}
     .nav-links.open{transform:none}
-    .nav-links a{color:var(--cream);font-size:1.1rem}
-    .nav-links a::after{background:var(--gold-200)}
+    .nav-links a{font-size:1.1rem}
     .b2b-access{display:none}
     .tours-grid{grid-template-columns:1fr}
     .options-grid,.options-grid.three,.options-grid.four,.brief-summary,.group-stats{grid-template-columns:1fr 1fr}
@@ -403,28 +342,19 @@
     .options-grid,.options-grid.three,.options-grid.four{grid-template-columns:1fr}
     .step-tab span:not(.step-num){display:none}
   }
-
-  /* ============ REDUCED MOTION ============ */
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-    .intro{display:none!important}
-    html.intro-active{overflow:auto}
-    .js .reveal,.js .stagger>*{opacity:1!important;transform:none!important}
-    .amph-draw{stroke-dashoffset:0}.amph-fill{opacity:1}.intro-word .w{opacity:1;transform:none}
+    .intro{display:none!important}html.intro-active{overflow:auto}
+    .js .reveal,.js .stagger>*,.js .hero-content>*,.js .hero-visual{opacity:1!important;transform:none!important;animation:none!important}
+    .amph-draw{stroke-dashoffset:0}.amph-body-fill{fill-opacity:.16}.intro-word .w{opacity:1;transform:none}
     .hero-cue .line::after{display:none}
   }
 </style>
-
 <!-- ============ CINEMATIC INTRO ============ -->
 <div class="intro" id="intro" aria-hidden="true">
   <svg class="amphora" viewBox="0 0 120 168" role="img" aria-label="Gusto Giusto">
-    <defs>
-      <linearGradient id="ggGoldI" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#E7D08A"/><stop offset=".5" stop-color="#C9A84C"/><stop offset="1" stop-color="#A8862F"/>
-      </linearGradient>
-    </defs>
-    <path class="amph-fill" d="M51 30 C49 38 49 45 52 51 C41 57 32 72 32 94 C32 118 45 140 60 148 C75 140 88 118 88 94 C88 72 79 57 68 51 C71 45 71 38 69 30 Z" fill="url(#ggGoldI)" opacity=".12"/>
-    <g fill="none" stroke="url(#ggGoldI)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path class="amph-body-fill" d="M51 30 C49 38 49 45 52 51 C41 57 32 72 32 94 C32 118 45 140 60 148 C75 140 88 118 88 94 C88 72 79 57 68 51 C71 45 71 38 69 30 Z" fill="#C9A84C" fill-opacity="0"/>
+    <g fill="none" stroke="#1B2A40" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
       <ellipse class="amph-draw amph-rim" pathLength="1" cx="60" cy="28" rx="15" ry="5"/>
       <path class="amph-draw amph-body" pathLength="1" d="M51 30 C49 38 49 45 52 51 C41 57 32 72 32 94 C32 118 45 140 60 148 C75 140 88 118 88 94 C88 72 79 57 68 51 C71 45 71 38 69 30 Z"/>
       <path class="amph-draw amph-handle" pathLength="1" d="M51 36 C37 35 27 49 35 66"/>
@@ -433,8 +363,8 @@
     </g>
   </svg>
   <div class="intro-word"><span class="w">Gusto</span><span class="w">Giusto</span></div>
-  <div class="intro-tag" data-i18n="intro.tag">Premium Italian Destination Management</div>
-  <button class="intro-skip" id="intro-skip" data-i18n="ui.skip">Skip</button>
+  <div class="intro-tag" data-i18n="intro.tag">Премиальный итальянский DMC</div>
+  <button class="intro-skip" id="intro-skip" data-i18n="ui.skip">Пропустить</button>
 </div>
 
 <div class="scroll-progress" id="scroll-progress"></div>
@@ -443,13 +373,8 @@
 <nav>
   <a href="#" class="logo" aria-label="Gusto Giusto">
     <svg class="amphora" viewBox="0 0 120 168" aria-hidden="true">
-      <defs>
-        <linearGradient id="ggGoldN" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#E7D08A"/><stop offset=".5" stop-color="#C9A84C"/><stop offset="1" stop-color="#A8862F"/>
-        </linearGradient>
-      </defs>
-      <path d="M51 30 C49 38 49 45 52 51 C41 57 32 72 32 94 C32 118 45 140 60 148 C75 140 88 118 88 94 C88 72 79 57 68 51 C71 45 71 38 69 30 Z" fill="url(#ggGoldN)" opacity=".14"/>
-      <g fill="none" stroke="url(#ggGoldN)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M51 30 C49 38 49 45 52 51 C41 57 32 72 32 94 C32 118 45 140 60 148 C75 140 88 118 88 94 C88 72 79 57 68 51 C71 45 71 38 69 30 Z" fill="#C9A84C" opacity=".16"/>
+      <g fill="none" stroke="#1B2A40" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
         <ellipse cx="60" cy="28" rx="15" ry="5"/>
         <path d="M51 30 C49 38 49 45 52 51 C41 57 32 72 32 94 C32 118 45 140 60 148 C75 140 88 118 88 94 C88 72 79 57 68 51 C71 45 71 38 69 30 Z"/>
         <path d="M51 36 C37 35 27 49 35 66"/>
@@ -467,7 +392,7 @@
     <li><a href="#wine" data-i18n="nav.wine">Винные партнёры</a></li>
   </ul>
   <div class="nav-right">
-    <button class="b2b-access" onclick="openModal('b2b')" data-i18n="nav.b2b">B2B-доступ</button>
+    <button class="b2b-access" onclick="openRegister()" data-i18n="nav.b2b">B2B-доступ</button>
     <div class="lang-toggle">
       <button class="lang-btn active" data-lang="ru">RU</button>
       <span class="lang-divider">/</span>
@@ -481,17 +406,25 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-orbit" data-parallax="0.06"></div>
+  <div class="hero-sun" data-parallax="0.05"></div>
+  <svg class="hero-hills" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" data-parallax="-0.03">
+    <path d="M0 158 C240 108 430 150 700 118 C980 86 1180 150 1440 108 L1440 220 L0 220 Z" fill="#1B2A40" opacity=".06"/>
+    <g fill="#1B2A40" opacity=".12">
+      <path d="M250 150 q5 -34 10 0 q-5 6 -10 0z"/><path d="M286 152 q4 -28 8 0 q-4 5 -8 0z"/>
+      <path d="M980 150 q5 -32 10 0 q-5 6 -10 0z"/><path d="M1012 152 q4 -26 8 0 q-4 5 -8 0z"/>
+    </g>
+    <path d="M0 188 C300 148 560 184 860 158 C1120 136 1280 180 1440 156 L1440 220 L0 220 Z" fill="#1B2A40" opacity=".11"/>
+  </svg>
   <div class="hero-content">
     <span class="eyebrow" data-i18n="hero.eyebrow">Принимающая компания по Италии · B2B</span>
     <h1 data-i18n-html="hero.title">Италия. Как её продают <em>профессионалы</em>.</h1>
     <p class="hero-sub" data-i18n="hero.sub">Принимающая компания по Италии для русскоговорящих туроператоров. Прямые контракты с итальянскими поставщиками, координация на трёх языках, документация под стандарты туроператора. Без посредников и наценок.</p>
     <div class="hero-ctas">
-      <a href="#programmes" class="cta primary"><span data-i18n="hero.cta1">Перейти к программам</span></a>
-      <button class="cta outline" onclick="openModal('b2b')" data-i18n="hero.cta2">Запросить B2B-доступ</button>
+      <a href="#programmes" class="cta primary" data-i18n="hero.cta1">Перейти к программам</a>
+      <button class="cta outline" onclick="openRegister()" data-i18n="hero.cta2">Запросить B2B-доступ</button>
     </div>
   </div>
-  <div class="hero-visual" data-parallax="-0.05">
+  <div class="hero-visual">
     <div class="hero-card">
       <span class="eyebrow" data-i18n="hero.card.eyebrow">В работе</span>
       <h3 data-i18n="hero.card.title">От Венеции до Сицилии — полный цикл.</h3>
@@ -502,7 +435,7 @@
       </div>
     </div>
   </div>
-  <div class="hero-cue"><span class="line"></span><span data-i18n="ui.scroll">Scroll</span></div>
+  <div class="hero-cue"><span class="line"></span><span data-i18n="ui.scroll">Листайте</span></div>
 </section>
 
 <!-- ============ ABOUT ============ -->
@@ -563,42 +496,42 @@
           <h4 data-i18n="tour.tuscany.name">Тоскана — La Dolce Vita</h4>
           <div class="tour-tag" data-i18n="tour.tuscany.tag">Флоренция, Сиена, Пиза и холмы Кьянти</div>
           <ul class="tour-highlights" data-i18n-list="tour.tuscany.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_GROUP_01_Tuscany.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="tour.sicily_spring.season">Апр – Май · 8 дней / 7 ночей</div>
           <h4 data-i18n="tour.sicily_spring.name">Сицилия — Весенняя редакция</h4>
           <div class="tour-tag" data-i18n="tour.sicily_spring.tag">Катания, Сиракузы, Таормина, Палермо, Агридженто</div>
           <ul class="tour-highlights" data-i18n-list="tour.sicily_spring.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_GROUP_02_SicilySpring.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="tour.sicily_summer.season">Июнь – Сен · 8 дней / 7 ночей</div>
           <h4 data-i18n="tour.sicily_summer.name">Сицилия — Летняя редакция</h4>
           <div class="tour-tag" data-i18n="tour.sicily_summer.tag">Этна, Таормина, Сиракузы и Ионическое побережье</div>
           <ul class="tour-highlights" data-i18n-list="tour.sicily_summer.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_GROUP_03_SicilySummer.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="tour.puglia.season">Апр – Окт · 8 дней / 7 ночей</div>
           <h4 data-i18n="tour.puglia.name">Апулия — The Dream</h4>
           <div class="tour-tag" data-i18n="tour.puglia.tag">Лечче, Альберобелло, Остуни, Полиньяно-а-Маре</div>
           <ul class="tour-highlights" data-i18n-list="tour.puglia.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_GROUP_04_Puglia.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="tour.veneto.season">Апр – Окт · 8 дней / 7 ночей</div>
           <h4 data-i18n="tour.veneto.name">Венето — Italian Uniqueness</h4>
           <div class="tour-tag" data-i18n="tour.veneto.tag">Венеция, Верона, Валеджо, Тревизо и земля Просекко</div>
           <ul class="tour-highlights" data-i18n-list="tour.veneto.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_GROUP_05_Veneto.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="tour.lombardy.season">Ноя – Дек · 8 дней / 7 ночей</div>
           <h4 data-i18n="tour.lombardy.name">Милан — Зимняя редакция</h4>
           <div class="tour-tag" data-i18n="tour.lombardy.tag">Милан, Комо, Червиния, Франчакорта</div>
           <ul class="tour-highlights" data-i18n-list="tour.lombardy.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_GROUP_06_MilanWinter.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
       </div>
     </div>
@@ -625,35 +558,35 @@
           <h4 data-i18n="wf.1.name">Рим · Флоренция · Венеция</h4>
           <div class="tour-tag" data-i18n="wf.1.tag">Три города-символа и день в Кьянти</div>
           <ul class="tour-highlights" data-i18n-list="wf.1.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_WF_01_RomaFirenzeVenezia.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="wf.2.label">Направление 02 · 7 ночей / 8 дней</div>
           <h4 data-i18n="wf.2.name">Жемчужины Северной Италии</h4>
           <div class="tour-tag" data-i18n="wf.2.tag">Озеро Комо, Милан, Бергамо, Верона, Сирмионе</div>
           <ul class="tour-highlights" data-i18n-list="wf.2.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_WF_02_NorthernGems.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="wf.3.label">Направление 03 · 7 ночей / 8 дней</div>
           <h4 data-i18n="wf.3.name">Рим · Неаполь · Сорренто</h4>
           <div class="tour-tag" data-i18n="wf.3.tag">Императорский Рим, Неаполь ЮНЕСКО и побережье</div>
           <ul class="tour-highlights" data-i18n-list="wf.3.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_WF_03_RomaNapoliSorrento.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="wf.4.label">Направление 04 · 7 ночей / 8 дней</div>
           <h4 data-i18n="wf.4.name">Истинная Тоскана</h4>
           <div class="tour-tag" data-i18n="wf.4.tag">Флоренция, Лукка, Пиза и две ночи на винодельне</div>
           <ul class="tour-highlights" data-i18n-list="wf.4.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_WF_04_TuscanyDeep.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="wf.5.label">Направление 05 · 7 ночей / 8 дней</div>
           <h4 data-i18n="wf.5.name">Сицилия · Таормина</h4>
           <div class="tour-tag" data-i18n="wf.5.tag">Этна, ионическое побережье, dolce vita</div>
           <ul class="tour-highlights" data-i18n-list="wf.5.hl"></ul>
-          <button class="tour-pdf" onclick="openModal('pdf')" data-i18n="tour.pdf">Запросить PDF →</button>
+          <button class="tour-pdf pdf-gated" data-pdf="pdf/GG_WF_05_SicilyTaormina.pdf" data-i18n="tour.pdf">Запросить PDF →</button>
         </div>
       </div>
     </div>
@@ -680,35 +613,35 @@
           <h4 data-i18n="vip.1.name">Dolce Vita Grand Tour</h4>
           <div class="tour-tag" data-i18n="vip.1.tag">Италия от Амальфи до Милана — 8 регионов, 28 дней</div>
           <ul class="tour-highlights" data-i18n-list="vip.1.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_VIP_01_DolceVita.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_VIP_01_DolceVita.pdf" data-pdf="pdf/GG_VIP_01_DolceVita.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="vip.2.label">Направление 02 · 6 ночей / 7 дней</div>
           <h4 data-i18n="vip.2.name">Тоскана и Венеция — вершина</h4>
           <div class="tour-tag" data-i18n="vip.2.tag">Флоренция и Венеция как их видят только избранные</div>
           <ul class="tour-highlights" data-i18n-list="vip.2.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_VIP_02_TuscanyVenice.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_VIP_02_TuscanyVenice.pdf" data-pdf="pdf/GG_VIP_02_TuscanyVenice.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="vip.3.label">Направление 03 · 6 ночей / 7 дней</div>
           <h4 data-i18n="vip.3.name">Север Италии — signature-маршрут</h4>
           <div class="tour-tag" data-i18n="vip.3.tag">Милан, Комо, Верона, Доломиты и Венеция</div>
           <ul class="tour-highlights" data-i18n-list="vip.3.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_VIP_03_NorthernSignature.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_VIP_03_NorthernSignature.pdf" data-pdf="pdf/GG_VIP_03_NorthernSignature.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="vip.4.label">Направление 04 · 7 ночей / 8 дней</div>
           <h4 data-i18n="vip.4.name">Пьемонт — королевское наследие</h4>
           <div class="tour-tag" data-i18n="vip.4.tag">Турин, Венария, Альпы и винные Ланге</div>
           <ul class="tour-highlights" data-i18n-list="vip.4.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_VIP_04_PiemonteRoyal.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_VIP_04_PiemonteRoyal.pdf" data-pdf="pdf/GG_VIP_04_PiemonteRoyal.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="vip.5.label">Направление 05 · 5 ночей / 6 дней</div>
           <h4 data-i18n="vip.5.name">Милан — insider моды и стиля</h4>
           <div class="tour-tag" data-i18n="vip.5.tag">Мода, ателье, дизайн — Милан изнутри</div>
           <ul class="tour-highlights" data-i18n-list="vip.5.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_VIP_05_MilanoFashion.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_VIP_05_MilanoFashion.pdf" data-pdf="pdf/GG_VIP_05_MilanoFashion.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
       </div>
     </div>
@@ -735,21 +668,21 @@
           <h4 data-i18n="uni.1.name">Ломбардия — индустрия и культура</h4>
           <div class="tour-tag" data-i18n="uni.1.tag">Pirelli, WPP, Campari и культура Милана для MBA-студентов</div>
           <ul class="tour-highlights" data-i18n-list="uni.1.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_UNI_01_Lombardia.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_UNI_01_Lombardia.pdf" data-pdf="pdf/GG_UNI_01_Lombardia.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="uni.2.label">Направление 02 · 9 дней / 8 ночей</div>
           <h4 data-i18n="uni.2.name">Италия — индустриальный тур</h4>
           <div class="tour-tag" data-i18n="uni.2.tag">Ferrari, Parmigiano, Panerai — Рим, Болонья, Флоренция</div>
           <ul class="tour-highlights" data-i18n-list="uni.2.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_UNI_02_Industry.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_UNI_02_Industry.pdf" data-pdf="pdf/GG_UNI_02_Industry.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
         <div class="tour-card">
           <div class="tour-season" data-i18n="uni.3.label">Направление 03 · 8 дней / 7 ночей</div>
           <h4 data-i18n="uni.3.name">Миланская неделя моды — академическая программа</h4>
           <div class="tour-tag" data-i18n="uni.3.tag">Accademia del Lusso, показы Fashion Week и luxury-атейтле</div>
           <ul class="tour-highlights" data-i18n-list="uni.3.hl"></ul>
-          <a class="tour-pdf" href="pdf/GG_UNI_03_Fashion.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
+          <a class="tour-pdf pdf-gated" href="pdf/GG_UNI_03_Fashion.pdf" data-pdf="pdf/GG_UNI_03_Fashion.pdf" target="_blank" data-i18n="tour.pdf.download">Скачать PDF →</a>
         </div>
       </div>
     </div>
@@ -789,31 +722,31 @@
           <span class="wine-region" data-i18n="net.wine.c1.r">Венето · Вальполичелла</span>
           <h5>Massimago</h5>
           <p class="wine-desc" data-i18n="net.wine.c1.d">Амароне и Вальполичелла. Релайс среди виноградников, авторский ресторан и спа. 20 минут от Вероны.</p>
-          <a class="wine-pdf" href="pdf/GG_WINE_01_Massimago.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+          <a class="wine-pdf pdf-gated" href="pdf/GG_WINE_01_Massimago.pdf" data-pdf="pdf/GG_WINE_01_Massimago.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
         </div>
         <div class="wine-card">
           <span class="wine-region" data-i18n="net.wine.c2.r">Венето · Вальполичелла</span>
           <h5>Musella</h5>
           <p class="wine-desc" data-i18n="net.wine.c2.d">Биодинамическая усадьба XVI века, остерия Al Ponte, гольф и природный парк-заповедник. 10 минут от Вероны.</p>
-          <a class="wine-pdf" href="pdf/GG_WINE_02_Musella.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+          <a class="wine-pdf pdf-gated" href="pdf/GG_WINE_02_Musella.pdf" data-pdf="pdf/GG_WINE_02_Musella.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
         </div>
         <div class="wine-card">
           <span class="wine-region" data-i18n="net.wine.c3.r">Умбрия · Тоди</span>
           <h5>Roccafiore</h5>
           <p class="wine-desc" data-i18n="net.wine.c3.d">Wine Resort &amp; Spa, ресторан Fiorfiore, впечатления в зелёном сердце Умбрии. 1 час от Рима.</p>
-          <a class="wine-pdf" href="pdf/GG_WINE_03_Roccafiore.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+          <a class="wine-pdf pdf-gated" href="pdf/GG_WINE_03_Roccafiore.pdf" data-pdf="pdf/GG_WINE_03_Roccafiore.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
         </div>
         <div class="wine-card">
           <span class="wine-region" data-i18n="net.wine.c4.r">Эмилия · Каносса</span>
           <h5>Roncolo 1888 · Venturini Baldini</h5>
           <p class="wine-desc" data-i18n="net.wine.c4.d">Релайс на исторической вилле Манодори, Ачетайя ди Каносса, кухня Эмилии. Рядом Модена, Парма, Болонья.</p>
-          <a class="wine-pdf" href="pdf/GG_WINE_04_Roncolo1888.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+          <a class="wine-pdf pdf-gated" href="pdf/GG_WINE_04_Roncolo1888.pdf" data-pdf="pdf/GG_WINE_04_Roncolo1888.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
         </div>
         <div class="wine-card">
           <span class="wine-region" data-i18n="net.wine.c5.r">Тоскана · Флоренция</span>
           <h5>Torre a Cona</h5>
           <p class="wine-desc" data-i18n="net.wine.c5.d">Вилла XVIII века на холмах Флоренции, авторская остерия, Vin Santo. База для путешествий по всей Тоскане.</p>
-          <a class="wine-pdf" href="pdf/GG_WINE_05_TorreACona.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
+          <a class="wine-pdf pdf-gated" href="pdf/GG_WINE_05_TorreACona.pdf" data-pdf="pdf/GG_WINE_05_TorreACona.pdf" target="_blank" data-i18n="net.wine.pdf">Презентация →</a>
         </div>
       </div>
       <p style="margin-top:18px;font-size:13px" data-i18n="net.wine.body2">В сети также — отобранные имения Кьянти, Болгери, Ланге и Этны.</p>
@@ -977,10 +910,45 @@
   </div>
 </div>
 
+<div class="modal-bg" id="modal-register">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="reg-form">
+      <span class="eyebrow" data-i18n="reg.eyebrow">Регистрация для туроператоров</span>
+      <h3 data-i18n="reg.title">Доступ к материалам — после регистрации.</h3>
+      <p data-i18n="reg.body">Зарегистрируйте ваше агентство, чтобы открыть доступ ко всем PDF-программам.</p>
+      <label class="input-label" data-i18n="reg.f.company">Туроператор / агентство</label>
+      <input class="brief-input" id="reg-company" placeholder="—">
+      <label class="input-label" data-i18n="reg.f.contact">Контактное лицо</label>
+      <input class="brief-input" id="reg-contact" placeholder="—">
+      <label class="input-label" data-i18n="reg.f.email">Рабочий e-mail</label>
+      <input class="brief-input" id="reg-email" type="email" placeholder="—">
+      <label class="input-label" data-i18n="reg.f.markets">Рынки / страны работы</label>
+      <input class="brief-input" id="reg-markets" placeholder="—">
+      <div class="reg-error" id="reg-error" data-i18n="reg.error" style="display:none">Укажите название агентства и корректный e-mail.</div>
+      <button class="cta primary" id="reg-submit" style="margin-top:20px;width:100%" data-i18n="reg.submit">Зарегистрироваться и открыть доступ</button>
+      <p class="reg-note" data-i18n="reg.note">Данные используются только для подтверждения B2B-статуса и отправки материалов.</p>
+    </div>
+    <div id="reg-success" style="display:none">
+      <div class="reg-check">&#10003;</div>
+      <h3 data-i18n="reg.success.title">Доступ открыт.</h3>
+      <p data-i18n="reg.success.body">Теперь вы можете открывать все PDF-программы прямо на сайте.</p>
+      <button class="cta primary" onclick="closeModal()" data-i18n="reg.success.cta">Перейти к программам</button>
+    </div>
+  </div>
+</div>
+
 <script>
   const i18n = {
     ru: {
       "intro.tag": "Премиальный итальянский DMC", "ui.skip": "Пропустить", "ui.scroll": "Листайте",
+      "tour.pdf.open":"Открыть PDF →","nav.registered":"Доступ открыт ✓",
+      "reg.eyebrow":"Регистрация для туроператоров","reg.title":"Доступ к материалам — после регистрации.",
+      "reg.body":"Зарегистрируйте ваше агентство, чтобы открыть доступ ко всем PDF-программам: групповые туры, «Италия без забот», VIP, University и винные партнёры. Доступ предоставляется сразу после регистрации.",
+      "reg.f.company":"Туроператор / агентство","reg.f.contact":"Контактное лицо","reg.f.email":"Рабочий e-mail","reg.f.markets":"Рынки / страны работы",
+      "reg.error":"Укажите название агентства и корректный e-mail.","reg.submit":"Зарегистрироваться и открыть доступ",
+      "reg.note":"Данные используются только для подтверждения B2B-статуса и отправки материалов.",
+      "reg.success.title":"Доступ открыт.","reg.success.body":"Теперь вы можете открывать все PDF-программы прямо на сайте. Мы свяжемся с вами для подтверждения партнёрства.","reg.success.cta":"Перейти к программам",
       "nav.group":"Групповые туры","nav.worryfree":"Италия без забот","nav.vip":"VIP","nav.university":"University","nav.wine":"Винные партнёры","nav.b2b":"B2B-доступ",
       "hero.eyebrow":"Принимающая компания по Италии · B2B",
       "hero.title":"Италия. Как её продают <em>профессионалы</em>.",
@@ -1103,6 +1071,13 @@
     },
     en: {
       "intro.tag": "Premium Italian Destination Management", "ui.skip": "Skip", "ui.scroll": "Scroll",
+      "tour.pdf.open":"Open PDF →","nav.registered":"Access granted ✓",
+      "reg.eyebrow":"Tour Operator Registration","reg.title":"Materials unlock after registration.",
+      "reg.body":"Register your agency to unlock all programme PDFs: group tours, Worry-Free Italy, VIP, University and wine partners. Access is granted immediately after registration.",
+      "reg.f.company":"Tour Operator / Agency","reg.f.contact":"Contact person","reg.f.email":"Work e-mail","reg.f.markets":"Markets / countries",
+      "reg.error":"Please enter your agency name and a valid e-mail.","reg.submit":"Register & unlock access",
+      "reg.note":"Used only to confirm your B2B status and to send materials.",
+      "reg.success.title":"Access granted.","reg.success.body":"You can now open all programme PDFs directly on the site. We'll be in touch to confirm the partnership.","reg.success.cta":"Explore programmes",
       "nav.group":"Group Tours","nav.worryfree":"Worry-Free Italy","nav.vip":"VIP","nav.university":"University","nav.wine":"Wine Partners","nav.b2b":"B2B Access",
       "hero.eyebrow":"Italy for Tour Operators · Premium DMC",
       "hero.title":"Italy, for those who <em>sell it</em>.",
@@ -1227,51 +1202,93 @@
 
   let currentLang = 'ru';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const REG_KEY='gg_b2b_registered', INFO_KEY='gg_b2b_info';
+  let pendingPdf=null;
+  function isRegistered(){ try{ return localStorage.getItem(REG_KEY)==='1'; }catch(e){ return false; } }
 
   function applyLang(lang){
-    currentLang = lang;
-    document.documentElement.lang = lang;
-    const t = i18n[lang];
+    currentLang=lang; document.documentElement.lang=lang;
+    const t=i18n[lang];
     document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
+      const key=el.getAttribute('data-i18n');
       if(t[key]!==undefined){
-        if(typeof t[key]==='string' && (key.endsWith('.price') || key==='net.op.body1')) el.innerHTML = t[key];
-        else el.textContent = t[key];
+        if(typeof t[key]==='string' && (key.endsWith('.price')||key==='net.op.body1')) el.innerHTML=t[key];
+        else el.textContent=t[key];
       }
     });
-    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-html');
-      if(t[key]!==undefined) el.innerHTML = t[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-ph');
-      if(t[key]!==undefined) el.placeholder = t[key];
-    });
-    document.querySelectorAll('[data-i18n-list]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-list');
-      if(t[key]!==undefined && Array.isArray(t[key])) el.innerHTML = t[key].map(i=>`<li>${i}</li>`).join('');
-    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{ const k=el.getAttribute('data-i18n-html'); if(t[k]!==undefined) el.innerHTML=t[k]; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ const k=el.getAttribute('data-i18n-ph'); if(t[k]!==undefined) el.placeholder=t[k]; });
+    document.querySelectorAll('[data-i18n-list]').forEach(el=>{ const k=el.getAttribute('data-i18n-list'); if(t[k]!==undefined&&Array.isArray(t[k])) el.innerHTML=t[k].map(i=>`<li>${i}</li>`).join(''); });
     document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+    // registered state labels
+    if(isRegistered()){
+      const b2b=document.querySelector('.b2b-access'); if(b2b) b2b.textContent=t['nav.registered'];
+      document.querySelectorAll('.pdf-gated').forEach(el=>{ el.textContent=t['tour.pdf.open']; });
+    }
     if(currentStep==='result') renderResult();
     updateNav();
   }
   document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyLang(btn.dataset.lang)));
 
-  function openModal(type){ document.getElementById('modal-'+type).classList.add('active'); document.body.style.overflow='hidden'; }
+  function openModal(type){ const m=document.getElementById('modal-'+type); if(m){ m.classList.add('active'); document.body.style.overflow='hidden'; } }
   function closeModal(){ document.querySelectorAll('.modal-bg').forEach(m=>m.classList.remove('active')); document.body.style.overflow=''; }
+  function openRegister(){
+    const reg=isRegistered();
+    document.getElementById('reg-form').style.display=reg?'none':'';
+    document.getElementById('reg-success').style.display=reg?'':'none';
+    openModal('register');
+  }
   document.querySelectorAll('.modal-bg').forEach(bg=>bg.addEventListener('click',e=>{ if(e.target===bg) closeModal(); }));
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
+  /* ===== B2B registration (client-side gate) ===== */
+  function notifyRegistration(info){
+    const isRu=currentLang==='ru';
+    const subject=isRu?`Новая B2B-регистрация — ${info.company}`:`New B2B registration — ${info.company}`;
+    const body=isRu
+      ? `Новая регистрация туроператора через сайт:\n\nАгентство: ${info.company}\nКонтакт: ${info.contact}\nE-mail: ${info.email}\nРынки: ${info.markets}\n`
+      : `New tour operator registration via the website:\n\nAgency: ${info.company}\nContact: ${info.contact}\nE-mail: ${info.email}\nMarkets: ${info.markets}\n`;
+    const a=document.createElement('a');
+    a.href=`mailto:gustogiusto@yandex.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    a.style.display='none'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),0);
+  }
+  const regSubmit=document.getElementById('reg-submit');
+  if(regSubmit){
+    regSubmit.addEventListener('click',()=>{
+      const v=id=>(document.getElementById(id).value||'').trim();
+      const company=v('reg-company'), contact=v('reg-contact'), email=v('reg-email'), markets=v('reg-markets');
+      const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const err=document.getElementById('reg-error');
+      if(!company || !emailOk){ err.style.display='block'; return; }
+      err.style.display='none';
+      const info={company,contact,email,markets,date:new Date().toISOString()};
+      try{ localStorage.setItem(REG_KEY,'1'); localStorage.setItem(INFO_KEY,JSON.stringify(info)); }catch(e){}
+      document.body.classList.add('gg-registered');
+      notifyRegistration(info);
+      applyLang(currentLang);
+      document.getElementById('reg-form').style.display='none';
+      document.getElementById('reg-success').style.display='';
+      if(pendingPdf){ const p=pendingPdf; pendingPdf=null; setTimeout(()=>window.open(p,'_blank','noopener'),350); }
+    });
+  }
+  /* PDF gating: open only after registration, otherwise prompt registration */
+  document.addEventListener('click',e=>{
+    const el=e.target.closest('.pdf-gated'); if(!el) return;
+    e.preventDefault();
+    const pdf=el.dataset.pdf; if(!pdf) return;
+    if(isRegistered()) window.open(pdf,'_blank','noopener');
+    else { pendingPdf=pdf; openRegister(); }
+  });
+
   /* ===== Brief multi-step ===== */
-  let currentStep = 1;
-  const selections = { segment:null, region:null, duration:null, group:null };
+  let currentStep=1;
+  const selections={ segment:null, region:null, duration:null, group:null };
   document.querySelectorAll('.opt').forEach(opt=>{
     opt.addEventListener('click',()=>{
       const field=opt.dataset.field, value=opt.dataset.value;
       selections[field]=value;
       document.querySelectorAll(`.opt[data-field="${field}"]`).forEach(o=>o.classList.remove('selected'));
-      opt.classList.add('selected');
-      updateNav();
+      opt.classList.add('selected'); updateNav();
     });
   });
   function isStepComplete(n){
@@ -1299,26 +1316,18 @@
   function updateNav(){
     const prev=document.getElementById('prev-btn'), next=document.getElementById('next-btn'), t=i18n[currentLang];
     if(currentStep==='result'){ prev.disabled=false; prev.textContent=t['brf.nav.prev']; next.style.display='none'; return; }
-    next.style.display='';
-    prev.disabled = currentStep===1;
-    prev.textContent = t['brf.nav.prev'];
-    next.disabled = !isStepComplete(currentStep);
-    next.textContent = currentStep===4 ? t['brf.nav.generate'] : t['brf.nav.next'];
+    next.style.display=''; prev.disabled=currentStep===1; prev.textContent=t['brf.nav.prev'];
+    next.disabled=!isStepComplete(currentStep);
+    next.textContent=currentStep===4 ? t['brf.nav.generate'] : t['brf.nav.next'];
   }
-  document.getElementById('next-btn').addEventListener('click',()=>{
-    if(!isStepComplete(currentStep)) return;
-    if(currentStep===4) showStep('result'); else showStep(currentStep+1);
-  });
-  document.getElementById('prev-btn').addEventListener('click',()=>{
-    if(currentStep==='result') showStep(4); else if(currentStep>1) showStep(currentStep-1);
-  });
+  document.getElementById('next-btn').addEventListener('click',()=>{ if(!isStepComplete(currentStep)) return; if(currentStep===4) showStep('result'); else showStep(currentStep+1); });
+  document.getElementById('prev-btn').addEventListener('click',()=>{ if(currentStep==='result') showStep(4); else if(currentStep>1) showStep(currentStep-1); });
   document.getElementById('restart-brief').addEventListener('click',()=>{
     Object.keys(selections).forEach(k=>selections[k]=null);
     document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
     document.querySelectorAll('.step-tab').forEach(t=>t.classList.remove('completed'));
     document.getElementById('op-name').value=''; document.getElementById('op-contact').value=''; document.getElementById('op-notes').value='';
-    document.querySelector('.result-panel').classList.remove('active');
-    showStep(1);
+    document.querySelector('.result-panel').classList.remove('active'); showStep(1);
   });
   function renderResult(){
     const t=i18n[currentLang];
@@ -1336,19 +1345,18 @@
     const isRu=currentLang==='ru';
     const seg=document.getElementById('r-segment').textContent, reg=document.getElementById('r-region').textContent,
           dur=document.getElementById('r-duration').textContent, grp=document.getElementById('r-group').textContent;
-    const subject = isRu ? `B2B-бриф — ${seg}` : `B2B Brief — ${seg}`;
-    const body = isRu
+    const subject=isRu?`B2B-бриф — ${seg}`:`B2B Brief — ${seg}`;
+    const body=isRu
       ? `Здравствуйте,\n\nНаправляю структурированный бриф через ваш сайт:\n\n— Направление: ${seg}\n— Регион: ${reg}\n— Длительность: ${dur}\n— Кол-во чел.: ${grp}\n\nТуроператор/агентство: ${opName}\nКонтакт: ${opContact}\n\nПримечания:\n${opNotes}\n\nЖду котировку.\n\nС уважением,`
       : `Hello,\n\nI am submitting a structured brief via your site:\n\n— Product Line: ${seg}\n— Region: ${reg}\n— Duration: ${dur}\n— Pax: ${grp}\n\nTour Operator / Agency: ${opName}\nContact: ${opContact}\n\nNotes:\n${opNotes}\n\nLooking forward to your quotation.\n\nBest regards,`;
-    document.getElementById('send-brief').href = `mailto:gustogiusto@yandex.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    document.getElementById('send-brief').href=`mailto:gustogiusto@yandex.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   /* ===== Mobile hamburger ===== */
   const navBurger=document.getElementById('nav-burger'), navLinks=document.getElementById('nav-links');
   if(navBurger && navLinks){
     navBurger.addEventListener('click',()=>{
-      const open=navLinks.classList.toggle('open');
-      navBurger.classList.toggle('open',open);
+      const open=navLinks.classList.toggle('open'); navBurger.classList.toggle('open',open);
       navBurger.setAttribute('aria-expanded',open?'true':'false');
     });
     navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
@@ -1356,8 +1364,10 @@
     }));
   }
 
-  /* ===== Scroll: nav elevation + progress bar (rAF) ===== */
+  /* ===== Scroll: nav elevation + progress ===== */
   const navEl=document.querySelector('nav'), progress=document.getElementById('scroll-progress');
+  const parLayers=document.querySelectorAll('[data-parallax]');
+  const canPar = !reduceMotion && window.matchMedia('(min-width:1001px)').matches;
   let ticking=false;
   function onScroll(){
     if(ticking) return; ticking=true;
@@ -1366,6 +1376,7 @@
       navEl.classList.toggle('scrolled', y>10);
       const h=document.documentElement.scrollHeight-window.innerHeight;
       if(progress) progress.style.transform=`scaleX(${h>0?Math.min(y/h,1):0})`;
+      if(canPar && y<window.innerHeight) parLayers.forEach(l=>{ const s=parseFloat(l.dataset.parallax)||0; l.style.transform=`translate3d(0,${y*s}px,0)`; });
       ticking=false;
     });
   }
@@ -1377,7 +1388,7 @@
     document.querySelectorAll(single.join(',')).forEach(el=>el.classList.add('reveal'));
     document.querySelectorAll('.tours-grid,.wine-cards').forEach(grid=>{
       grid.classList.add('stagger');
-      Array.from(grid.children).forEach((c,i)=>c.style.setProperty('--i', i));
+      Array.from(grid.children).forEach((c,i)=>c.style.setProperty('--i',i));
     });
     const io=new IntersectionObserver((entries,obs)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
@@ -1385,21 +1396,7 @@
     document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
   }
 
-  /* ===== Light hero parallax (desktop only) ===== */
-  if(!reduceMotion && window.matchMedia('(min-width:1001px)').matches){
-    const layers=document.querySelectorAll('[data-parallax]');
-    let pTick=false;
-    window.addEventListener('scroll',()=>{
-      if(pTick) return; pTick=true;
-      requestAnimationFrame(()=>{
-        const y=window.scrollY||0;
-        layers.forEach(l=>{ const s=parseFloat(l.dataset.parallax)||0; l.style.transform=`translate3d(0,${y*s}px,0)`; });
-        pTick=false;
-      });
-    },{passive:true});
-  }
-
-  /* ===== Cinematic intro control ===== */
+  /* ===== Cinematic intro: amphora appears, then dissolves ===== */
   (function(){
     const intro=document.getElementById('intro');
     if(!intro || reduceMotion){ if(intro) intro.remove(); return; }
@@ -1411,12 +1408,14 @@
       document.documentElement.classList.remove('intro-active');
       setTimeout(()=>intro.remove(),1100);
     }
-    const t=setTimeout(endIntro,3200);
-    document.getElementById('intro-skip').addEventListener('click',()=>{ clearTimeout(t); endIntro(); });
+    const t=setTimeout(endIntro,3000);
+    const skip=document.getElementById('intro-skip');
+    if(skip) skip.addEventListener('click',()=>{ clearTimeout(t); endIntro(); });
     intro.addEventListener('click',e=>{ if(e.target.id==='intro-skip') return; clearTimeout(t); endIntro(); });
     window.addEventListener('keydown',function onk(e){ if(['Escape','Enter',' '].includes(e.key)){ clearTimeout(t); endIntro(); window.removeEventListener('keydown',onk); } });
   })();
 
+  if(isRegistered()) document.body.classList.add('gg-registered');
   applyLang('ru');
   updateNav();
 </script>
