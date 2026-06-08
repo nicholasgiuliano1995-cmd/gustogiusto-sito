@@ -194,43 +194,102 @@
     min-height: 100vh;
     padding: 130px 48px 80px;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 72px;
     align-items: center;
     position: relative;
     overflow: hidden;
+    /* Glow oro morbido sul lato contenuto, per profondità senza texture pesanti */
+    background:
+      radial-gradient(120% 90% at 12% 18%, rgba(201, 168, 76, 0.10) 0%, rgba(201, 168, 76, 0) 42%),
+      var(--cream);
   }
 
+  /* Pannello navy immersivo sul lato destro, con hairline oro editoriale */
   .hero::before {
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 45%;
-    background: var(--navy);
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    box-shadow: inset 1px 0 0 rgba(201, 168, 76, 0.45);
     z-index: 0;
   }
 
-  .hero-content { position: relative; z-index: 2; }
+  /* Glow oro radiale sopra il pannello navy */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 50%; right: 6%;
+    width: 460px; height: 460px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.22) 0%, rgba(201, 168, 76, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 620px; }
+
+  /* Eyebrow con trattino oro iniziale */
+  .hero-content .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-content .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 34px;
+    height: 1px;
+    background: var(--gold);
+  }
 
   .hero h1 {
-    font-size: clamp(44px, 5.2vw, 76px);
-    line-height: 1.05;
+    font-size: clamp(46px, 5.4vw, 82px);
+    line-height: 1.04;
     color: var(--navy);
-    margin: 24px 0 32px;
+    margin: 26px 0 30px;
+    letter-spacing: -0.005em;
   }
 
   .hero h1 em {
-    color: var(--gold);
+    color: var(--gold-deep);
     font-style: italic;
     font-weight: 300;
   }
 
   .hero-sub {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--muted);
     max-width: 540px;
     margin-bottom: 40px;
     line-height: 1.7;
+  }
+
+  /* Proof strip: dati fattuali, presentazione premium */
+  .hero-proof {
+    display: flex;
+    gap: 40px;
+    margin-top: 44px;
+    flex-wrap: wrap;
+  }
+  .hero-proof .proof-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-proof .proof-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-style: italic;
+    line-height: 1;
+    color: var(--gold-deep);
+  }
+  .hero-proof .proof-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
   .hero-ctas {
@@ -283,14 +342,26 @@
   }
 
   .hero-card {
-    background: var(--cream);
-    padding: 48px 40px;
-    border: 1px solid var(--gold);
-    max-width: 400px;
-    box-shadow: 0 30px 80px rgba(27, 42, 64, 0.35);
+    position: relative;
+    background: linear-gradient(165deg, rgba(250, 246, 232, 0.95) 0%, rgba(245, 237, 214, 0.88) 100%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border: 1px solid rgba(201, 168, 76, 0.55);
+    max-width: 410px;
+    box-shadow: 0 40px 90px rgba(15, 26, 43, 0.45);
   }
 
-  .hero-card .eyebrow { display: block; margin-bottom: 18px; }
+  /* Emblema anfora: riusa il logo esistente (clonato via JS), non un nuovo disegno */
+  .hero-card-emblem {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 22px;
+  }
+
+  .hero-card .eyebrow { display: block; margin-bottom: 16px; }
   .hero-card h3 {
     font-size: 30px;
     color: var(--navy);
@@ -1432,6 +1503,7 @@
     .anim .hero-content h1,
     .anim .hero-content .hero-sub,
     .anim .hero-content .hero-ctas,
+    .anim .hero-content .hero-proof,
     .anim .hero-visual .hero-card { opacity: 0; }
 
     .anim.intro-ready .logo-img {
@@ -1451,6 +1523,9 @@
     }
     .anim.intro-ready .hero-content .hero-ctas {
       animation: ggUpIn 0.8s 0.80s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    .anim.intro-ready .hero-content .hero-proof {
+      animation: ggUpIn 0.8s 0.92s cubic-bezier(0.22, 0.61, 0.36, 1) both;
     }
     .anim.intro-ready .hero-visual .hero-card {
       animation: ggCardIn 1s 0.58s cubic-bezier(0.22, 0.61, 0.36, 1) both;
@@ -1522,8 +1597,13 @@
     .logo-text { font-size: 18px; }
     section { padding: 80px 24px; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
-    .hero::before { width: 100%; height: 35%; bottom: 0; top: auto; }
+    .hero::before { width: 100%; height: 35%; bottom: 0; top: auto; box-shadow: inset 0 1px 0 rgba(201, 168, 76, 0.45); }
+    .hero::after { top: auto; bottom: 4%; right: 50%; transform: translateX(50%); width: 320px; height: 320px; }
     .hero-visual { height: auto; }
+    .hero-content { max-width: 100%; }
+    .hero-proof { gap: 28px; margin-top: 32px; }
+    .hero-proof .proof-num { font-size: 34px; }
+    .hero-card { max-width: 100%; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .group-section { padding: 36px 24px; }
     .group-header { grid-template-columns: 1fr; gap: 24px; }
@@ -1582,9 +1662,24 @@
       <a href="#programmes" class="cta primary" data-i18n="hero.cta1">Перейти к программам</a>
       <button class="cta outline" onclick="openModal('b2b')" data-i18n="hero.cta2">Запросить B2B-доступ</button>
     </div>
+    <div class="hero-proof">
+      <div class="proof-item">
+        <span class="proof-num">20</span>
+        <span class="proof-label" data-i18n="hero.proof.l1">регионов Италии</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-num">5</span>
+        <span class="proof-label" data-i18n="hero.proof.l2">линеек продукта</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-num">3</span>
+        <span class="proof-label" data-i18n="hero.proof.l3">языка · RU·IT·EN</span>
+      </div>
+    </div>
   </div>
   <div class="hero-visual">
     <div class="hero-card">
+      <img class="hero-card-emblem" id="hero-emblem" alt="" aria-hidden="true">
       <span class="eyebrow" data-i18n="hero.card.eyebrow">В работе</span>
       <h3 data-i18n="hero.card.title">От Венеции до Сицилии — полный цикл.</h3>
       <p data-i18n="hero.card.body">Прямые отношения с поставщиками во всех двадцати регионах. Координация на русском, итальянском и английском языках. Документы, которые туроператор может без правок передать клиенту.</p>
@@ -2363,6 +2458,9 @@
       "hero.card.body": "Прямые отношения с поставщиками во всех двадцати регионах. Координация на русском, итальянском и английском языках. Документы, которые туроператор может без правок передать клиенту.",
       "hero.card.m1": "20 регионов",
       "hero.card.m2": "RU · IT · EN",
+      "hero.proof.l1": "регионов Италии",
+      "hero.proof.l2": "линейки продукта",
+      "hero.proof.l3": "языка · RU·IT·EN",
 
       "about.eyebrow": "О компании",
       "about.title": "Итальянская компания для российского рынка.",
@@ -2740,6 +2838,9 @@
       "hero.card.body": "Direct supplier relationships across all 20 regions. Multilingual coordination in Russian, Italian and English. Documents your clients are proud to receive.",
       "hero.card.m1": "20 Regions",
       "hero.card.m2": "RU · IT · EN",
+      "hero.proof.l1": "Italian regions",
+      "hero.proof.l2": "product lines",
+      "hero.proof.l3": "languages · RU·IT·EN",
 
       "about.eyebrow": "Who We Are",
       "about.title": "An Italian operator, built for Russian-speaking markets.",
@@ -3275,6 +3376,18 @@
     logoImg.addEventListener('error', () => {
       logoImg.style.display = 'none';
     });
+  }
+
+  // Riuso dell'anfora (logo esistente) come emblema nella hero-card.
+  // Cloniamo la stessa sorgente del logo del nav: nessuna duplicazione del base64.
+  const heroEmblem = document.getElementById('hero-emblem');
+  if (heroEmblem) {
+    if (logoImg && logoImg.getAttribute('src')) {
+      heroEmblem.src = logoImg.getAttribute('src');
+    } else {
+      heroEmblem.style.display = 'none';
+    }
+    heroEmblem.addEventListener('error', () => { heroEmblem.style.display = 'none'; });
   }
 
   // Mobile hamburger menu
