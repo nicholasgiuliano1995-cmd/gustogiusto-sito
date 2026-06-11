@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gustogiustotour.ru/sitemap.xml
